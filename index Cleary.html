@@ -1409,7 +1409,7 @@ html:has(body.on-club),body.on-club{overflow:hidden;background:#0B1322}
 .club-stage{position:relative;flex:none;overflow:hidden;width:max(100vw,calc(100dvh * 16 / 9));aspect-ratio:16/9;margin:0 auto}
 .club-scene{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
 .club-shade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 55%,transparent 55%,rgba(0,0,0,.45) 100%)}
-.hs{position:absolute;transform:translate(calc(-6px - clamp(17px,1.3vw,24px)),-50%);display:flex;align-items:center;gap:10px;padding:6px 16px 6px 6px;border:0;border-radius:999px;background:rgba(8,14,26,.42);color:#fff;cursor:pointer;
+.hs{position:absolute;left:var(--x);top:var(--y);transform:translate(calc(-6px - clamp(17px,1.3vw,24px)),-50%);display:flex;align-items:center;gap:10px;padding:6px 16px 6px 6px;border:0;border-radius:999px;background:rgba(8,14,26,.42);color:#fff;cursor:pointer;
   font:700 clamp(17px,1.45vw,26px)/1 var(--display);letter-spacing:.02em;text-shadow:0 2px 6px rgba(0,0,0,.85),0 0 2px rgba(0,0,0,.9);white-space:nowrap;transition:background .15s}
 .hs-dot{flex:none;position:relative;width:clamp(34px,2.6vw,48px);height:clamp(34px,2.6vw,48px);border-radius:50%;background:rgba(10,16,28,.55);border:3px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,.6);transition:transform .15s}
 .hs-dot::after{content:"";position:absolute;inset:0;margin:auto;width:32%;height:32%;border-radius:50%;background:#fff}
@@ -1433,26 +1433,27 @@ html:has(body.on-club),body.on-club{overflow:hidden;background:#0B1322}
 .club-who span{display:block;font:600 13px/1.3 var(--body);color:#C9D3E3}
 .club-ovr{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font:700 13px var(--body);color:#C9D3E3}
 .club-ovr i{font-style:normal;min-width:30px;padding:1px 7px;border-radius:999px;border:1.5px solid #C9D3E3;color:#fff;text-align:center}
-.club-hint{position:fixed;z-index:6;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));padding:6px 14px;border-radius:999px;background:rgba(6,12,24,.7);color:#C9D3E3;font:600 13px var(--body);white-space:nowrap;pointer-events:none;display:none}
 
-/* phones held upright: the room scrolls sideways, and a dock keeps every stop one tap away */
-.club-dock{display:none}
-@media (max-aspect-ratio:1/1){
-  .club-stage{width:calc(100dvh * 16 / 9 * .78);}
-  .club{align-items:flex-start;padding-top:calc(84px + env(safe-area-inset-top))}
-  .hs,.hs.primary{font-size:17px;padding:4px 10px 4px 4px;transform:translate(-21px,-50%)}
-  .club-dock{display:grid;position:fixed;z-index:6;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));grid-template-columns:repeat(4,1fr);gap:8px;padding:10px;border-radius:18px;
-    background:rgba(6,12,24,.86);border:1px solid rgba(255,255,255,.12);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
-  .club-dock button{position:relative;display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 2px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(255,255,255,.05);color:#fff;font:600 12px/1.1 var(--body);cursor:pointer}
-  .club-dock button.primary{background:#B30838;border-color:#B30838}
-  .club-dock .dk-i{width:10px;height:10px;border-radius:50%;border:2px solid #fff}
-  .club-dock .hs-new{position:absolute;top:4px;right:6px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#B30838;font:700 11px/18px var(--body)}
-  .club-hint{display:block;bottom:auto;top:calc(88px + env(safe-area-inset-top))}
-}
 .hs.flip{flex-direction:row-reverse;padding:6px 6px 6px 16px;transform:translate(calc(-100% + 6px + clamp(17px,1.3vw,24px)),-50%)}
 @media (max-height:520px) and (min-aspect-ratio:1/1){ .hs{font-size:15px;gap:7px} .hs-dot{width:28px;height:28px} .hs.primary{font-size:18px} .hs.primary .hs-dot{width:40px;height:40px}
   .hs{transform:translate(-20px,-50%)} .hs.primary{transform:translate(-26px,-50%)} .hs.flip{transform:translate(calc(-100% + 20px),-50%)} .club-card{transform:scale(.85);transform-origin:top left} }
-@media (max-aspect-ratio:1/1){ .hs.flip{transform:translate(calc(-100% + 21px),-50%);padding:4px 4px 4px 10px} }
+/* phones held upright: a tall picture made for the phone, the whole room on one screen, no swiping */
+@media (max-aspect-ratio:1/1){
+  .club{align-items:center;justify-content:center;overflow:hidden}
+  .club-stage{width:max(100vw,calc(100dvh * 9 / 16));aspect-ratio:9/16;flex:none}
+  .hs{left:var(--px);top:var(--py);font-size:15px;gap:6px;padding:3px 10px 3px 3px;transform:translate(-17px,-50%)}
+  .hs .hs-dot{width:28px;height:28px;border-width:2.5px}
+  .hs.primary{font-size:18px;padding:4px 12px 4px 4px;transform:translate(-23px,-50%)}
+  .hs.primary .hs-dot{width:38px;height:38px}
+  .hs.primary .hs-dot::after{border-width:7px 0 7px 12px}
+  .hs.flip{flex-direction:row;padding:3px 10px 3px 3px;transform:translate(-17px,-50%)}
+  .hs.pflip{flex-direction:row-reverse;padding:3px 3px 3px 10px;transform:translate(calc(-100% + 17px),-50%)}
+  .hs.primary.pflip{padding:4px 4px 4px 12px;transform:translate(calc(-100% + 23px),-50%)}
+  .hs{font-size:clamp(13px,3.9vw,15px)} .hs.primary{font-size:clamp(15px,4.6vw,18px)}
+  .club-card{top:calc(10px + env(safe-area-inset-top));left:10px;padding:6px 14px 6px 6px;gap:10px}
+  .club-ava{width:44px;height:44px;font-size:18px}
+  .club-who b{font-size:18px}
+}
 @media (max-width:760px){ .tabs a[data-tab="clubhouse"]::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E")} }
 </style>
 </head>
@@ -5718,19 +5719,20 @@ function renderPenBanner(){
 }
 window.renderPenBanner=renderPenBanner;
 renderPenBanner();
-const CLUB_SCENE="<img class=\"club-scene\" src=\"clubhouse.jpg\" alt=\"\" decoding=\"async\"><div class=\"club-shade\"></div>";
+const CLUB_SCENE="<picture><source media=\"(max-aspect-ratio: 1/1)\" srcset=\"clubhouse-phone.jpg\"><img class=\"club-scene\" src=\"clubhouse.jpg\" alt=\"\" decoding=\"async\"></picture><div class=\"club-shade\"></div>";
 
 // ===== Clubhouse: the main navigation screen when the app opens =====
 // Each stop in the room is a button. x/y are % of the 1600x900 room picture.
+// x/y: spot on the wide picture (clubhouse.jpg). px/py: spot on the phone picture (clubhouse-phone.jpg). flip/pflip: label sits to the left of the dot.
 const CLUB_STOPS=[
-  {k:'field', x:55.9, y:50, primary:true, p:['Today\'s Work','daily-work'], c:['Coach\'s View','coach-view']},
-  {k:'tv',    x:39.8, y:37, p:['Schedule','schedule'], c:['Schedule','schedule']},
-  {k:'board', x:72.7, y:45, p:['My Week','home'], c:['Staff Report','report']},
-  {k:'locker',flip:true,x:88.5,  y:50, p:['My Locker','profile'], c:['Clubhouse Home','home']},
-  {k:'phone', x:30.4, y:82, p:['Chat','chat'], c:['Chat','chat']},
-  {k:'laptop',x:72.5, y:73, p:['Log','personal-plan'], c:null},
-  {k:'door',  x:9.8,  y:48, p:['Settings','@account'], c:['Settings','@account']},
-  {k:'cork',  x:25,   y:39, p:['Help','@help'], c:['Help','@help']},
+  {k:'field', x:55.9, y:50, px:60.3,py:57, primary:true, pflip:true, p:['Today\'s Work','daily-work'], c:['Coach\'s View','coach-view']},
+  {k:'tv',    x:39.8, y:37, px:32,  py:47, p:['Schedule','schedule'], c:['Schedule','schedule']},
+  {k:'board', x:72.7, y:45, px:85,  py:49.5, pflip:true, p:['My Week','home'], c:['Staff Report','report']},
+  {k:'locker',x:88.5, y:50, px:52,  py:87, flip:true, p:['My Locker','profile'], c:['Clubhouse Home','home']},
+  {k:'phone', x:30.4, y:82, px:16,  py:75, p:['Chat','chat'], c:['Chat','chat']},
+  {k:'laptop',x:72.5, y:73, px:84,  py:69, pflip:true, p:['Log','personal-plan'], c:null},
+  {k:'door',  x:9.8,  y:48, px:83,  py:21, pflip:true, p:['Settings','@account'], c:['Settings','@account']},
+  {k:'cork',  x:25,   y:39, px:17,  py:21, p:['Help','@help'], c:['Help','@help']},
 ];
 function clubGo(dest){
   if(dest==='@account'){ const b=document.getElementById('acctOpenL')||document.getElementById('acctOpen'); if(b) b.click(); return; }
@@ -5748,17 +5750,16 @@ function renderClubhouse(allowed){
   const newB=d=>d==='chat'&&unread?`<i class="hs-new">${unread}</i>`:'';
   el.innerHTML=`<div class="club" id="clubRoom">
     <div class="club-stage">${CLUB_SCENE}
-      ${stops.map(s=>`<button type="button" class="hs ${s.primary?'primary':''} ${s.flip?'flip':''}" style="left:${s.x}%;top:${s.y}%" data-clubgo="${s.dest}"><span class="hs-dot"></span><span>${esc(s.label)}</span>${newB(s.dest)}</button>`).join('')}
+      ${stops.map(s=>`<button type="button" class="hs ${s.primary?'primary':''} ${s.flip?'flip':''} ${s.pflip?'pflip':''}" style="--x:${s.x}%;--y:${s.y}%;--px:${s.px}%;--py:${s.py}%" data-clubgo="${s.dest}"><span class="hs-dot"></span><span>${esc(s.label)}</span>${newB(s.dest)}</button>`).join('')}
     </div></div>
     <button type="button" class="club-card" data-clubgo="${coach?'home':'profile'}" aria-label="Open your profile">
       <span class="club-ava">${esc(initials(nm))}${unread?'<i class="club-alert" title="New messages">!</i>':''}</span>
       <span class="club-who"><b>${esc(nm)}</b><span>${esc(role)}</span>${velo?`<span class="club-ovr"><i>${esc(String(velo))}</i> VELO</span>`:''}</span>
     </button>
-    <p class="club-hint">Swipe to look around the clubhouse</p>
-    <nav class="club-dock" aria-label="Clubhouse">${stops.map(s=>`<button type="button" class="${s.primary?'primary':''}" data-clubgo="${s.dest}"><span class="dk-i"></span>${esc(s.label)}${newB(s.dest)}</button>`).join('')}</nav>`;
+    `;
   const logo=document.querySelector('header .logo img'); const li=el.querySelector('.club-logo'); if(logo&&li) li.setAttribute('href',logo.getAttribute('src'));
   const room=document.getElementById('clubRoom');   // start looking at the tunnel to the field
-  requestAnimationFrame(()=>{ if(room.scrollWidth>room.clientWidth) room.scrollLeft=room.scrollWidth*0.559-room.clientWidth/2; });
+  requestAnimationFrame(()=>{ if(!matchMedia('(max-aspect-ratio: 1/1)').matches && room.scrollWidth>room.clientWidth) room.scrollLeft=room.scrollWidth*0.559-room.clientWidth/2; });
 }
 document.addEventListener('click',e=>{ const b=e.target.closest('[data-clubgo]'); if(b) clubGo(b.dataset.clubgo); });
 
