@@ -1644,6 +1644,206 @@ body[data-tab="chat"]:not(.on-club){background:radial-gradient(90% 80% at 50% 40
   #tab-profile .content{margin:14px 4px 60px;padding:64px 10px 20px}
 }
 @media (max-width:420px){ .cb-grid{grid-template-columns:1fr} .pin.logo{display:none} }
+
+/* ===================== MLB THE SHOW-STYLE CARD ===================== */
+#tab-profile .content{padding-top:56px}
+.showcard{--sb:#0B0E14;--sb2:#12161F;--cy:#22C7F0;--pk:#E83E8C;position:relative;margin:0 0 18px;border-radius:12px;overflow:hidden;color:#fff;
+  background:radial-gradient(120% 90% at 0% 0%,rgba(0,43,92,.9),rgba(0,0,0,0) 55%),linear-gradient(160deg,#141A26,#07090D 70%);box-shadow:0 20px 50px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.08)}
+.showcard::before{content:"";position:absolute;left:-60px;top:0;width:220px;height:100%;background:repeating-linear-gradient(115deg,rgba(34,199,240,.0) 0 22px,rgba(34,199,240,.18) 22px 30px);pointer-events:none}
+.sc-top{position:relative;display:grid;grid-template-columns:230px 1fr 300px;gap:26px;padding:24px 26px 18px}
+.sc-card{position:relative;width:210px;aspect-ratio:3/4;border-radius:10px;padding:8px;background:linear-gradient(160deg,#F4F6FA,#C9CED8);box-shadow:0 14px 30px rgba(0,0,0,.6);transform:rotate(-2deg)}
+.sc-ph{position:absolute;inset:8px 8px 8px 8px;border-radius:6px;overflow:hidden;background:linear-gradient(170deg,#1C3A6E,#0B1C3A)}
+.sc-ph img{width:100%;height:100%;object-fit:cover}
+.sc-ph-none{width:100%;height:100%;display:grid;place-items:center;background:radial-gradient(80% 60% at 50% 30%,#2A4F8F,#0B1C3A)}
+.sc-ph-none span{font:700 64px var(--display);color:rgba(255,255,255,.85)}
+.sc-cu{position:absolute;left:14px;top:14px;width:48px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
+.sc-name{position:absolute;left:8px;right:8px;bottom:8px;padding:22px 10px 8px;border-radius:0 0 6px 6px;background:linear-gradient(180deg,transparent,rgba(0,26,61,.92) 45%)}
+.sc-name small{display:block;font:700 11px var(--display);letter-spacing:.12em;color:#C9D3E3}
+.sc-name b{display:block;font:700 22px/1 var(--display);letter-spacing:.04em}
+.sc-pos{position:absolute;right:12px;bottom:12px;width:40px;height:40px;display:grid;place-items:center;background:#fff;color:#002B5C;font:800 11px var(--display);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.sc-up{display:block;margin:14px auto 0;padding:7px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font:600 13px var(--body);cursor:pointer}
+.sc-first{margin:6px 0 0;font:700 22px var(--display);letter-spacing:.06em;color:#E6EBF3}
+.sc-last{margin:0;font:700 56px/0.95 var(--display);letter-spacing:.02em;text-transform:uppercase}
+.sc-team{margin:10px 0 16px;display:flex;align-items:center;gap:10px;font:600 17px var(--body);color:#E6EBF3}
+.sc-dia{display:inline-grid;place-items:center;width:30px;height:30px;background:#fff;color:#002B5C;font:800 11px var(--display);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.sc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 18px}
+.sc-i b{display:block;font:700 22px/1.05 var(--display);text-transform:uppercase;overflow-wrap:anywhere}
+.sc-i b small{font-size:13px;color:#AEB9CC}
+.sc-i span{font:500 12.5px var(--body);color:#AEB9CC}
+.sc-edit{margin-top:14px;padding:6px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#C9D3E3;font:600 12.5px var(--body);cursor:pointer}
+.sc-rep h3{margin:0 0 12px;font:700 22px var(--display);letter-spacing:.04em;text-transform:uppercase}
+.sc-p{display:grid;grid-template-columns:110px 1fr 56px;align-items:center;gap:10px;margin-bottom:10px;font:600 14.5px var(--body)}
+.sc-p i{height:12px;border-radius:2px;background:#1E2430;border:1px solid rgba(255,255,255,.35);position:relative;overflow:hidden}
+.sc-p i::after{content:"";position:absolute;inset:0;width:var(--w);background:linear-gradient(90deg,#1E6FD9,var(--c) 85%,#E83E3E)}
+.sc-p b{text-align:right;font-weight:700}
+.sc-tabs{display:flex;gap:8px;padding:0 26px;overflow-x:auto;scrollbar-width:none}
+.sc-tabs button{flex:none;padding:11px 22px;border:1px solid rgba(255,255,255,.12);background:#1A1F29;color:#E6EBF3;font:600 15px var(--body);letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+.sc-tabs button[aria-selected="true"]{background:var(--cy);color:#04121B;border-color:var(--cy)}
+.sc-seasons{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 26px 0}
+.sc-seasons button{padding:5px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font:700 13px var(--display);letter-spacing:.06em;cursor:pointer}
+.sc-seasons button[aria-pressed="true"]{background:#B30838;border-color:#B30838}
+.sc-seasons span{font-size:12px;color:#8994A8}
+.sc-body{padding:14px 26px 22px}
+.sc-tbl{overflow-x:auto}
+.sc-tbl table{width:100%;border-collapse:collapse;min-width:620px}
+.sc-tbl th{padding:10px 8px;font:700 13px var(--display);letter-spacing:.08em;color:#E6EBF3;text-align:center;border-bottom:1px solid rgba(255,255,255,.15)}
+.sc-tbl td{padding:12px 8px;text-align:center;font:600 16px var(--body);border-bottom:1px solid rgba(255,255,255,.06)}
+.sc-tbl td:first-child,.sc-tbl th:first-child{text-align:left}
+.sc-tbl td.opp{text-align:left;font-weight:700}
+.sc-tbl tr.on td,.sc-tbl tr.on1 td{background:rgba(34,199,240,.06);box-shadow:inset 0 2px 0 var(--cy),inset 0 -2px 0 var(--cy)}
+.sc-tbl tr.on td:first-child,.sc-tbl tr.on1 td:first-child{box-shadow:inset 2px 2px 0 var(--cy),inset 0 -2px 0 var(--cy)}
+.sc-tbl tr.on td:last-child,.sc-tbl tr.on1 td:last-child{box-shadow:inset -2px 2px 0 var(--cy),inset 0 -2px 0 var(--cy)}
+.sc-tbl tr.tm td,.sc-tbl tr.totals td{color:var(--cy);font-weight:700}
+.sc-tbl td em{display:block;font:700 10.5px var(--body);font-style:normal;color:#F2A5B6}
+.sc-note{margin:10px 0 0;font-size:12.5px;color:#8994A8} .sc-note em{color:#F2A5B6;font-style:normal}
+.sc-empty{margin:8px 0;color:#AEB9CC;font-size:14.5px}
+.sc-quirks{display:flex;flex-wrap:wrap;gap:10px}
+.sc-q{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;background:linear-gradient(160deg,#1C2433,#121722);border-left:4px solid #B30838}
+.sc-q b{font:700 16px var(--display);letter-spacing:.04em;text-transform:uppercase}
+.sc-q button{border:0;background:none;color:#8994A8;font-size:18px;cursor:pointer}
+.sc-qadd{display:flex;gap:8px;width:100%;margin-top:6px}
+.sc-qadd input{flex:1;height:40px;padding:0 12px;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:#0E121A;color:#fff}
+.sc-btn{padding:0 18px;border:0;border-radius:8px;background:var(--cy);color:#04121B;font:700 14px var(--body);cursor:pointer}
+.sc-awards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.sc-aw{padding:14px;border-radius:10px;background:linear-gradient(160deg,#2A2110,#15110A);border:1px solid rgba(240,188,46,.35);display:flex;flex-direction:column;gap:2px}
+.sc-aw i{font-style:normal;font-size:26px} .sc-aw b{font:700 17px var(--display);letter-spacing:.04em;color:#F5CC5A;text-transform:uppercase} .sc-aw span{font-size:13px;color:#D8CBA8}
+.sc-shapes{background:#F4F6FA;border-radius:10px;padding:10px;color:#14213D}
+.sheet-p:has(.cardsheet){width:min(1180px,100%);background:#07090D;padding:14px}
+.sheet-p:has(.cardsheet) .sheet-x{background:#1A1F29;color:#fff;border-color:#333}
+.cardsheet .showcard{margin:0}
+@media (max-width:1000px){ .sc-top{grid-template-columns:200px 1fr} .sc-rep{grid-column:1/-1} }
+@media (max-width:640px){
+  .sc-top{grid-template-columns:1fr;gap:14px;padding:18px 14px 12px}
+  .sc-cardwrap{display:flex;align-items:flex-end;gap:12px}
+  .sc-card{width:150px} .sc-up{margin:0} .sc-name b{font-size:18px}
+  .sc-last{font-size:42px} .sc-first{font-size:18px}
+  .sc-grid{gap:10px 12px} .sc-i b{font-size:19px}
+  .sc-tabs{padding:0 12px} .sc-tabs button{padding:9px 12px;font-size:12.5px}
+  .sc-seasons{padding:10px 12px 0} .sc-body{padding:12px 12px 18px}
+  .sc-p{grid-template-columns:96px 1fr 48px;font-size:13.5px}
+}
+
+/* ===================== LEADERBOARDS ===================== */
+#tab-leaders .content{max-width:1180px;margin:22px auto 70px}
+.lb{border-radius:14px;overflow:hidden;background:#05070B;box-shadow:0 26px 60px rgba(0,0,0,.6);color:#fff}
+.lb-hero{position:relative;display:flex;align-items:center;gap:26px;padding:22px 30px;min-height:170px;overflow:hidden;
+  background:linear-gradient(100deg,rgba(0,26,61,.96) 0%,rgba(0,43,92,.85) 45%,rgba(179,8,56,.75) 100%),url(clubhouse.jpg) 70% 30%/cover}
+.lb-hero::after{content:"";position:absolute;right:-40px;top:0;width:280px;height:100%;background:repeating-linear-gradient(115deg,transparent 0 18px,rgba(255,255,255,.08) 18px 22px)}
+.lb-ph{width:110px;height:140px;flex:none;border-radius:8px;overflow:hidden;background:linear-gradient(170deg,#2A4F8F,#0B1C3A);display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.5);border:3px solid #fff}
+.lb-ph img{width:100%;height:100%;object-fit:cover} .lb-ph span{font:700 44px var(--display)}
+.lb-who small{display:block;font:700 20px var(--display);letter-spacing:.08em}
+.lb-who b{display:block;font:700 54px/0.95 var(--display);letter-spacing:.02em}
+.lb-who span{display:block;margin-top:6px;font:600 15px var(--body);color:#DCE4F0}
+.lb-dial{margin-left:auto;position:relative;z-index:1;width:150px;height:150px;border-radius:50%;display:grid;place-content:center;text-align:center;
+  background:radial-gradient(circle,#0E1D3A 58%,transparent 59%),conic-gradient(#F07A8E 0 80%,#3FBF7F 80% 100%);box-shadow:0 0 0 6px rgba(0,0,0,.3)}
+.lb-dial b{font:700 38px/1 var(--display)} .lb-dial span{font:700 12px var(--display);letter-spacing:.1em;color:#C9D3E3} .lb-dial em{font-style:normal;font-size:10.5px;color:#9FB0CC}
+.lb-cu{position:absolute;right:190px;top:18px;width:70px;opacity:.95;z-index:1}
+.lb-bar{display:flex;align-items:center;gap:12px;margin:0;padding:12px 18px;background:#EEF1F5;color:#0B0E14}
+.lb-bar b{font:700 20px var(--display);letter-spacing:.08em} .lb-bar span{margin-left:auto;font:700 14px var(--display);letter-spacing:.08em;color:#3A4250}
+.lb-nav{width:34px;height:28px;border-radius:6px;border:0;background:#0B0E14;color:#fff;font:700 18px/1 var(--body);cursor:pointer}
+.lb-nav:last-child{order:9}
+.lb-chips{display:flex;gap:6px;padding:12px 18px;overflow-x:auto;scrollbar-width:none;background:#0B0E14}
+.lb-chips button{flex:none;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:transparent;color:#C9D3E3;font:700 12.5px var(--display);letter-spacing:.06em;cursor:pointer}
+.lb-chips button[aria-pressed="true"]{background:#22C7F0;color:#04121B;border-color:#22C7F0}
+.lb-tbl{padding:0 18px}
+.lb-tbl table{width:100%;border-collapse:separate;border-spacing:0 4px}
+.lb-tbl th{padding:12px 10px 6px;text-align:left;font:700 13px var(--display);letter-spacing:.1em;color:#E6EBF3}
+.lb-tbl th.num,.lb-tbl td.num{text-align:right}
+.lb-tbl td{padding:12px 10px;font:600 16px var(--body);background:#0D1118;border-top:1px solid rgba(255,255,255,.04)}
+.lb-tbl tr{cursor:pointer}
+.lb-tbl tr:hover td{background:#141A24}
+.lb-tbl tr.first td{box-shadow:inset 0 2px 0 #22C7F0,inset 0 -2px 0 #22C7F0} .lb-tbl tr.first td:first-child{box-shadow:inset 2px 2px 0 #22C7F0,inset 0 -2px 0 #22C7F0} .lb-tbl tr.first td:last-child{box-shadow:inset -2px 2px 0 #22C7F0,inset 0 -2px 0 #22C7F0}
+.lb-tbl tr.me td{background:rgba(179,8,56,.22)}
+.lb-tbl td b{font-weight:700} .lb-tbl td em{margin-left:8px;padding:1px 7px;border-radius:999px;background:#B30838;font:700 10.5px var(--body);font-style:normal}
+.lb-tbl td.num{font:700 20px var(--display)}
+.lb-av{display:inline-grid;place-items:center;width:30px;height:30px;margin-right:10px;border-radius:6px;background:#002B5C;border:1px solid rgba(255,255,255,.25);font:700 12px var(--display);vertical-align:middle}
+.lb-foot{display:flex;justify-content:space-between;gap:10px;margin:0;padding:14px 18px 18px;font-size:12.5px;color:#8994A8}
+@media (max-width:640px){
+  .lb-hero{gap:12px;padding:16px 14px;min-height:0} .lb-ph{width:70px;height:92px} .lb-ph span{font-size:28px}
+  .lb-who small{font-size:13px} .lb-who b{font-size:30px} .lb-who span{font-size:12px}
+  .lb-dial{width:96px;height:96px} .lb-dial b{font-size:24px} .lb-dial em{display:none} .lb-cu{display:none}
+  .lb-bar{padding:10px 12px} .lb-bar b{font-size:15px} .lb-bar span{display:none}
+  .lb-chips{padding:10px 12px} .lb-tbl{padding:0 8px}
+  .lb-tbl th:nth-child(3),.lb-tbl td:nth-child(3),.lb-tbl th:nth-child(4),.lb-tbl td:nth-child(4){display:none}
+  .lb-tbl td{padding:10px 8px;font-size:14px} .lb-av{display:none} .lb-tbl td.num{font-size:17px}
+  .lb-foot{flex-direction:column;padding:12px}
+}
+
+/* ===================== CLEARY TV SCHEDULE BOARD ===================== */
+#tab-schedule .content{max-width:1180px}
+.tvb{border-radius:6px;overflow:hidden;padding:0 0 10px;background:linear-gradient(180deg,#9AA3AE,#6C7480);box-shadow:inset 0 0 80px rgba(0,0,0,.35)}
+.tvb-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 18px 14px;flex-wrap:wrap}
+.tvb-plate{display:flex;align-items:center;gap:14px;padding:10px 22px 10px 14px;background:#F5F6F8;color:#0B0E14;transform:skewX(-8deg);box-shadow:4px 6px 0 rgba(0,0,0,.25)}
+.tvb-plate>*{transform:skewX(8deg)} .tvb-plate img{width:62px}
+.tvb-plate small{display:block;font:700 15px var(--display);letter-spacing:.06em;color:#B30838}
+.tvb-plate b{display:block;font:700 34px/0.95 var(--display);letter-spacing:.02em;font-style:italic}
+.tvb-plate span{display:block;font:700 12px var(--display);letter-spacing:.14em;border-top:2px solid #0B0E14;margin-top:4px;padding-top:2px}
+.tvb-count{display:flex;gap:8px}
+.tvb-count div{min-width:70px;padding:8px 10px;background:#0B0E14;text-align:center;transform:skewX(-8deg)}
+.tvb-count b{display:block;font:700 30px/1 var(--display);color:#fff} .tvb-count span{font:700 11px var(--display);letter-spacing:.12em;color:#AEB9CC;text-transform:uppercase}
+.tvb-count .w{background:#16244F;box-shadow:inset 0 -4px 0 #E7131A}
+.tvb-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px}
+.tvr{display:grid;grid-template-columns:118px 1fr 74px;align-items:stretch;height:52px;margin-bottom:6px;background:#0B0E14;border-radius:2px;overflow:hidden;box-shadow:0 2px 0 rgba(0,0,0,.35)}
+.tvr.past{opacity:.55}
+.tvr.next{outline:3px solid #22C7F0;outline-offset:-3px}
+.tv-d{display:flex;flex-direction:column;justify-content:center;padding:0 10px;color:#fff;border-right:1px solid #2A2F38}
+.tv-d b{font:700 17px/1 var(--display);letter-spacing:.02em;white-space:nowrap} .tv-d span{font:600 12px var(--body);color:#AEB9CC}
+.tv-m{display:grid;grid-template-columns:1fr 42px 1.35fr;align-items:center;background:linear-gradient(90deg,#002B5C 0 40%,var(--c1) 40%,var(--c2) 100%)}
+.tv-cu{display:grid;place-items:center;height:100%;background:linear-gradient(90deg,#00244E,#002B5C)}
+.tv-cu img{height:34px}
+.tv-vs{display:grid;place-items:center;height:100%;font:700 13px var(--display);color:#fff;background:#0B0E14}
+.tv-op{display:flex;align-items:center;gap:8px;min-width:0;height:100%;padding:0 10px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.tv-op b{font:700 14px/1.02 var(--display);letter-spacing:.02em;text-transform:uppercase;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tv-op .tlogo{flex:none;transform:scale(.8);transform-origin:left center;margin-right:-8px;border-radius:6px;background-color:#fff}
+.tv-ab{flex:none;display:grid;place-items:center;min-width:38px;height:30px;padding:0 4px;border-radius:4px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.5);font:700 12px var(--display);font-style:normal}
+.tv-g{display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;background:#14181F;border-left:1px solid #2A2F38;color:#fff}
+.tv-g b{font:700 20px/1 var(--display)} .tv-g span{font:600 10.5px var(--body);color:#AEB9CC;text-transform:uppercase}
+.tv-g em{position:absolute;top:0;right:0;padding:1px 5px;background:#E7131A;font:700 9px var(--display);font-style:normal;letter-spacing:.06em}
+.tvr.home .tv-vs{background:#B30838}
+.tvb-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 16px 4px;font:700 13px var(--display);letter-spacing:.08em;color:#0B0E14}
+.tvb-live{color:#B30838}
+.tvb-ev{margin:10px 4px 0;color:#AEB9CC;font-size:12.5px}
+@media (max-width:860px){ .tvb-grid{grid-template-columns:1fr} }
+@media (max-width:640px){
+  .tvb-head{padding:12px 10px} .tvb-plate{padding:8px 14px 8px 10px} .tvb-plate img{width:44px} .tvb-plate b{font-size:22px} .tvb-plate small{font-size:12px} .tvb-plate span{font-size:10px}
+  .tvb-count{width:100%} .tvb-count div{flex:1;min-width:0;padding:6px 4px} .tvb-count b{font-size:22px}
+  .tvb-grid{padding:0 6px} .tvr{grid-template-columns:76px 1fr 54px;height:48px}
+  .tv-d{padding:0 6px} .tv-d b{font-size:14px} .tv-d span{font-size:10.5px}
+  .tv-m{grid-template-columns:44px 26px 1fr;background:linear-gradient(90deg,#002B5C 0 44px,var(--c1) 44px,var(--c2) 100%)} .tv-cu img{height:24px}
+  .tv-op{padding:0 6px;gap:6px} .tv-op b{font-size:11.5px} .tv-op .tlogo{transform:scale(.62);margin-right:-14px}
+  .tv-g b{font-size:16px}
+}
+
+/* ===================== COACH'S VIEW: the coach's clipboard ===================== */
+body[data-tab="coach-view"]:not(.on-club){background:radial-gradient(100% 80% at 50% 20%,rgba(0,0,0,0),rgba(0,0,0,.6)),url(tex/wood.jpg) center/cover fixed,#2A1A0E}
+#tab-coach-view .content{position:relative;margin:40px auto 60px;padding:62px 22px 26px;border-radius:18px;background:linear-gradient(160deg,#8B5E34,#5C3B1E);box-shadow:0 30px 60px rgba(0,0,0,.6),inset 0 0 0 2px rgba(255,255,255,.08)}
+#tab-coach-view .content::before{content:"";position:absolute;top:-18px;left:50%;width:220px;height:70px;margin-left:-110px;border-radius:14px 14px 10px 10px;background:linear-gradient(180deg,#F1F3F6,#9DA3AC 55%,#C9CDD3);box-shadow:0 8px 14px rgba(0,0,0,.45),inset 0 -4px 0 rgba(0,0,0,.18);z-index:2}
+#tab-coach-view .content::after{content:"COACH'S CLIPBOARD";position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:3;font:700 13px var(--display);letter-spacing:.2em;color:#2A2F38}
+#tab-coach-view .content>*{position:relative}
+#tab-coach-view .content{--surface:#FBFAF5;--bg:#F1EFE6;--ink:#14213D;--muted:#4A5568;--line:rgba(20,33,61,.16);color:var(--ink);color-scheme:light}
+#tab-coach-view .panel{background:#FBFAF5;box-shadow:0 1px 0 #E4E1D6,0 2px 0 #D9D5C8,0 8px 16px rgba(0,0,0,.25)}
+#tab-coach-view .h2{color:#0B2A5B}
+/* Staff report sits on the whiteboard, like My Week */
+#tab-report .content{position:relative;margin-top:22px;margin-bottom:70px;padding:34px 30px 50px;border-radius:6px;
+  background:linear-gradient(rgba(250,251,253,.62),rgba(250,251,253,.62)),url(tex/whiteboard.jpg) center/100% 100%,#F2F1EC;border:14px solid transparent;border-image:linear-gradient(180deg,#E6E8EC,#9EA4AE 40%,#C9CDD4 60%,#80868F) 1;box-shadow:0 30px 60px rgba(0,0,0,.55);
+  --surface:rgba(255,255,255,.62);--bg:rgba(255,255,255,.5);--ink:#14213D;--muted:#4A5568;--line:rgba(20,33,61,.22);color:var(--ink);color-scheme:light}
+#tab-report .h2{font-family:var(--hand)!important;font-weight:400!important;color:#0B2A5B}
+@media (max-width:760px){ #tab-coach-view .content{margin:30px 4px 60px;padding:56px 8px 16px} #tab-coach-view .content::before{width:170px;margin-left:-85px;height:56px} #tab-coach-view .content::after{white-space:nowrap;font-size:10px;letter-spacing:.14em;top:4px} #tab-report .content{margin:14px 6px 60px;padding:24px 10px 30px;border-width:9px} }
+
+/* ===================== back to the clubhouse, from anywhere ===================== */
+.to-club{position:fixed;z-index:60;left:18px;bottom:calc(18px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:10px;padding:8px 18px 8px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.25);
+  background:linear-gradient(90deg,rgba(0,26,61,.95),rgba(0,43,92,.92));color:#fff;font:700 15px var(--display);letter-spacing:.08em;text-transform:uppercase;box-shadow:0 10px 26px rgba(0,0,0,.5);cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.to-club img{width:38px;height:26px;object-fit:contain;padding:2px;border-radius:999px;background:rgba(255,255,255,.12)}
+.to-club:hover{background:linear-gradient(90deg,#B30838,#7A0526)}
+body.on-club .to-club{display:none}
+@media (max-width:760px){ .to-club{left:10px;bottom:calc(76px + env(safe-area-inset-bottom));padding:6px 14px 6px 6px;font-size:13px} .to-club img{width:30px;height:22px} }
+
+/* ===================== the pencil on the legal pad ===================== */
+#tab-personal-plan .pad-pencil{all:unset;position:absolute;right:-74px;top:150px;width:46px;height:420px;z-index:2;pointer-events:none;transform:rotate(9deg);filter:drop-shadow(10px 14px 8px rgba(0,0,0,.55))}
+#tab-personal-plan .pad-pencil svg{width:100%;height:100%;display:block}
+@media (max-width:1060px){ #tab-personal-plan .pad-pencil{right:-30px;width:34px;height:320px} }
+@media (max-width:760px){ #tab-personal-plan .pad-pencil{display:block;top:-30px;right:auto;left:62%;width:22px;height:230px;transform:rotate(-78deg);transform-origin:top left;z-index:3} }
+@media (max-width:760px){ .tabs a[data-tab="leaders"]::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M8%2021h8%22%2F%3E%3Cpath%20d%3D%22M12%2017v4%22%2F%3E%3Cpath%20d%3D%22M7%204h10v5a5%205%200%200%201-10%200z%22%2F%3E%3Cpath%20d%3D%22M17%205h3v2a3%203%200%200%201-3%203%22%2F%3E%3Cpath%20d%3D%22M7%205H4v2a3%203%200%200%200%203%203%22%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M8%2021h8%22%2F%3E%3Cpath%20d%3D%22M12%2017v4%22%2F%3E%3Cpath%20d%3D%22M7%204h10v5a5%205%200%200%201-10%200z%22%2F%3E%3Cpath%20d%3D%22M17%205h3v2a3%203%200%200%201-3%203%22%2F%3E%3Cpath%20d%3D%22M7%205H4v2a3%203%200%200%200%203%203%22%2F%3E%3C%2Fsvg%3E")} }
 @media (max-width:760px){ .tabs a[data-tab="clubhouse"]::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E")} }
 </style>
 </head>
@@ -1670,6 +1870,7 @@ body[data-tab="chat"]:not(.on-club){background:radial-gradient(90% 80% at 50% 40
     <a href="#schedule" data-tab="schedule"><span class="tl long">Schedule</span><span class="ts">Games</span></a>
     <a href="#chat" data-tab="chat"><span class="tl">Chat</span><i class="tbadge" id="chatBadge" hidden></i></a>
     <a href="#profile" data-tab="profile"><span class="tl">Profile</span></a>
+    <a href="#leaders" data-tab="leaders"><span class="tl long">Leaderboards</span><span class="ts">Leaders</span></a>
     <a href="#report" data-tab="report"><span class="tl">Report</span></a>
     <a href="#coach-view" data-tab="coach-view"><span class="tl long">Coach's View</span><span class="ts">Coach</span></a>
   </nav>
@@ -1681,6 +1882,7 @@ body[data-tab="chat"]:not(.on-club){background:radial-gradient(90% 80% at 50% 40
 <main id="tab-home" hidden><div class="content" id="homeBody"></div></main>
 <main id="tab-schedule" hidden><div class="content" id="schedBody"></div></main>
 <main id="tab-lift" hidden><div class="content" id="liftBody"></div></main>
+<main id="tab-leaders" hidden><div class="content" id="leadBody"></div></main>
 <main id="tab-report" hidden><div class="content" id="reportBody"></div></main>
 <main id="tab-chat" hidden><div class="content" id="chatBody"></div></main>
 <main id="tab-profile" hidden><div class="content" id="profBody"></div></main>
@@ -1875,9 +2077,57 @@ body[data-tab="chat"]:not(.on-club){background:radial-gradient(90% 80% at 50% 40
 // No phone numbers or emails live in this file: it ships to every visitor.
 const CLASS_BY_GRAD={2027:'SR',2028:'JR',2029:'SO',2030:'FR'};
 // p: [type, variation, IVB, HB]   s: fall stats   v: [starting mound velo, current mound velo]
-const CLEARY_ROSTER=[   // player profiles removed; only the made-up test pitcher is left
+const CLEARY_ROSTER=[
+ {id:'amico',      n:'Darion Amico',      g:2027,h:'R',ht:73,wt:224,town:'Romeo, MI',hs:'Romeo',prev:'Mott Community College',v:[88.5,88.5],
+  p:[['FB','',16,7],['SL','',-1,-7],['CH','',13,12]], s:{sp:65,fps:59,k:13,bb:1,csw:34,baa:.256,ep:59}},
+ {id:'arbogast',   n:'Noah Arbogast',     g:2028,h:'R',ht:72,wt:156,town:'Clarkston, MI',hs:'Everest Collegiate',v:[null,null],
+  p:[['CT','',11,1],['SL','',-5,-6],['CH','',16,9]], s:{sp:63,fps:63,k:4,bb:4,csw:17,baa:.286,ep:52}},
+ {id:'bloink',     n:'Dylan Bloink',      g:2027,h:'R',ht:74,wt:168,town:'Port Huron, MI',hs:'',prev:'Jackson Community College',v:[80.9,81.1],
+  p:[['2S','Sinker',10,19],['SL','',-11,-5.5],['CH','Kick',-4,13]], s:{sp:59,fps:53,k:6,bb:6,csw:32,baa:.296,ep:47}},
+ {id:'chimeri',    n:'Matheus Chimeri',   g:2029,h:'R',ht:72,wt:201,town:'South Lyon, MI',hs:'South Lyon',v:[79.6,82.7],
+  p:[['FB','',14,10],['CB','Downer',-15,-8],['CH','',9,7]], s:{sp:49,fps:50,k:7,bb:7,csw:26,baa:.133,ep:39}},
+ {id:'harmsworth', n:'Thomas Harmsworth', g:2028,h:'R',ht:null,wt:null,town:'',hs:'',v:[88.1,88.1],
+  p:[['FB','Standard / Deadzone',16,13],['CB','Downer / Efficient',-16,-10],['CH','Firm / Standard',16,7],['2S','Running sinker',13,17]], s:{sp:65,fps:70,k:10,bb:2,csw:30,baa:.241,ep:62}},
+ {id:'hurliman',   n:'Luke Hurliman',     g:2030,h:'R',ht:null,wt:null,town:'',hs:'',v:[80,80],
+  p:[['FB','',14,8],['SL','',-1,-8],['CH','',12,11],['2S','Deadzone sinker',15,11]], s:{sp:57,fps:60,k:10,bb:12,csw:30,baa:.194,ep:44}},
+ {id:'jelleyreid', n:'Wyatt Jelley-Reid', g:2030,h:'R',ht:null,wt:null,town:'',hs:'',v:[78.3,null],
+  p:[], s:{sp:53,fps:55,k:0,bb:3,csw:22,baa:.286,ep:41}},
+ {id:'knott',      n:'Wesley Knott',      g:2028,h:'R',ht:72,wt:198,town:'Oro-Medonte, ON',hs:'Eastview Secondary',prev:'Salem University',v:[null,null],track:'rtt',
+  p:[], s:{sp:null,fps:null,k:null,bb:null,csw:null,baa:null,ep:40}},
+ {id:'langdon',    n:'Grady Langdon',     g:2030,h:'R',ht:null,wt:null,town:'',hs:'',v:[74.2,81.5],
+  p:[['FB','',16,6],['CB','Inefficient downer',-9,-4.5],['CH','',12,10]], s:{sp:60,fps:66,k:10,bb:3,csw:29,baa:.107,ep:36}},
+ {id:'mcnicol',    n:'John McNicol',      g:2028,h:'R',ht:null,wt:null,town:'',hs:'',v:[85.3,85.3],
+  p:[['FB','',16,12],['SL','',0,-5],['CH','',12,14]], s:{sp:61,fps:61,k:11,bb:4,csw:35,baa:.167,ep:60}},
+ {id:'miano',      n:'Vincent Miano',     g:2030,h:'R',ht:null,wt:null,town:'',hs:'',v:[84.5,84.5],
+  p:[['FB','Deadzone',12,12],['SL','Gyro',2,-2],['SP','',-3,4]], s:{sp:59,fps:58,k:16,bb:7,csw:25,baa:.224,ep:57}},
+ {id:'montilla',   n:'Hector Montilla',   g:2027,h:'R',ht:71,wt:199,town:'Clearwater, FL',hs:'',prev:'Hillsborough Community College',v:[88.8,89.4],
+  p:[['FB','',15,6],['CB','',-11,-13],['CH','',14,17],['SL','Slurve',-2,-11]], s:{sp:58,fps:65,k:14,bb:9,csw:22,baa:.167,ep:59}},
+ {id:'murray',     n:'Travis Murray',     g:2029,h:'L',ht:74,wt:233,town:'Coleman, MI',hs:'Coleman',v:[77.3,77.3],
+  p:[['2S','Sinker',7,-16],['SL','Slurve',-7,11.5],['CH','',0,-7],['SP','',2,-5]], s:{sp:56,fps:49,k:12,bb:7,csw:30,baa:.167,ep:53}},
+ {id:'nicholson',  n:'Luke Nicholson',    g:2029,h:'R',ht:null,wt:null,town:'',hs:'',v:[81.3,81.3],
+  p:[['FB','',15,12],['SL','',2,-7],['SP','',4,4]], s:{sp:56,fps:43,k:11,bb:9,csw:29,baa:.259,ep:54}},
+ {id:'noseworthy', n:'Jacob Noseworthy',  g:2029,h:'L',ht:69,wt:165,town:'Burlington, ON',hs:'Dr. Frank J. Hayden Secondary',v:[84,84],
+  p:[['FB','',12,-15],['SL','Slurve',-7,12],['CH','',4,-12]], s:{sp:64,fps:63,k:10,bb:5,csw:31,baa:.273,ep:53}},
+ {id:'parris',     n:'Brett Parris',      g:2028,h:'R',ht:77,wt:194,town:'Howell, MI',hs:'Howell',v:[null,null],track:'rehab',
+  p:[], s:{sp:null,fps:null,k:null,bb:null,csw:null,baa:null,ep:null}},
+ {id:'retchko',    n:'Balen Retchko',     g:2030,h:'R',ht:null,wt:null,town:'',hs:'',v:[83.5,84.1],
+  p:[['FB','',17,8],['SL','Gyro',1,2],['CH','Firm',8,7]], s:{sp:64,fps:63,k:15,bb:6,csw:36,baa:.233,ep:51}},
+ {id:'roberts',    n:'Bryson Roberts',    g:2027,h:'L',ht:74,wt:169,town:'Fraser, MI',hs:'Fraser',prev:'Macomb Community College',v:[79,79],
+  p:[['FB','',16,-10],['CB','Gyro',-5,2],['CH','',11,-6],['SL','Slurve',-3,9]], s:{sp:49,fps:44,k:0,bb:2,csw:3,baa:.429,ep:44}},
+ {id:'schertzer',  n:'Joseph Schertzer',  g:2030,h:'',ht:null,wt:null,town:'',hs:'',v:[84.7,84.7],
+  p:[], s:{sp:64,fps:0,k:3,bb:0,csw:37,baa:.25,ep:49}},
+ {id:'siik',       n:'Jack Siik',         g:2029,h:'R',ht:73,wt:152,town:'Negaunee, MI',hs:'Negaunee',v:[85.8,86],
+  p:[['FB','Running',15,16],['SL','Gyro',0,-1],['CH','',9,17],['2S','Sinker',9,22]], s:{sp:52,fps:42,k:10,bb:14,csw:20,baa:.25,ep:41}},
+ {id:'sindlinger', n:'Connor Sindlinger', g:2030,h:'R',ht:74,wt:195,town:'',hs:'',v:[85.3,85.8],
+  p:[['FB','Gyro',7,3],['SL','Slutter',-4,-5],['CH','Firm',5,10]], s:{sp:61,fps:61,k:16,bb:9,csw:36,baa:.295,ep:44}},
+ {id:'stanaway',   n:'Fin Stanaway',      g:2030,h:'R',ht:null,wt:null,town:'',hs:'',v:[null,null],
+  p:[['FB','',16,14],['CB','',-12,-10],['CH','',8,19],['SL','',2.5,-9]], s:{sp:61,fps:57,k:14,bb:5,csw:35,baa:.154,ep:62}},
+ {id:'tobias',     n:'Brady Tobias',      g:2028,h:'R',ht:null,wt:null,town:'',hs:'',v:[90,90],
+  p:[['FB','Deadzone',14,16],['SL','Gyro',-3,-4],['CH','',9,16],['2S','Running sinker',13,20]], s:{sp:63,fps:62,k:17,bb:4,csw:34,baa:.088,ep:57}},
  {id:'test',       n:'Test Pitcher',      g:2028,h:'R',ht:74,wt:195,town:'Howell, MI',hs:'Howell',prev:'Kellogg Community College',v:[84.2,86.1],test:true,
   p:[['FB','',16,10],['SL','',-2,-7],['CB','',-12,-8],['CH','',10,14]], s:{sp:61,fps:58,k:9,bb:4,csw:30,baa:.231,ep:55}},
+ {id:'zaborny',    n:'Connor Zaborny',    g:2029,h:'R',ht:73,wt:157,town:'',hs:'',v:[80.6,80.6],
+  p:[['FB','',15,11],['SL','Slurve',-6,-11],['CH','Firm copy-cat',13,11],['CB','Downer',-16,-5]], s:{sp:50,fps:52,k:8,bb:8,csw:29,baa:.19,ep:42}},
 ];
 const TEAM_FALL={sp:59,fps:58,k:210,bb:120,csw:29};
 const ROSTER_BY_ID=Object.fromEntries(CLEARY_ROSTER.map(r=>[r.id,r]));
@@ -1904,7 +2154,7 @@ function rosterSettings(r){
 
 // Rapsodo arsenal, snapshot Oct 26, 2026, from the "Cleary Pitching Staff — Fall 2026" dashboard (each Individual Log's Game and Bullpen Rapsodo Numbers).
 // [type, variation, game avg, game max, game pitches, pen avg, pen max, pen pitches, spin, IVB, HB, spin eff %]
-const RAPSODO={};   // player Rapsodo data removed
+const RAPSODO={"retchko":[["FB","Standard 4 Seam",79.6,84.5,8,79.8,84.1,6,2016,17.1,7.6,91],["SL","Gyro Slider",74.9,76.7,7,73.9,77.2,6,2019,0.9,1.7,25],["CH","Firm Change Up",76.2,79.3,4,76.1,79.5,6,1771,11.6,7.0,70]],"tobias":[["FB","Deadzone FB",88.3,90.2,10,84.9,88.2,5,2141,14.0,17.1,99],["2S","Running SNK",null,null,0,82.1,82.7,1,2128,12.7,20.2,100],["SL","Gyro/Standard SL",75.5,77.7,10,74.0,76.9,5,2033,-2.4,-1.3,25],["CH","Standard CH",81.4,83.1,10,78.5,81.8,4,1783,9.0,15.7,98],["SP","",null,null,0,77.3,77.9,1,1502,8.4,20.2,99]],"roberts":[["FB","Standard 4 Seam",78.4,81.5,2,77.4,80.7,1,1974,16.1,-9.6,88],["SL","Slurve",71.5,75.6,2,67.4,74.6,3,2078,-2.0,10.1,23],["CB","Gyro Curveball",68.4,69.8,2,null,null,0,2004,-5.4,1.8,35],["CH","Standard/Firm Change Up",73.8,73.9,1,71.7,76.4,3,1386,10.9,-7.6,90]],"sindlinger":[["FB","Gyro Fastball",83.2,85.9,10,82.3,84.1,4,2378,7.0,5.5,50],["CT","",81.6,84.0,3,null,null,0,2288,8.3,3.9,48],["SL","Slutter",76.5,79.6,10,75.3,77.6,4,2345,-4.1,-5.0,27],["CH","Firm Change-Up",77.6,80.6,4,78.5,81.3,4,1662,6.1,10.3,83]],"zaborny":[["FB","Standard 4 Seam",80.3,84.0,4,77.9,81.3,5,1775,15.7,12.0,95],["SL","Slurve",69.5,71.0,2,67.8,69.3,3,1813,-6.3,-11.1,55],["CB","Downer",68.0,69.5,3,65.3,68.8,5,1759,-14.3,-7.7,79],["CH","Firm Copy-Cat",75.1,75.8,2,72.2,74.8,5,1270,12.3,8.9,91]],"amico":[["FB","Standard 4 Seam",86.2,89.4,8,84.2,87.8,7,2013,16.4,7.4,91],["SL","Standard Slider",75.1,79.4,7,74.5,78.0,7,2051,-2.4,-8.4,40],["CB","",null,null,0,72.7,72.7,1,2004,-6.1,-10.5,56],["CH","Standard/Firm Copy-Cat",79.9,82.2,5,79.5,82.1,6,1504,11.9,13.1,94]],"bloink":[["FB","Sinker",79.7,82.6,6,78.5,81.3,6,1951,10.1,19.5,97],["SL","Standard Slider",71.9,73.1,5,70.7,72.5,4,2204,-11.0,-7.2,51],["CB","",71.3,72.4,3,70.3,72.9,3,2262,-12.4,-9.8,57],["CH","Kick Change",71.5,73.7,4,71.2,72.7,5,1382,-3.1,14.5,94]],"stanaway":[["FB","Deadzone/Running FB",82.6,85.4,8,82.4,84.6,6,2070,16.5,13.2,99],["SL","Standard Slider",73.3,77.3,8,73.6,76.7,6,2079,2.8,-7.7,28],["CB","Standard Curveball",72.4,73.0,7,72.0,73.1,2,1949,-11.6,-7.3,60],["CH","Firm Change Up",77.9,79.2,4,77.2,78.3,6,1714,8.2,18.0,99]],"langdon":[["FB","Standard 4 Seam",75.2,81.5,8,74.5,80.0,6,1746,16.4,6.4,85],["CT","",80.9,80.9,1,75.2,76.5,2,1261,12.7,4.5,82],["SL","",64.0,69.0,3,65.7,68.1,5,2017,-8.2,-4.3,38],["CB","Inefficient Downer",64.3,67.9,5,66.4,76.5,2,2038,-10.2,-5.2,49],["CH","Firm/Standard CH",68.5,73.3,4,68.8,72.0,4,1514,14.5,10.4,94]],"montilla":[["FB","Inefficient FB/Standard 4 Seam",87.6,89.5,10,84.5,88.0,7,2220,15.4,6.3,83],["SL","Slurve/Standard Slider",76.7,78.5,4,72.8,78.0,6,2289,-2.8,-10.4,44],["CB","Standard Curveball",72.6,74.6,9,69.4,72.6,5,2239,-12.2,-13.5,72],["CH","Firm Copycat",79.8,82.8,4,79.3,81.7,7,1774,12.7,15.4,86]],"siik":[["FB","Running Fastball",83.5,86.7,5,79.9,83.8,6,2014,13.9,13.9,95],["2S","Running Sinker",null,null,0,80.4,81.3,3,1826,10.0,20.2,99],["SL","Gyro Slider",74.8,80.5,5,72.2,76.9,6,1767,-1.0,-1.6,17],["CH","Firm Change-Up",null,null,0,76.3,79.3,5,1807,8.5,17.9,92]],"noseworthy":[["FB","Running FB/Deadzone FB",82.7,83.7,3,81.7,84.0,4,2046,12.2,-13.8,91],["SL","Slurve",72.7,73.8,3,72.4,74.1,4,1780,-6.0,12.2,44],["CH","Firm Change Up",null,null,0,77.6,80.0,3,1681,3.2,-9.4,93]],"mcnicol":[["FB","Running/Deadzone FB",82.8,85.0,3,82.3,85.3,3,2064,15.4,11.9,91],["SL","Standard/Gyro SL",74.3,76.9,3,75.2,76.6,3,2170,-0.4,-5.9,30],["CB","",70.1,70.4,1,72.1,73.8,3,2379,-10.4,-11.1,57],["CH","Firm Copy Cat",76.4,77.0,2,78.6,81.8,3,1240,11.4,12.2,89]],"schertzer":[["FB","",82.8,84.7,1,81.9,82.5,1,2002,16.5,3.4,84],["SL","",72.4,75.0,1,null,null,0,1946,-3.8,-3.8,30],["CB","",null,null,0,72.2,73.5,1,1662,12.3,-2.1,64],["CH","",71.3,71.3,1,null,null,0,1153,12.9,7.2,95]],"hurliman":[["FB","Standard 4 Seam",77.5,81.6,9,75.9,79.2,5,1746,13.9,7.1,89],["2S","Deadzone",74.5,74.5,1,73.3,73.3,1,1670,14.7,11.4,86],["SL","Standard Slider",69.1,72.8,8,65.8,69.5,5,1976,1.4,-8.3,40],["CB","",64.7,64.7,1,63.2,63.2,1,2094,-10.8,-14.7,71],["CH","Firm Copy Cat",72.6,74.1,4,71.1,73.6,5,1517,11.2,10.5,93],["SP","",null,null,0,66.8,66.8,1,501,1.0,-13.8,18]],"nicholson":[["FB","Deadzone FB/Standard FB",80.3,82.6,7,79.4,81.4,6,1998,15.8,8.5,85],["CT","",75.1,75.6,1,78.2,79.2,1,2111,9.9,3.2,46],["SL","Standard Slider",74.3,76.9,7,71.5,75.3,6,2092,2.1,-6.9,30],["CH","",null,null,0,72.2,73.2,2,526,3.3,2.5,79],["SP","Standard/Tumble Splitter",74.0,75.4,6,72.0,74.9,4,512,2.2,1.8,63]],"chimeri":[["FB","Deadzone FB/Standard 4 Seam",80.2,82.7,4,79.8,81.8,2,1729,13.8,10.9,91],["CB","Downer",69.6,72.1,4,68.2,70.9,2,1897,-14.5,-8.1,80],["CH","Firm Change Up",76.2,76.5,2,75.4,78.7,2,1393,9.5,7.7,97]],"arbogast":[["FB","",74.6,77.0,9,71.1,72.2,2,1730,13.1,1.3,73],["CT","Standard Cutter",75.9,77.9,2,70.3,71.1,2,1750,13.1,2.0,64],["SL","Slurve/Standard SL",68.3,73.2,8,65.6,69.5,3,1686,-1.9,-5.5,37],["CH","Firm Change Up",null,null,0,70.2,71.7,3,1652,15.4,9.9,91]],"harmsworth":[["FB","Standard/Deadzone FB",86.8,89.9,9,84.1,87.3,6,2191,16.0,13.0,93],["2S","Running FB",83.6,84.5,3,83.3,85.0,3,1973,12.6,15.9,89],["CT","",81.5,81.5,1,82.1,83.1,2,2134,10.5,6.9,68],["SL","",82.5,82.8,1,null,null,0,2072,10.7,-8.4,82],["CB","Downer/Efficient CB",72.8,74.8,9,71.1,73.4,6,1841,-16.3,-11.5,85],["CH","Firm/Standard CH",78.2,80.2,4,77.7,80.2,6,1663,7.4,17.0,95]],"murray":[["FB","Sinker",75.8,78.9,5,72.4,76.0,3,1646,9.7,-14.3,84],["SL","Slurve",67.3,78.7,5,63.5,65.6,3,2043,-5.4,11.3,46],["CB","",70.4,77.1,1,null,null,0,1631,-10.1,-0.6,73],["CH","Firm Change Up",null,null,0,68.2,70.7,3,1244,4.0,-6.7,62],["SP","Tumbling/Traditional SPL",null,null,0,66.8,69.0,2,548,-0.8,1.5,77]],"miano":[["FB","Deadzone FB",82.0,85.4,10,80.3,83.3,5,1867,12.5,12.5,94],["CT","",78.6,78.6,1,null,null,0,2741,14.9,15.7,73],["SL","Gyro Slider",74.2,78.0,10,71.1,76.2,5,1826,1.5,-1.8,17],["SP","Standard/Tumble SPL",73.7,83.6,4,70.2,72.9,5,532,-3.3,3.4,95]],"jelleyreid":[["FB","",75.5,77.0,1,76.0,78.3,1,1848,12.8,3.2,71],["SL","",null,null,0,67.5,67.7,1,2383,-9.6,-16.9,47]]};
 // Made-up numbers for the test profile (not a real pitcher)
 RAPSODO.test=[['FB','',85.4,88.0,6,84.1,86.1,5,2105,16.2,9.8,92],['SL','',76.3,78.4,6,75.0,77.2,5,2240,-1.8,-7.4,34],['CB','',71.2,73.0,4,70.1,72.5,4,2310,-12.4,-8.1,71],['CH','',78.0,80.1,5,77.2,79.6,5,1640,10.3,14.2,93]];
 
@@ -5910,6 +6160,9 @@ function renderPenBanner(){
 window.renderPenBanner=renderPenBanner;
 renderPenBanner();
 const CLUB_SCENE="<picture><source media=\"(max-aspect-ratio: 1/1)\" srcset=\"clubhouse-phone.jpg\"><img class=\"club-scene\" src=\"clubhouse.jpg\" alt=\"\" decoding=\"async\"></picture><div class=\"club-shade\"></div>";
+// Fall 2026 live outings, one row per outing in order, from "Coaches View Cleary Pitchers Stats" (each pitcher's Live Games + LHH/RHH table, read Nov 24, 2026)
+// [opponent, pitches, strikes, first-pitch strikes, batters (first pitches), 1-1 wins, 1-1 counts, K, BB, called+swinging strikes, pitches charted for CSW, hits, at-bats]
+const OUTINGS={"arbogast":[["Hartland",34,21,null,null,null,null,2,1,null,null,0,0],["Mott CC",16,12,7,8,1,1,0,0,4,16,3,5],["Schoolcraft",12,9,4,5,1,1,0,0,5,12,1,7],["Howell",30,19,4,7,1,2,2,0,6,30,2,9],["Baby Blue Team",20,12,4,10,2,3,0,1,3,20,1,3],["Baby Blue Team",16,7,3,5,1,1,0,2,4,16,0,0]],"knott":[],"retchko":[["Intersquad",16,11,3,4,0,0,3,1,10,16,0,3],["Ancilla",27,20,7,9,4,5,2,1,11,27,3,8],["GLC",17,10,2,4,1,2,2,0,7,17,0,4],["Ontario Nats",30,16,1,7,2,4,1,2,9,30,2,8],["Howell",11,8,1,3,1,1,2,0,3,11,0,3],["Blue Team",48,29,10,13,2,3,1,2,10,48,5,11],["Windsor Select",23,16,5,6,4,4,4,0,12,23,0,6]],"langdon":[["Intersquad",10,7,2,3,0,0,2,0,4,10,0,3],["Hartland",24,13,null,null,null,null,1,0,null,null,1,6],["GLC",22,11,4,5,1,3,2,1,8,22,0,3],["Ontario Nats",22,15,5,6,1,2,1,0,8,22,0,6],["Howell",33,21,5,8,2,3,3,1,6,33,2,7],["Jackson",9,6,1,3,1,2,0,0,null,null,0,0],["Windsor Select",18,10,2,4,1,3,1,1,6,18,0,3],["Baby Blue",6,4,2,3,1,1,0,0,null,6,0,0]],"zaborny":[["Intersquad",18,10,2,3,1,2,2,1,7,18,0,2],["Intersquad",18,8,1,4,0,1,0,1,4,18,1,3],["Intersquad",25,17,7,8,2,5,2,0,8,25,1,8],["Intersquad",22,12,2,5,2,2,2,1,9,22,1,4],["Baby Blue Team",25,9,2,5,0,2,1,3,4,25,1,2],["Baby Blue Team",21,8,1,4,1,3,1,2,5,21,0,2]],"chimeri":[["Intersquad",13,4,1,4,1,2,0,3,4,13,0,0],["Intersquad",26,12,2,5,1,3,2,2,6,26,0,3],["Intersquad",24,12,4,4,1,3,3,0,7,24,1,4],["Intersquad",16,8,1,4,2,3,2,1,5,16,0,3],["Baby Blue",24,14,4,7,2,3,0,1,5,24,1,5]],"mcnicol":[["Intersquad",15,9,3,3,1,2,1,0,4,15,0,3],["Intersquad",17,9,2,3,1,1,1,0,5,17,0,3],["Intersquad",24,16,5,7,2,4,2,1,7,24,0,6],["Intersquad",29,20,3,7,2,2,4,0,14,29,2,7],["Blue",36,20,4,8,3,4,3,3,12,36,2,5]],"jelleyreid":[["Intersquad",19,9,2,5,0,3,0,1,3,19,1,3],["Blue",17,10,4,6,1,3,0,2,5,17,1,4]],"tobias":[["Intersquad",16,11,3,3,0,2,2,0,5,16,0,3],["Ancilla CC",29,18,4,7,2,3,4,0,11,29,1,7],["Mott CC",31,16,1,6,3,4,1,1,8,31,0,5],["Schoolcraft",28,19,5,7,1,2,3,0,9,28,1,7],["Henry Ford",27,20,6,7,1,2,3,1,12,27,0,5],["Jackson",45,26,5,9,5,7,4,2,null,null,1,7]],"amico":[["Intersquad",19,14,4,6,2,2,2,0,8,19,3,6],["Ancilla",24,19,4,7,1,3,2,0,12,24,1,7],["Mott CC",34,18,2,7,4,4,2,1,11,34,2,6],["Schoolcraft",15,11,3,4,1,2,3,0,6,15,0,4],["Henry Ford",48,30,6,9,7,9,2,0,18,48,3,10],["Jackson",24,15,4,6,1,2,2,0,null,null,1,6]],"noseworthy":[["Intersquad",29,15,5,7,2,4,1,1,5,29,2,5],["Intersquad",15,11,2,4,1,2,1,0,5,15,1,4],["Schoolcraft",13,11,2,3,0,1,2,0,7,13,1,3],["Henry Ford",20,15,7,11,1,2,0,2,4,20,3,9],["Baby Blue Team",16,10,2,4,2,2,2,1,7,16,0,3],["Baby Blue Team",41,24,7,11,3,6,4,1,13,41,2,9]],"bloink":[["Intersquad",14,9,2,3,0,1,1,0,4,14,0,3],["Mott CC",40,25,6,10,2,5,2,2,16,40,4,7],["Schoolcraft",25,13,0,5,1,2,1,1,7,25,1,4],["Henry Ford",31,20,7,7,2,3,2,1,13,31,3,6],["Blue Team",34,18,3,9,2,5,0,2,6,34,0,7]],"nicholson":[["Intersquad",18,11,2,4,2,2,2,0,7,18,1,4],["Mott CC",19,7,0,5,1,1,1,2,4,19,0,3],["Schoolscraft",38,22,4,10,2,2,3,2,16,38,2,8],["Howell",33,20,4,6,3,5,3,2,6,33,1,4],["Baby Blue Team",48,27,6,12,4,6,2,3,13,48,3,8]],"roberts":[["Intersquad",21,10,3,5,1,2,0,1,0,21,1,4],["Intersquad",18,9,1,4,2,4,0,1,1,18,2,3]],"hurliman":[["Intersquad",14,8,4,5,1,2,1,2,3,14,0,3],["Hartland",26,15,null,null,null,null,3,1,null,null,1,7],["GLC",27,17,4,7,2,3,1,2,10,27,1,5],["Ontario Nats",33,21,4,9,2,3,2,1,11,33,2,8],["Howell",11,6,2,3,0,1,0,0,3,11,0,3],["Baby Blue Team",29,15,5,7,0,2,1,3,6,29,1,4],["Windsor Select",20,11,2,4,1,2,2,1,7,20,0,3],["Baby Blue Team",20,9,3,5,1,1,0,2,6,20,2,3]],"siik":[["Intersquad",24,14,1,5,1,4,3,1,8,24,1,4],["Hartland",56,31,null,null,null,null,3,3,null,null,4,9],["Windsor Select",17,10,4,5,1,2,2,1,8,17,0,3],["Henry Ford",14,4,0,4,2,2,0,2,2,14,0,2],["Baby Blue Team",24,16,5,7,0,1,1,1,7,24,1,6],["Baby Blue Team",41,16,3,10,1,4,1,6,10,41,1,4]],"stanaway":[["Intersquad",25,13,1,5,3,4,3,1,8,25,1,4],["Ancilla",27,19,4,6,2,3,2,0,11,27,0,6],["Mott CC",28,16,4,7,1,3,1,2,11,28,1,5],["Schoolcraft",29,17,4,7,3,3,2,1,10,29,0,6],["Henry Ford",41,24,6,11,2,3,3,1,13,41,4,10],["Jackson",38,25,6,8,2,2,3,0,null,null,0,8]],"murray":[["Hartland",9,6,null,null,null,null,0,0,null,null,0,3],["GLC",33,20,4,8,3,4,5,1,15,33,1,7],["Ontario Nats",25,11,5,8,1,1,0,2,4,25,2,5],["Howell",17,12,3,4,1,2,3,1,8,17,1,7],["Blue Team",19,10,3,6,1,3,1,1,4,19,2,5],["Windsor Select",18,9,2,4,0,1,1,1,4,18,0,3],["Blue Team",37,20,1,7,0,3,2,1,12,37,0,6]],"montilla":[["Intersquad",21,11,2,5,1,2,2,2,9,21,0,3],["Ancilla",25,13,4,6,3,3,2,1,8,25,0,4],["Mott CC",42,27,8,10,5,6,2,2,12,42,2,8],["Schoolcraft",26,15,4,7,1,3,3,1,7,26,1,6],["Henry Ford",30,15,3,7,2,3,1,1,6,30,1,6],["Jackson",45,28,9,11,3,6,4,2,null,null,2,9]],"sindlinger":[["Intersquad",27,14,4,6,2,2,1,2,8,27,0,2],["Ancilla",41,23,3,10,2,6,4,2,17,41,2,8],["GLC",19,13,5,7,0,0,1,1,6,19,2,6],["Ontario Nats",33,18,5,8,4,4,3,3,13,33,2,5],["Henry Ford",15,10,2,4,1,1,3,0,8,15,0,4],["Blue Team",30,22,6,8,0,1,1,1,12,30,2,6],["Windsor Select",20,14,4,5,2,2,2,0,5,20,2,5],["Blue Team",29,16,5,8,2,5,1,0,7,29,3,8]],"schertzer":[["Intersquad",19,13,0,4,3,4,2,0,7,19,1,4],["Hartland",34,21,null,null,null,null,1,0,null,null,2,8]],"miano":[["Intersquad",17,9,0,3,0,1,2,0,4,17,0,3],["Ancilla",26,15,6,7,1,2,1,2,7,26,0,5],["GLC",49,28,6,12,2,4,2,2,9,49,3,9],["Ontario Nats",25,15,5,6,2,4,2,1,9,25,2,5],["Howell",28,19,4,6,4,4,5,0,12,28,0,6],["Blue Team",27,16,4,8,3,3,1,1,5,27,1,7],["Windsor Select",33,20,5,8,1,2,2,0,8,33,3,9],["Blue Team",20,11,2,5,0,0,1,1,3,20,2,5]],"harmsworth":[["Intersquad",21,13,3,4,3,3,3,0,9,21,1,4],["Intersquad",21,16,5,6,1,1,1,0,7,21,1,6],["Mott CC",19,10,3,6,0,1,2,0,6,19,1,6],["Schoolcraft",20,16,7,8,2,3,1,0,5,20,2,8],["Henry Ford",12,8,3,5,1,2,0,0,1,12,2,5],["Jackson",32,18,5,8,2,4,3,2,null,null,0,0]]};
 
 // ===== Clubhouse: the main navigation screen when the app opens =====
 // Each stop in the room is a button. x/y are % of the 1600x900 room picture.
@@ -5921,8 +6174,9 @@ const CLUB_STOPS=[
   {k:'locker',x:88.5, y:50, px:52,  py:87, flip:true, p:['My Locker','profile'], c:['Clubhouse Home','home']},
   {k:'phone', x:30.4, y:82, px:16,  py:75, p:['Chat','chat'], c:['Chat','chat']},
   {k:'laptop',x:72.5, y:73, px:84,  py:69, pflip:true, p:['Log','personal-plan'], c:null},
-  {k:'door',  x:9.8,  y:48, px:83,  py:21, pflip:true, p:['Settings','@account'], c:['Settings','@account']},
+  {k:'door',  x:11.5, y:48, px:83,  py:21, pflip:true, p:['Settings','@account'], c:['Settings','@account']},
   {k:'cork',  x:25,   y:39, px:17,  py:21, p:['Help','@help'], c:['Help','@help']},
+  {k:'lead',  x:22.5, y:20, px:44,  py:31, p:['Leaderboards','leaders'], c:['Leaderboards','leaders']},
 ];
 function clubGo(dest){
   if(dest==='@account'){ const b=document.getElementById('acctOpenL')||document.getElementById('acctOpen'); if(b) b.click(); return; }
@@ -5998,10 +6252,21 @@ function wbTitle(){
   const coach=isCoachUser()&&!VIEWING();
   el.insertAdjacentHTML('afterbegin',`<div class="wb-title"><img src="${CU_LOGO}" alt=""><span>${coach?'Staff Board':(VIEWING()?esc(firstName(S.name)||'His')+"'s Week":'My Week')}</span></div>`);
 }
-// Log: the clip and pencil on the legal pad
+// Log: the clip and a real No. 2 pencil on the legal pad
+const PENCIL_SVG=`<svg viewBox="0 0 46 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><defs>
+<linearGradient id="pcB" x1="0" x2="1"><stop offset="0" stop-color="#C98A06"/><stop offset=".18" stop-color="#F7C531"/><stop offset=".36" stop-color="#FFE27A"/><stop offset=".37" stop-color="#E9AE16"/><stop offset=".63" stop-color="#F4BE2A"/><stop offset=".64" stop-color="#D99A0B"/><stop offset="1" stop-color="#A86F04"/></linearGradient>
+<linearGradient id="pcF" x1="0" x2="1"><stop offset="0" stop-color="#8E949C"/><stop offset=".35" stop-color="#F1F3F5"/><stop offset=".55" stop-color="#BFC4CA"/><stop offset="1" stop-color="#6E747C"/></linearGradient>
+<linearGradient id="pcE" x1="0" x2="1"><stop offset="0" stop-color="#C9707E"/><stop offset=".4" stop-color="#F4A9B5"/><stop offset="1" stop-color="#B25D6B"/></linearGradient>
+<linearGradient id="pcW" x1="0" x2="1"><stop offset="0" stop-color="#C89A63"/><stop offset=".45" stop-color="#F0D3A8"/><stop offset="1" stop-color="#B9864D"/></linearGradient></defs>
+<rect x="4" y="2" width="38" height="40" rx="9" fill="url(#pcE)"/>
+<rect x="3" y="36" width="40" height="40" fill="url(#pcF)"/><g stroke="#7C828A" stroke-width="1.4" opacity=".8"><line x1="3" y1="44" x2="43" y2="44"/><line x1="3" y1="50" x2="43" y2="50"/><line x1="3" y1="62" x2="43" y2="62"/><line x1="3" y1="68" x2="43" y2="68"/></g>
+<rect x="3" y="76" width="40" height="262" fill="url(#pcB)"/>
+<text x="25" y="210" transform="rotate(90 25 210)" text-anchor="middle" font-family="Barlow Condensed,Arial Narrow,sans-serif" font-weight="700" font-size="13" letter-spacing="2" fill="#2B2000" opacity=".8">CLEARY · No. 2</text>
+<path d="M3 338 L43 338 L28 400 L18 400 Z" fill="url(#pcW)"/><path d="M3 338 q5 6 10 0 q5 6 10 0 q5 6 10 0 q5 6 10 0" fill="#E7B62C"/>
+<path d="M18 398 L28 398 L23 418 Z" fill="#2E2E31"/><path d="M21 400 L23 416 L22.2 400 Z" fill="#6A6A70"/></svg>`;
 function padBits(){
   const c=document.querySelector('#tab-personal-plan .content'); if(!c||c.querySelector('.pad-clip')) return;
-  c.insertAdjacentHTML('afterbegin','<span class="pad-clip" aria-hidden="true"></span><span class="pad-pencil" aria-hidden="true"></span>');
+  c.insertAdjacentHTML('afterbegin','<span class="pad-clip" aria-hidden="true"></span><span class="pad-pencil" aria-hidden="true">'+PENCIL_SVG+'</span>');
 }
 (function(){
   const rc=renderChat; renderChat=function(){ rc.apply(this,arguments); phoneWrap(); };
@@ -6018,22 +6283,254 @@ document.addEventListener('click',e=>{
   st.classList.add('zoom'); setTimeout(()=>clubGo(b.dataset.clubgo),360);
 },true);
 
+// Back to the clubhouse from any screen
+(function(){ const b=document.createElement('button'); b.type='button'; b.className='to-club'; b.innerHTML='<img src="cu-logo.png" alt=""><span>Clubhouse</span>';
+  b.onclick=()=>{ location.hash='clubhouse'; }; document.body.appendChild(b); })();
+
+// =====================================================================
+// MLB THE SHOW-STYLE PLAYER CARDS, LEADERBOARDS AND THE CLEARY TV SCHEDULE
+// =====================================================================
+
+// ---------- seasons: each pitcher's lines by season ('26 Fall is the only one so far) ----------
+const SEASONS=[{k:'f26',n:"'26 Fall",short:"FALL '26"}];   // add {k:'s27',n:"'27 Season"} etc. when they exist
+const statsFor=(r,season)=>season==='f26'&&r?r.s:null;
+const pidOf=st=>st&&(st.pid||(String(st.id||'').startsWith('pre-')?String(st.id).slice(4):null));
+
+// ---------- the stats every leaderboard ranks (from the fall '26 sheet) ----------
+const LB_STATS=[
+  {k:'sp', n:'Strike %',      short:'STRIKE %', fmt:v=>v+'%', hi:true},
+  {k:'fps',n:'First-pitch strike %',short:'FPS %', fmt:v=>v+'%', hi:true},
+  {k:'csw',n:'CSW %',         short:'CSW %',    fmt:v=>v+'%', hi:true},
+  {k:'k',  n:'Strikeouts',    short:'K',        fmt:v=>v,     hi:true},
+  {k:'bb', n:'Walks',         short:'BB',       fmt:v=>v,     hi:false},
+  {k:'baa',n:'Batting avg against',short:'BAA', fmt:v=>baa(v),hi:false},
+  {k:'ep', n:'Pen execution %',short:'PEN EXEC %',fmt:v=>v+'%',hi:true},
+  {k:'velo',n:'Mound velo',   short:'VELO',     fmt:v=>(+v).toFixed(1), hi:true, get:r=>r.v[1]||r.v[0]}
+];
+const lbVal=(st,r)=>st.get?st.get(r):(r.s?r.s[st.k]:null);
+
+// ---------- awards, read from the CU Lifting app (same Cleary accounts, lift_docs "summary") ----------
+const LIFT_AWARDS={};   // account id -> list of awards, once loaded
+function liftAwardsFrom(s){
+  if(!s) return [];
+  const a=[], prs=+s.prs||0, ses=+s.sessions||0;
+  let top=0, topN=''; (s.lifts||[]).filter(L=>L.m).forEach(L=>(L.h||[]).forEach(h=>{ if(+h[1]>top){ top=+h[1]; topN=L.n; } }));
+  if(ses>=1) a.push(['🏋️','First Lift','Logged his first workout']);
+  if(ses>=25) a.push(['🔩','Iron 25',ses+' workouts logged']);
+  if(ses>=50) a.push(['⚙️','Iron 50',ses+' workouts logged']);
+  if(prs>=1) a.push(['📈','First PR','Set a personal record']);
+  if(prs>=10) a.push(['🔥','10 PRs',prs+' personal records']);
+  if(top) a.push(['🏆','Top lift',`${topN}: ${top} lb`]);
+  if(+s.streak>=5||+s.best>=5) a.push(['⚡','5-day streak','Lifted 5 days in a row']);
+  return a;
+}
+async function loadLiftAwards(acct){
+  if(!acct||LIFT_AWARDS[acct]||!window.CLOUD_MODE||typeof sb==='undefined'||!sb) return;
+  LIFT_AWARDS[acct]='loading';
+  try{ const {data}=await sb.from('lift_docs').select('data').eq('coll','summary').eq('id',acct).maybeSingle(); LIFT_AWARDS[acct]=liftAwardsFrom(data&&data.data); }
+  catch(e){ LIFT_AWARDS[acct]=[]; }
+  try{ if(!document.getElementById('tab-profile').hidden) renderProfile(); }catch(e){}
+}
+const SAMPLE_AWARDS=[['🏋️','First Lift','Logged his first workout'],['📈','First PR','Set a personal record'],['🏆','Top lift','Trap bar deadlift: 405 lb']];
+
+// ---------- photo for the card ----------
+function cardPhotoPick(){
+  const inp=document.createElement('input'); inp.type='file'; inp.accept='image/*';
+  inp.onchange=()=>{ const f=inp.files&&inp.files[0]; if(!f) return; const rd=new FileReader();
+    rd.onload=()=>{ const im=new Image(); im.onload=()=>{ const W=420,H=560, c=document.createElement('canvas'); c.width=W; c.height=H; const x=c.getContext('2d');
+        const s=Math.max(W/im.width,H/im.height); x.drawImage(im,(W-im.width*s)/2,(H-im.height*s)/2.6,im.width*s,im.height*s);
+        S.photo=c.toDataURL('image/jpeg',.82); save(); if(VIEWING()&&typeof coachChanged==='function') coachChanged(window.VIEW_AS); renderProfile(); toast('Card photo saved'); };
+      im.src=rd.result; }; rd.readAsDataURL(f); };
+  inp.click();
+}
+
+// ---------- the card ----------
+let cardTab='stats', cardSeason='f26';
+function showCard(st,opt){
+  opt=opt||{};
+  const pid=pidOf(st), r=pid?ROSTER_BY_ID[pid]:null, tv=typeof topVelo==='function'?topVelo(st):(st.velo||'');
+  const nm=String(st.name||(r&&r.n)||'Pitcher'), parts=nm.trim().split(/\s+/), first=parts.slice(0,-1).join(' ')||'', last=parts.slice(-1)[0]||nm;
+  const hand=st.throws||(r&&r.h)||'', pos=hand==='L'?'LHP':hand==='R'?'RHP':'P';
+  const cls=st.grade||(r&&CLASS_BY_GRAD[r.g])||'', grad=st.grad||(r&&r.g)||'';
+  const ht=st.ht||(r&&r.ht), wt=st.wt||(r&&r.wt), town=st.town||(r&&r.town)||'', hs=st.hs||(r&&r.hs)||'', prev=st.prev||(r&&r.prev)||'';
+  const ars=(st.arsenal&&st.arsenal.length?st.arsenal:(r?rosterArsenal(r):[]));
+  const cell=(big,lbl)=>`<div class="sc-i"><b>${big||'—'}</b><span>${lbl}</span></div>`;
+  const edit=opt.editable;
+  const photo=st.photo?`<img src="${esc(st.photo)}" alt="">`:`<div class="sc-ph-none"><span>${esc(initials(nm))}</span></div>`;
+  const tabs=[['stats','Season Stats'],['outings','Recent Outings'],['quirks','Quirks'],['awards','Awards'],['shapes','Pitch Shapes']];
+  const body=cardTab==='stats'?cardStats(r):cardTab==='outings'?cardOutings(pid):cardTab==='quirks'?cardQuirks(st,edit):cardTab==='awards'?cardAwards(st,pid):`<div class="sc-shapes">${typeof shapesBlock==='function'?shapesBlock(st)||'<p class="sc-empty">No Rapsodo shapes yet.</p>':''}</div>`;
+  return `<section class="showcard" data-pid="${esc(pid||'')}">
+    <div class="sc-top">
+      <div class="sc-cardwrap"><div class="sc-card">
+        <div class="sc-ph">${photo}</div>
+        <img class="sc-cu" src="cu-logo.png" alt="">
+        <div class="sc-name"><small>${esc(first.toUpperCase())}</small><b>${esc(last.toUpperCase())}</b></div>
+        <span class="sc-pos">${pos}</span>
+      </div>${edit?`<button type="button" class="sc-up" data-cardphoto>📷 ${st.photo?'Change photo':'Add your photo'}</button>`:''}</div>
+      <div class="sc-info">
+        <p class="sc-first">${esc(first.toUpperCase())}</p><h2 class="sc-last">${esc(last.toUpperCase())}</h2>
+        <p class="sc-team"><span class="sc-dia">${pos}</span> Cleary University Cougars</p>
+        <div class="sc-grid">
+          ${cell(tv?tv+'<small> mph</small>':'','Mound velo')}${cell(cls?(typeof GRADE_LONG!=='undefined'&&GRADE_LONG[cls]?GRADE_LONG[cls]:cls):'','Class')}${cell(grad,'Grad year')}
+          ${cell(hand==='L'?'L':hand==='R'?'R':'','Throws')}${cell(ht?fmtHt(ht):'','Height')}${cell(wt?wt+' LBS':'','Weight')}
+          ${cell(esc(town.split(',')[0]||''),'Hometown')}${cell(esc(hs),'High school')}${cell(esc(prev),'Previous school')}
+        </div>
+        ${edit?'<button type="button" class="sc-edit" data-editprof>Edit profile</button>':''}
+      </div>
+      <div class="sc-rep"><h3>Pitch Repertoire</h3>${ars.length?ars.map(a=>{ const v=+(a.v||a.mx||0), w=v?Math.max(8,Math.min(100,(v-60)/35*100)):0; return `<div class="sc-p"><span>${esc(PITCH_NAME[a.t]||a.t)}</span><i style="--w:${w}%;--c:${P_COLOR[a.t]||'#888'}"></i><b>${v?v.toFixed(0)+'mph':'—'}</b></div>`; }).join(''):'<p class="sc-empty">No pitches on file yet.</p>'}</div>
+    </div>
+    <div class="sc-tabs" role="tablist">${tabs.map(([k,n])=>`<button type="button" role="tab" aria-selected="${cardTab===k}" data-cardtab="${k}">${n}</button>`).join('')}</div>
+    ${cardTab==='stats'||cardTab==='outings'?`<div class="sc-seasons">${SEASONS.map(x=>`<button type="button" aria-pressed="${cardSeason===x.k}" data-season="${x.k}">${x.n}</button>`).join('')}<span>More seasons fill in as they're played: '27 Season, '27 Fall…</span></div>`:''}
+    <div class="sc-body">${body}</div>
+  </section>`;
+}
+function cardStats(r){
+  const s=statsFor(r,cardSeason);
+  if(!s) return '<p class="sc-empty">No stats for this season yet.</p>';
+  const tm=TEAM_FALL, cols=[['STRIKE %','sp','%'],['FPS %','fps','%'],['CSW %','csw','%'],['K','k',''],['BB','bb',''],['K:BB',null,''],['BAA','baa',''],['PEN EXEC %','ep','%']];
+  const v=(o,c)=>c[1]==null?(o.k!=null&&o.bb?(o.k/o.bb).toFixed(2):o.k!=null?'—':'—'):c[1]==='baa'?(o.baa==null?'—':baa(o.baa)):(o[c[1]]==null?'—':o[c[1]]+c[2]);
+  const rank=c=>{ const st=LB_STATS.find(x=>x.k===c[1]); if(!st||s[c[1]]==null) return ''; const list=CLEARY_ROSTER.filter(x=>!x.test&&x.s&&x.s[c[1]]!=null).map(x=>x.s[c[1]]).sort((a,b)=>st.hi?b-a:a-b); const i=list.indexOf(s[c[1]]); return i<0?'':`<em>#${i+1}</em>`; };
+  return `<div class="sc-tbl"><table><thead><tr><th>SEASON</th>${cols.map(c=>`<th>${c[0]}</th>`).join('')}</tr></thead>
+    <tbody><tr class="on"><td>${SEASONS.find(x=>x.k===cardSeason).short}</td>${cols.map(c=>`<td>${v(s,c)}${rank(c)}</td>`).join('')}</tr>
+    <tr class="tm"><td>TEAM</td>${cols.map(c=>`<td>${c[1]&&tm[c[1]]!=null?tm[c[1]]+c[2]:c[1]==null&&tm.k&&tm.bb?(tm.k/tm.bb).toFixed(2):'—'}</td>`).join('')}</tr></tbody></table></div>
+    <p class="sc-note">Live at-bats, fall 2026. <em>#</em> is his rank on the staff. Tap Leaderboards in the clubhouse to see everyone.</p>`;
+}
+function cardOutings(pid){
+  const rows=(typeof OUTINGS!=='undefined'&&OUTINGS[pid])||[];
+  if(!rows.length) return '<p class="sc-empty">No live outings charted yet.</p>';
+  const p=(a,b)=>a!=null&&b?Math.round(a/b*100)+'%':'—';
+  const tot=rows.reduce((t,o)=>o.map((v,i)=>i?(t[i]||0)+(v||0):'Totals'),[]);
+  const line=(o,i,cls)=>`<tr class="${cls||''}"><td>${cls?'':'G'+(i+1)}</td><td class="opp">${esc(o[0])}</td><td>${o[1]??'—'}</td><td>${p(o[2],o[1])}</td><td>${p(o[3],o[4])}</td><td>${p(o[5],o[6])}</td><td>${o[7]??'—'}</td><td>${o[8]??'—'}</td><td>${p(o[9],o[10])}</td><td>${o[12]?o[11]+'-'+o[12]:'—'}</td><td>${o[12]?baa(o[11]/o[12]):'—'}</td></tr>`;
+  const recent=rows.map((o,i)=>[o,i]).reverse();
+  return `<div class="sc-tbl"><table><thead><tr><th>#</th><th>OPP</th><th>PIT</th><th>S%</th><th>FPS%</th><th>1-1%</th><th>K</th><th>BB</th><th>CSW%</th><th>H-AB</th><th>BAA</th></tr></thead>
+    <tbody>${recent.map(([o,i],n)=>line(o,i,n===0?'on1':'')).join('')}${line(tot,0,'totals')}</tbody></table></div>
+    <p class="sc-note">Most recent first. From the coaches' fall chart: every live inning he threw.</p>`;
+}
+function cardQuirks(st,edit){
+  const q=st.quirks||[];
+  return `<div class="sc-quirks">${q.length?q.map((x,i)=>`<div class="sc-q"><b>${esc(x)}</b>${edit?`<button type="button" data-qdel="${i}" aria-label="Remove">×</button>`:''}</div>`).join(''):'<p class="sc-empty">No quirks yet. A pitcher or his coaches can add them: his signature pitch, a routine, a nickname, what he does best.</p>'}
+    ${edit?`<div class="sc-qadd"><input id="qIn" maxlength="60" placeholder="Add a quirk (e.g. Bulldog on the mound, Elite sinker)"><button type="button" class="sc-btn" id="qAdd">Add</button></div>`:''}</div>`;
+}
+function cardAwards(st,pid){
+  const acct=st.uid||st.id||(typeof ME!=='undefined'&&ME&&!VIEWING()?ME.id:'');
+  let list=LIFT_AWARDS[acct];
+  if(window.CLOUD_MODE&&acct&&!list){ loadLiftAwards(acct); return '<p class="sc-empty">Checking the CU Lifting app…</p>'; }
+  let sample=false;
+  if(!window.CLOUD_MODE){ if(pid==='test'){ list=SAMPLE_AWARDS; sample=true; } else list=[]; }
+  if(list==='loading') return '<p class="sc-empty">Checking the CU Lifting app…</p>';
+  return `<div class="sc-awards">${(list||[]).length?list.map(a=>`<div class="sc-aw"><i>${a[0]}</i><b>${esc(a[1])}</b><span>${esc(a[2])}</span></div>`).join(''):'<p class="sc-empty">No lifting awards yet. They come in from the CU Lifting app as he logs workouts and sets PRs.</p>'}</div>
+    <p class="sc-note">${sample?'Sample awards for the test profile. Real awards load from CU Lifting once the app is connected to the Cleary accounts.':'Pulled from the CU Lifting app.'}</p>`;
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-cardtab]'); if(t){ cardTab=t.dataset.cardtab; rerenderCard(t); return; }
+  const s=e.target.closest('[data-season]'); if(s){ cardSeason=s.dataset.season; rerenderCard(s); return; }
+  if(e.target.closest('[data-cardphoto]')){ cardPhotoPick(); return; }
+  const d=e.target.closest('[data-qdel]'); if(d){ S.quirks=(S.quirks||[]).filter((_,i)=>i!==+d.dataset.qdel); save(); if(VIEWING()&&typeof coachChanged==='function') coachChanged(window.VIEW_AS); renderProfile(); return; }
+  if(e.target.closest('#qAdd')){ const v=(document.getElementById('qIn').value||'').trim(); if(!v) return; S.quirks=[...(S.quirks||[]),v].slice(0,8); save(); if(VIEWING()&&typeof coachChanged==='function') coachChanged(window.VIEW_AS); cardTab='quirks'; renderProfile(); toast('Quirk added'); return; }
+});
+document.addEventListener('keydown',e=>{ if(e.key==='Enter'&&e.target.id==='qIn'){ e.preventDefault(); document.getElementById('qAdd').click(); } });
+function rerenderCard(btn){
+  const sheetCard=btn.closest('#sheetBody'); if(sheetCard){ const pid=btn.closest('.showcard').dataset.pid; openPlayerCard(pid,true); return; }
+  renderProfile();
+}
+// the profile tab is the card now (injury, grips and drills stay underneath)
+profileCard=function(){ return showCard(S,{editable:true}); };
+// look at anyone's card from the leaderboard
+function openPlayerCard(pid,keep){
+  const r=ROSTER_BY_ID[pid]; if(!r) return;
+  const a=Object.values((typeof C!=='undefined'&&C.athletes)||{}).find(x=>x&&(x.pid===pid))||{};
+  const st=Object.assign({},rosterSettings(r),a,{pid});
+  if(!keep){ cardTab='stats'; cardSeason='f26'; }
+  showSheet(`<div class="cardsheet">${showCard(st,{editable:false})}</div>`,`${r.n} player card`);
+}
+
+// ---------- leaderboards ----------
+let lbStat='sp';
+function renderLeaders(){
+  const el=document.getElementById('leadBody'); if(!el) return;
+  const st=LB_STATS.find(x=>x.k===lbStat)||LB_STATS[0];
+  const list=CLEARY_ROSTER.filter(r=>!r.test).map(r=>({r,v:lbVal(st,r)})).filter(x=>x.v!=null).sort((a,b)=>st.hi?b.v-a.v:a.v-b.v);
+  let rank=0,prev=null; list.forEach((x,i)=>{ if(x.v!==prev){ rank=i+1; prev=x.v; } x.rank=rank; });
+  const mine=pidOf(S), top=list[0], i0=LB_STATS.indexOf(st);
+  const topR=top&&top.r, ta=topR?Object.values((C&&C.athletes)||{}).find(a=>a&&a.pid===topR.id):null;
+  el.innerHTML=`<section class="lb">
+    <div class="lb-hero">
+      <div class="lb-ph">${ta&&ta.photo?`<img src="${esc(ta.photo)}" alt="">`:`<span>${esc(initials(topR?topR.n:''))}</span>`}</div>
+      <div class="lb-who"><small>${topR?esc(topR.n.split(' ').slice(0,-1).join(' ').toUpperCase()):''}</small><b>${topR?esc(topR.n.split(' ').slice(-1)[0].toUpperCase()):''}</b><span>${topR?`${topR.h==='L'?'LHP':'RHP'} · ${CLASS_BY_GRAD[topR.g]||''}`:''}</span></div>
+      <div class="lb-dial"><b>${top?st.fmt(top.v):'—'}</b><span>${st.short}</span><em>Staff leader · Fall '26</em></div>
+      <img class="lb-cu" src="cu-logo.png" alt="">
+    </div>
+    <div class="lb-bar"><button type="button" class="lb-nav" data-lbstep="-1" aria-label="Previous stat">‹</button><b>${st.n.toUpperCase()}</b><span>CLEARY PITCHING · FALL '26</span><button type="button" class="lb-nav" data-lbstep="1" aria-label="Next stat">›</button></div>
+    <div class="lb-chips">${LB_STATS.map(x=>`<button type="button" aria-pressed="${x.k===st.k}" data-lbstat="${x.k}">${x.short}</button>`).join('')}</div>
+    <div class="lb-tbl"><table><thead><tr><th>RANK</th><th>PLAYER</th><th>POS</th><th>CLASS</th><th class="num">${st.short}</th></tr></thead><tbody>
+      ${list.map((x,i)=>`<tr class="${x.r.id===mine?'me':''} ${i===0?'first':''}" data-lbcard="${x.r.id}"><td>${x.rank}.</td><td><span class="lb-av">${esc(initials(x.r.n))}</span><b>${esc(x.r.n)}</b>${x.r.id===mine?'<em>YOU</em>':''}</td><td>${x.r.h==='L'?'LHP':'RHP'}</td><td>${CLASS_BY_GRAD[x.r.g]||''}</td><td class="num">${st.fmt(x.v)}</td></tr>`).join('')}
+    </tbody></table></div>
+    <p class="lb-foot"><span>${list.length} pitchers with a line · ${st.hi?'higher':'lower'} is better</span><span>Tap a name for his player card</span></p>
+  </section>`;
+}
+document.addEventListener('click',e=>{
+  const c=e.target.closest('[data-lbstat]'); if(c){ lbStat=c.dataset.lbstat; renderLeaders(); return; }
+  const n=e.target.closest('[data-lbstep]'); if(n){ const i=LB_STATS.findIndex(x=>x.k===lbStat); lbStat=LB_STATS[(i+ +n.dataset.lbstep+LB_STATS.length)%LB_STATS.length].k; renderLeaders(); return; }
+  const r=e.target.closest('[data-lbcard]'); if(r){ openPlayerCard(r.dataset.lbcard); return; }
+});
+document.addEventListener('keydown',e=>{ if(document.getElementById('tab-leaders')&&!document.getElementById('tab-leaders').hidden&&(e.key==='ArrowLeft'||e.key==='ArrowRight')&&!e.target.closest('input,textarea,select')){ const b=document.querySelector(`[data-lbstep="${e.key==='ArrowLeft'?-1:1}"]`); if(b) b.click(); } });
+
+// ---------- CLEARY TV: the 2027 schedule board ----------
+const TEAM_HEX={
+  'Pikeville':['#FF671D','#111111','UPIKE'], 'Midway':['#1B3F8B','#C9A227','MID'], 'Rio Grande':['#C8102E','#5A0A16','URG'],
+  'Lindsey Wilson':['#005A96','#002D4B','LWU'], 'Great Lakes Christian':['#1F4E9C','#0D2A5A','GLCC'],
+  'Cornerstone':['#13294B','#B4975A','CU'], 'Rochester Christian':['#CB1F2C','#141210','RCU'], 'Northwestern Ohio':['#1F1F1F','#C8102E','UNOH'],
+  'Michigan-Dearborn':['#00274C','#FFCB05','UMD'], 'Madonna':['#0E4C90','#FFD200','MU'], 'Indiana Tech':['#1E384C','#F0A23A','ITW'],
+  'Aquinas':['#7C2128','#4F1419','AQ'], 'Lawrence Tech':['#005CB9','#062A55','LTU'], 'Defiance':['#4F2E8B','#E0B019','DC'],
+  'Wayne State':['#0C5449','#FFCC33','WSU'], 'WHAC Tournament':['#16244F','#E7131A','WHAC']
+};
+const WHAC_TEAMS=new Set(['Cornerstone','Rochester Christian','Northwestern Ohio','Michigan-Dearborn','Madonna','Indiana Tech','Aquinas','Lawrence Tech','Defiance']);
+// games per date: WHAC series counts come from the 2027 WHAC series list; other dates assume a doubleheader a day (Wayne State is a single midweek game)
+const GAMES_OVERRIDE={'Wayne State':1,'WHAC Tournament':null};
+function gamesIn(g){ if(g.opp in GAMES_OVERRIDE) return GAMES_OVERRIDE[g.opp]; const days=g.e?Math.round((parse(g.e)-parse(g.d))/864e5)+1:1; return days*2; }
+renderSchedule=function(){
+  const el=document.getElementById('schedBody'); if(!el) return;
+  const nx=nextGame(), reg=SCHED.filter(g=>g.at!=='tourn');
+  const tot=reg.reduce((n,g)=>n+(gamesIn(g)||0),0), home=reg.filter(g=>g.at==='home').reduce((n,g)=>n+gamesIn(g),0), away=tot-home;
+  const whac=reg.filter(g=>WHAC_TEAMS.has(g.opp)).reduce((n,g)=>n+gamesIn(g),0);
+  const row=g=>{ const c=TEAM_HEX[g.opp]||['#334','#112',g.opp.slice(0,3).toUpperCase()], n=gamesIn(g), w=WHAC_TEAMS.has(g.opp);
+    return `<div class="tvr ${g===nx?'next':''} ${(g.e||g.d)<TODAY?'past':''} ${g.at}">
+      <div class="tv-d"><b>${sRange(g).replace('–','-')}</b><span>${g.t?g.t.replace(':00 ',' ').toLowerCase():sDays(g)}</span></div>
+      <div class="tv-m" style="--c1:${c[0]};--c2:${c[1]}">
+        <span class="tv-cu"><img src="cu-logo.png" alt="Cleary"></span>
+        <span class="tv-vs">${g.at==='home'?'VS.':g.at==='away'?'@':''}</span>
+        <span class="tv-op">${g.lg!=null?teamLogo(g):`<i class="tv-ab">${esc(c[2])}</i>`}<b>${esc(g.at==='tourn'?'WHAC Tournament':g.opp)}</b></span>
+      </div>
+      <div class="tv-g">${n?`<b>${n}</b><span>${n===1?'game':'games'}</span>`:'<b>TBD</b><span>bracket</span>'}${w?'<em>WHAC</em>':''}</div>
+    </div>`; };
+  const half=Math.ceil(SCHED.length/2);
+  el.innerHTML=`<section class="tvb">
+    <div class="tvb-head"><div class="tvb-plate"><img src="cu-logo.png" alt=""><div><small>2027 CLEARY</small><b>COUGARS BASEBALL</b><span>SPRING SCHEDULE · WHAC</span></div></div>
+      <div class="tvb-count"><div><b>${tot}</b><span>games</span></div><div><b>${home}</b><span>home</span></div><div><b>${away}</b><span>away</span></div><div class="w"><b>${whac}</b><span>WHAC</span></div></div></div>
+    <div class="tvb-grid"><div>${SCHED.slice(0,half).map(row).join('')}</div><div>${SCHED.slice(half).map(row).join('')}</div></div>
+    <div class="tvb-foot"><span class="tvb-live">● LIVE ON CLEARY TV</span><span>Then the WHAC Tournament, May ${parse('2027-05-05').getDate()}–9</span><span>(All times ET)</span></div>
+  </section>
+  ${TEAM_EVENTS.length?`<p class="tvb-ev">★ ${TEAM_EVENTS.map(x=>`${esc(x.t)} · ${sRange(x)}`).join(' · ')}</p>`:''}
+  <p class="tvb-ev">Game counts: WHAC series from the 2027 WHAC schedule; other dates count as a doubleheader a day until the team calendar lists games.</p>`;
+};
+
 // ===== Tabs =====
 function showTab(){
   const t=(location.hash||'#clubhouse').slice(1);
   const coachU=isCoachUser(), viewing=!!window.VIEW_AS;
-  const PT=['clubhouse','home','daily-work','personal-plan','schedule','chat','profile'];   // Month and Lift tabs removed (lifting lives in its own app)
-  const allowed=coachU?(viewing?PT:['clubhouse','home','schedule','chat','report','coach-view']):PT;
+  const PT=['clubhouse','home','daily-work','personal-plan','schedule','leaders','chat','profile'];   // Month and Lift tabs removed (lifting lives in its own app)
+  const allowed=coachU?(viewing?PT:['clubhouse','home','schedule','leaders','chat','report','coach-view']):PT;
   document.querySelectorAll('.tabs a[data-tab]').forEach(a=>{ a.hidden=!allowed.includes(a.dataset.tab); });
   renderModeBar();
   const tab=allowed.includes(t)?t:'clubhouse';
   document.body.classList.toggle('on-club',tab==='clubhouse'); document.body.dataset.tab=tab;
-  ['clubhouse','home','daily-work','month','personal-plan','schedule','lift','chat','report','profile','coach-view'].forEach(n=>{ document.getElementById('tab-'+n).hidden=n!==tab; });
+  ['clubhouse','leaders','home','daily-work','month','personal-plan','schedule','lift','chat','report','profile','coach-view'].forEach(n=>{ document.getElementById('tab-'+n).hidden=n!==tab; });
   document.querySelectorAll('.tabs a').forEach(a=>a.setAttribute('aria-current',a.dataset.tab===tab?'page':'false'));
   render();
   if(tab==='coach-view') renderCoach();
   if(tab==='home') renderHome();
   if(tab==='clubhouse') renderClubhouse(allowed);
+  if(tab==='leaders') renderLeaders();
   if(tab==='schedule') renderSchedule();
   if(tab==='profile') renderProfile();
   if(tab==='chat') renderChat();
