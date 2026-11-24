@@ -20,7 +20,7 @@ window.WLN_SUPABASE_KEY = '';
 <meta name="apple-mobile-web-app-title" content="Cleary Pitching">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="application-name" content="Cleary Pitching">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&family=Permanent+Marker&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   /* Brand (Cleary University): navy #002B5C, red #B30838, silver #98999B. (--maroon keeps its old name but is Cleary navy.)
@@ -1486,6 +1486,164 @@ body[data-tab="report"]{--sx:0%;--sy:35%;--mx:6%;--my:33%}
 body[data-tab="coach-view"]{--sx:35%;--sy:11%;--mx:50%;--my:5%}
 .panel{box-shadow:0 10px 30px rgba(0,0,0,.35)}
 @media (max-width:760px){ body:not(.on-club) header{--ss:330%;--sx:var(--mx);--sy:var(--my)} }
+
+/* =====================================================================
+   IMMERSIVE ROOMS: every section is the real object in the clubhouse
+   My Week = the whiteboard · Log = a legal pad on the coffee table
+   Chat = the phone on the side table · Help = the cork board
+   Schedule = the TV · Profile = your locker
+   Textures in tex/ were made in Google Flow.
+   ===================================================================== */
+:root{--hand:"Permanent Marker","Barlow Condensed",cursive;--pen:"Caveat","Segoe Print",cursive}
+
+/* light "paper" colors inside the whiteboard and the notepad, so every card in them reads as ink on a surface */
+#tab-home .content,#tab-personal-plan .content,.sheet-p:has(.corkboard) .pin{
+  --surface:rgba(255,255,255,.62);--bg:rgba(255,255,255,.5);--ink:#14213D;--muted:#4A5568;--line:rgba(20,33,61,.22);--accent:#B30838;
+  --hi-bg:#FCE7E5;--hi-t:#B92D24;--mo-bg:#FDF4D6;--mo-t:#8A6400;--lt-bg:#E2F3E9;--lt-t:#1F6B43;--nt-bg:#E4EAF3;--nt-t:#3E5B85;--of-bg:#EEF0F3;--of-t:#5A5F69;--of:#C9CACD;
+  color:var(--ink);color-scheme:light}
+
+/* ---------- MY WEEK: the whiteboard ---------- */
+body[data-tab="home"]:not(.on-club){background:linear-gradient(180deg,rgba(8,14,28,.78),rgba(8,14,28,.92)),url(tex/brick.jpg) center/520px auto,#0D1A33}
+#tab-home .content{position:relative;margin-top:22px;margin-bottom:70px;padding:34px 30px 64px;border-radius:6px;
+  background:linear-gradient(115deg,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 22%,rgba(255,255,255,0) 60%,rgba(255,255,255,.22) 72%,rgba(255,255,255,0) 80%),linear-gradient(rgba(250,251,253,.62),rgba(250,251,253,.62)),url(tex/whiteboard.jpg) center/100% 100%,#F2F1EC;
+  border:14px solid transparent;border-image:linear-gradient(180deg,#E6E8EC,#9EA4AE 40%,#C9CDD4 60%,#80868F) 1;
+  box-shadow:0 30px 60px rgba(0,0,0,.55),inset 0 0 0 1px rgba(0,0,0,.08)}
+#tab-home .content::after{content:"";position:absolute;left:-14px;right:-14px;bottom:-34px;height:22px;border-radius:0 0 6px 6px;
+  background:linear-gradient(180deg,#D5D9DF,#8D939C);box-shadow:0 10px 18px rgba(0,0,0,.45)}
+#tab-home .panel{background:rgba(255,255,255,.55);border:2px solid rgba(20,33,61,.16);box-shadow:3px 4px 0 rgba(20,33,61,.08);position:relative}
+#tab-home .panel::before{content:"";position:absolute;top:-9px;left:22px;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FF6B8A,#B30838 60%,#6E0322);box-shadow:0 3px 4px rgba(0,0,0,.35)}
+#tab-home .panel:nth-of-type(3n+2)::before{background:radial-gradient(circle at 35% 30%,#6FA0E8,#002B5C 60%,#00142E)}
+#tab-home .panel:nth-of-type(3n)::before{left:auto;right:22px;background:radial-gradient(circle at 35% 30%,#F4F4F4,#98999B 60%,#4E4F52)}
+#tab-home .h2,#tab-home h2,#tab-home h3{font-family:var(--hand)!important;font-weight:400!important;letter-spacing:.01em!important;color:#0B2A5B}
+#tab-home .hsec .h2,#tab-home .welcome .h2{font-size:34px}
+#tab-home .lbl{color:#B30838}
+#tab-home .btn:not(.ghost){background:#0B2A5B}
+#tab-home .wb-title{display:flex;align-items:center;gap:14px;margin:-6px 0 18px;font:400 40px/1 var(--hand);color:#0B2A5B;transform:rotate(-1.2deg)}
+#tab-home .wb-title img{width:70px;height:auto}
+#tab-home .wb-title span{border-bottom:4px solid #B30838;padding-bottom:4px}
+
+/* ---------- LOG: a yellow legal pad on the coffee table ---------- */
+body[data-tab="personal-plan"]:not(.on-club){background:radial-gradient(120% 90% at 30% 10%,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 100%),url(tex/wood.jpg) center/cover fixed,#2A1A0E}
+#tab-personal-plan .content{position:relative;max-width:900px;margin:34px auto 60px;padding:70px 34px 40px 86px;border-radius:4px 4px 10px 10px;
+  background:
+    linear-gradient(90deg,transparent 64px,#E46A6A 64px,#E46A6A 66px,transparent 66px,transparent 70px,#E46A6A 70px,#E46A6A 71px,transparent 71px),
+    repeating-linear-gradient(180deg,transparent 0,transparent 33px,rgba(82,130,200,.42) 33px,rgba(82,130,200,.42) 34px),
+    linear-gradient(180deg,#FFF6BF,#FBEEA8);
+  background-position:0 0,0 66px,0 0;background-repeat:no-repeat,repeat,no-repeat;
+  box-shadow:0 2px 0 #EFE19A,0 4px 0 #E8D88E,0 6px 0 #E0CF83,0 26px 50px rgba(0,0,0,.6);transform:rotate(-.4deg)}
+#tab-personal-plan .content::before{content:"";position:absolute;left:0;right:0;top:0;height:46px;border-radius:4px 4px 0 0;
+  background:url(cu-logo.png) 18px 50%/auto 30px no-repeat,linear-gradient(180deg,#8E0A30,#6B0624);box-shadow:0 3px 6px rgba(0,0,0,.35)}
+#tab-personal-plan .content::after{content:"CLEARY PITCHING · DAILY LOG";position:absolute;top:14px;left:84px;font:700 15px var(--display);letter-spacing:.18em;color:#F6D9E1}
+#tab-personal-plan .panel{background:transparent;border:0;box-shadow:none;padding:6px 0 18px;border-radius:0}
+#tab-personal-plan .panel+.panel{border-top:2px dashed rgba(20,33,61,.18);padding-top:20px}
+#tab-personal-plan .h2,#tab-personal-plan h2,#tab-personal-plan h3,#tab-personal-plan .ld-date{font-family:var(--pen)!important;font-weight:700!important;text-transform:none!important;letter-spacing:0!important;color:#1D3C78}
+#tab-personal-plan .h2,#tab-personal-plan h2{font-size:36px!important}
+#tab-personal-plan h3{font-size:28px!important}
+#tab-personal-plan .ld-date{font-size:26px!important}
+#tab-personal-plan .eyebrow3{color:#B30838!important}
+#tab-personal-plan .loghero{background:transparent!important;color:var(--ink)!important}
+#tab-personal-plan .loghero *{color:inherit}
+#tab-personal-plan input,#tab-personal-plan textarea,#tab-personal-plan select{background:rgba(255,255,255,.45);border:0;border-bottom:2px solid rgba(29,60,120,.45);border-radius:0;color:#1D3C78;font:600 22px var(--pen)}
+#tab-personal-plan textarea{background:transparent;line-height:34px}
+#tab-personal-plan .snum{background:#1D3C78!important;color:#FFF6BF!important}
+#tab-personal-plan .btn:not(.ghost){background:#1D3C78}
+#tab-personal-plan .pad-clip{position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:150px;height:44px;border-radius:10px 10px 6px 6px;
+  background:linear-gradient(180deg,#E9ECF0,#9AA0A8 55%,#C9CDD3);box-shadow:0 6px 10px rgba(0,0,0,.45),inset 0 -3px 0 rgba(0,0,0,.15);z-index:2}
+#tab-personal-plan .pad-pencil{position:absolute;right:-30px;top:120px;width:16px;height:300px;border-radius:2px 2px 8px 8px;transform:rotate(8deg);z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,#F3B1B9 0 18px,#C9CDD3 18px 30px,#F2C230 30px 270px,#E8C99A 270px 288px,#333 288px);box-shadow:4px 6px 10px rgba(0,0,0,.5)}
+
+/* ---------- CHAT: the phone on the side table ---------- */
+body[data-tab="chat"]:not(.on-club){background:radial-gradient(90% 80% at 50% 40%,rgba(0,0,0,0),rgba(0,0,0,.6)),url(tex/wood.jpg) center/cover fixed,#2A1A0E}
+#tab-chat .content{max-width:430px;margin:30px auto 60px;padding:0}
+.phone{position:relative;border-radius:54px;padding:14px;background:linear-gradient(145deg,#3A3F48,#0E1014 45%,#2A2E35);box-shadow:0 0 0 2px #5A616C,0 40px 70px rgba(0,0,0,.65),inset 0 0 0 2px #000}
+.phone-scr{position:relative;border-radius:42px;overflow:hidden;background:#000;min-height:min(78vh,780px);display:flex;flex-direction:column}
+.phone-bar{display:flex;justify-content:space-between;align-items:center;padding:14px 30px 6px;color:#fff;font:600 15px var(--body)}
+.phone-bar .isl{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:120px;height:34px;border-radius:20px;background:#000;box-shadow:0 0 0 1px #111}
+.phone-bar .sig{letter-spacing:2px;font-size:12px}
+.phone-head{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 16px 12px;background:rgba(28,28,30,.92);border-bottom:1px solid #2C2C2E;color:#fff}
+.phone-head .pava{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#002B5C;border:2px solid #B30838;overflow:hidden}
+.phone-head .pava img{width:80%;height:auto}
+.phone-head b{font:600 14px var(--body)}
+.phone-head small{color:#8E8E93;font-size:12px}
+.phone-body{flex:1;display:flex;flex-direction:column;padding:10px 12px 14px;background:#000}
+#tab-chat .phone-body .panel{background:transparent;border:0;box-shadow:none;padding:0;flex:1;display:flex;flex-direction:column}
+#tab-chat .phone-body .hsec{display:none}
+#tab-chat .chatlog,#tab-chat .chatlog.full{flex:1;max-height:min(56vh,560px);min-height:300px}
+#tab-chat .bub{border-radius:20px;padding:8px 14px;max-width:78%}
+#tab-chat .bub.mine{background:#0A84FF;color:#fff;border:0;border-bottom-right-radius:6px}
+#tab-chat .bub.theirs{background:#26252A;color:#fff;border:0;border-bottom-left-radius:6px}
+#tab-chat .bub small{color:rgba(255,255,255,.6)}
+#tab-chat .chatin{background:#1C1C1E;border:1px solid #3A3A3C;border-radius:24px;padding:4px 4px 4px 14px;align-items:center}
+#tab-chat .chatin textarea{background:transparent;border:0;color:#fff;min-height:36px;padding:8px 0;resize:none;outline:none}
+#tab-chat .chatin .btn{background:#0A84FF;border-radius:50%;width:36px;height:36px;padding:0;font-size:0;position:relative}
+#tab-chat .chatin .btn::after{content:"↑";font:700 20px/36px var(--body);position:absolute;inset:0;text-align:center}
+#tab-chat .qchips button,#tab-chat .chips button{background:#1C1C1E;color:#0A84FF;border:1px solid #3A3A3C}
+#tab-chat .hint{color:#8E8E93}
+#tab-chat .inrow{background:#1C1C1E;border-color:#2C2C2E;color:#fff}
+#tab-chat input[type=search]{background:#1C1C1E;border:0;border-radius:12px;color:#fff}
+#tab-chat .btn.ghost{color:#0A84FF;border-color:#3A3A3C}
+#tab-chat .phone-home{width:134px;height:5px;border-radius:3px;background:#fff;opacity:.8;margin:6px auto 10px}
+
+/* ---------- HELP: the cork board ---------- */
+.sheet-p:has(.corkboard){width:min(980px,100%);background:url(tex/cork.jpg) center/cover,#A87A48;padding:26px 22px 30px}
+.sheet-p:has(.corkboard) .sheet-x{background:#fff;color:#14213D}
+.corkboard h3.cb-title{display:inline-block;margin:0 0 18px;padding:10px 22px 8px;background:#fff;color:#0B2A5B;font:400 32px/1 var(--hand)!important;text-transform:none!important;transform:rotate(-2deg);box-shadow:3px 5px 10px rgba(0,0,0,.4)}
+.cb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px 18px;align-items:start}
+.pin{position:relative;padding:22px 16px 14px;color:#14213D;box-shadow:3px 6px 14px rgba(0,0,0,.45);transform:rotate(var(--r,0deg));transition:transform .15s}
+.pin:hover{transform:rotate(0deg) scale(1.02);z-index:2}
+.pin::before{content:"";position:absolute;top:-7px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--pc1,#FF6B8A),var(--pc2,#B30838) 60%,#3A0010);box-shadow:2px 4px 4px rgba(0,0,0,.45)}
+.pin.c0{background:#FFF9C4}.pin.c1{background:#FFFFFF;background-image:repeating-linear-gradient(180deg,transparent 0 23px,rgba(82,130,200,.35) 23px 24px)}
+.pin.c2{background:#D6ECFF}.pin.c3{background:#FFD9E0}.pin.c4{background:#E3F6D8}
+.pin.c1::before,.pin.c4::before{--pc1:#6FA0E8;--pc2:#002B5C}
+.pin summary{list-style:none;cursor:pointer;font:700 22px/1.15 var(--pen);color:#0B2A5B}
+.pin summary::-webkit-details-marker{display:none}
+.pin p,.pin li{font-size:14.5px;color:#1E2A3E}
+.pin ul{padding-left:18px;margin:6px 0 0}
+.pin details>*:not(summary){margin-top:8px}
+.pin .tap{display:block;margin-top:6px;font:600 11px var(--body);letter-spacing:.08em;text-transform:uppercase;color:#B30838}
+.pin details[open] .tap{display:none}
+.pin.wide{grid-column:1/-1}
+.pin.memo{background:#fff;background-image:linear-gradient(90deg,#B30838 0 6px,transparent 6px)}
+.pin.logo{background:transparent;box-shadow:none;display:grid;place-items:center}
+.pin.logo::before{display:none}
+.pin.logo img{width:150px;filter:drop-shadow(3px 6px 8px rgba(0,0,0,.5))}
+
+/* ---------- SCHEDULE: the TV ---------- */
+#tab-schedule .content{max-width:1100px;margin:28px auto 70px;padding:26px 26px 30px;border-radius:14px;background:linear-gradient(160deg,#0E1C36,#050B17 70%);border:16px solid #0B0C0F;box-shadow:0 0 0 2px #2A2D33,0 30px 60px rgba(0,0,0,.6),inset 0 0 60px rgba(46,111,208,.18);position:relative}
+#tab-schedule .content::after{content:"";position:absolute;left:50%;bottom:-48px;width:120px;height:32px;margin-left:-60px;background:linear-gradient(180deg,#16181C,#08090B);clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)}
+#tab-schedule .content::before{content:"● LIVE  CLEARY TV";position:absolute;top:-34px;left:4px;font:700 12px var(--display);letter-spacing:.2em;color:#FF4D5E}
+
+/* ---------- PROFILE: your locker ---------- */
+#tab-profile .content{max-width:960px;margin:26px auto 60px;padding:70px 26px 30px;border-radius:10px;position:relative;
+  background:repeating-linear-gradient(180deg,rgba(0,0,0,.35) 0 4px,transparent 4px 9px) 50% 18px/180px 40px no-repeat,linear-gradient(90deg,#5F6672,#8A919D 50%,#5F6672);
+  box-shadow:inset 0 0 0 6px #4A515C,0 26px 50px rgba(0,0,0,.6)}
+#tab-profile .content::before{content:"";position:absolute;top:18px;right:26px;width:26px;height:46px;border-radius:6px;background:linear-gradient(180deg,#D8DCE2,#8A909A);box-shadow:inset 0 -3px 0 rgba(0,0,0,.25)}
+
+/* ---------- zoom into the room when you tap a spot ---------- */
+.club-stage{transition:transform .38s cubic-bezier(.5,0,.75,0),filter .38s}
+.club-stage.zoom{transform:scale(2.4);filter:brightness(1.25) blur(1px)}
+@media (prefers-reduced-motion:reduce){ .club-stage{transition:none} }
+
+/* ---------- phones ---------- */
+@media (max-width:760px){
+  #tab-home .content{margin:14px 6px 60px;padding:24px 12px 40px;border-width:9px}
+  #tab-home .content::after{left:-9px;right:-9px;bottom:-26px;height:16px}
+  #tab-home .hsec .h2{font-size:28px}
+  #tab-home .wb-title{font-size:30px} #tab-home .wb-title img{width:52px}
+  #tab-personal-plan .content{margin:26px 6px 60px;padding:62px 12px 30px 44px;background-position:-30px 0,0 66px,0 0}
+  #tab-personal-plan .content::after{left:66px;top:16px;font-size:11px;letter-spacing:.1em}
+  #tab-personal-plan .content::before{background-size:auto 22px,auto;background-position:12px 50%,0 0}
+  #tab-personal-plan .pad-pencil{display:none}
+  #tab-personal-plan .h2,#tab-personal-plan h2{font-size:30px!important}
+  #tab-chat .content{margin:10px 4px 30px}
+  .phone{border-radius:46px;padding:9px} .phone-scr{border-radius:38px;min-height:calc(100dvh - 210px)}
+  .sheet-p:has(.corkboard){padding:20px 12px 26px}
+  .cb-grid{grid-template-columns:1fr 1fr;gap:16px 10px}
+  .pin{padding:18px 10px 10px} .pin summary{font-size:18px}
+  #tab-schedule .content{margin:40px 4px 70px;padding:14px 10px 18px;border-width:9px}
+  #tab-profile .content{margin:14px 4px 60px;padding:64px 10px 20px}
+}
+@media (max-width:420px){ .cb-grid{grid-template-columns:1fr} .pin.logo{display:none} }
 @media (max-width:760px){ .tabs a[data-tab="clubhouse"]::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E")} }
 </style>
 </head>
@@ -5803,6 +5961,62 @@ function renderClubhouse(allowed){
   requestAnimationFrame(()=>{ if(!matchMedia('(max-aspect-ratio: 1/1)').matches && room.scrollWidth>room.clientWidth) room.scrollLeft=room.scrollWidth*0.559-room.clientWidth/2; });
 }
 document.addEventListener('click',e=>{ const b=e.target.closest('[data-clubgo]'); if(b) clubGo(b.dataset.clubgo); });
+
+// ===== IMMERSIVE ROOMS: dress each section as the object it is in the clubhouse =====
+const CU_LOGO='cu-logo.png';
+// Help: the cork board. Every question is a note pinned to it.
+function openHelp(){
+  const notes=HELP.map(([q,a],i)=>`<div class="pin c${i%5}" style="--r:${[-2.2,1.6,-1,2.4,-1.8,1.1][i%6]}deg"><details><summary>${esc(q)}</summary>${a}</details><span class="tap">Tap to read</span></div>`).join('');
+  showSheet(`<div class="corkboard">
+    <h3 class="cb-title">Clubhouse Help Board</h3>
+    <div class="cb-grid">
+      <div class="pin memo wide" style="--r:-.6deg"><details open><summary>📌 ${esc(NEWS.title)}</summary><ul>${NEWS.items.map(x=>`<li>${x}</li>`).join('')}</ul></details></div>
+      ${notes}
+      <div class="pin c2" style="--r:1.4deg"><details><summary>🎨 Color key</summary><div class="ckey" style="margin-top:6px">${colorKey()}</div></details><span class="tap">Tap to read</span></div>
+      <div class="pin c0" style="--r:-1.6deg"><details open><summary>Still stuck?</summary><p>Ask one of your coaches, or send a text from the phone in the clubhouse.</p></details></div>
+      <div class="pin logo"><img src="${CU_LOGO}" alt="Cleary"></div>
+    </div></div>`,'Help board');
+  if(!newsSeen()) markNewsSeen();
+}
+// Chat: the conversation happens on the phone screen
+function phoneWrap(){
+  const el=document.getElementById('chatBody'); if(!el||el.querySelector('.phone')) return;
+  const coachInbox=isCoachUser()&&!VIEWING();
+  const who=coachInbox?(inboxId&&C.athletes[inboxId]?C.athletes[inboxId].name:'Pitchers'):(VIEWING()?cvName(S.name):'Cleary Coaches');
+  const sub=coachInbox&&!inboxId?'Inbox':'iMessage';
+  const now=new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}).replace(/\s?[AP]M/,'');
+  const inner=el.innerHTML;
+  el.innerHTML=`<div class="phone"><div class="phone-scr">
+    <div class="phone-bar"><span>${now}</span><span class="isl"></span><span class="sig">▂▄▆█ 5G ▮</span></div>
+    <div class="phone-head"><span class="pava">${coachInbox&&inboxId?`<b style="font:700 20px var(--display)">${esc(initials(who))}</b>`:`<img src="${CU_LOGO}" alt="">`}</span><b>${esc(who)} ›</b><small>${sub}</small></div>
+    <div class="phone-body">${inner}</div><div class="phone-home"></div></div></div>`;
+  const log=document.getElementById('chatLogT'); if(log) log.scrollTop=log.scrollHeight;
+}
+// My Week: a marker title on the whiteboard
+function wbTitle(){
+  const el=document.getElementById('homeBody'); if(!el||el.querySelector('.wb-title')) return;
+  const coach=isCoachUser()&&!VIEWING();
+  el.insertAdjacentHTML('afterbegin',`<div class="wb-title"><img src="${CU_LOGO}" alt=""><span>${coach?'Staff Board':(VIEWING()?esc(firstName(S.name)||'His')+"'s Week":'My Week')}</span></div>`);
+}
+// Log: the clip and pencil on the legal pad
+function padBits(){
+  const c=document.querySelector('#tab-personal-plan .content'); if(!c||c.querySelector('.pad-clip')) return;
+  c.insertAdjacentHTML('afterbegin','<span class="pad-clip" aria-hidden="true"></span><span class="pad-pencil" aria-hidden="true"></span>');
+}
+(function(){
+  const rc=renderChat; renderChat=function(){ rc.apply(this,arguments); phoneWrap(); };
+  const rh=renderHome; renderHome=function(){ rh.apply(this,arguments); wbTitle(); };
+  padBits();
+})();
+// Tapping a spot in the clubhouse walks you into it
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.hs[data-clubgo]'); if(!b||b.dataset.clubgo[0]==='@') return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  e.stopImmediatePropagation();
+  const st=b.closest('.club-stage'); const r=st.getBoundingClientRect(), br=b.getBoundingClientRect();
+  st.style.transformOrigin=`${((br.left+18-r.left)/r.width*100).toFixed(1)}% ${((br.top+br.height/2-r.top)/r.height*100).toFixed(1)}%`;
+  st.classList.add('zoom'); setTimeout(()=>clubGo(b.dataset.clubgo),360);
+},true);
 
 // ===== Tabs =====
 function showTab(){
