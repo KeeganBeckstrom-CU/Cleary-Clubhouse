@@ -1432,11 +1432,20 @@ html:has(body.on-club),body.on-club{overflow:hidden;background:#0B1322}
 .club-who b{display:block;font:700 21px/1.05 var(--display);letter-spacing:.02em}
 .club-who span{display:block;font:600 13px/1.3 var(--body);color:#C9D3E3}
 .club-ovr{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font:700 13px var(--body);color:#C9D3E3}
+.club-pv{display:inline-block;margin-top:4px;padding:2px 8px;border-radius:999px;background:#B30838;color:#fff;font:700 11px var(--body);letter-spacing:.06em;text-transform:uppercase}
 .club-ovr i{font-style:normal;min-width:30px;padding:1px 7px;border-radius:999px;border:1.5px solid #C9D3E3;color:#fff;text-align:center}
 
 .hs.flip{flex-direction:row-reverse;padding:6px 6px 6px 16px;transform:translate(calc(-100% + 6px + clamp(17px,1.3vw,24px)),-50%)}
 @media (max-height:520px) and (min-aspect-ratio:1/1){ .hs{font-size:15px;gap:7px} .hs-dot{width:28px;height:28px} .hs.primary{font-size:18px} .hs.primary .hs-dot{width:40px;height:40px}
   .hs{transform:translate(-20px,-50%)} .hs.primary{transform:translate(-26px,-50%)} .hs.flip{transform:translate(calc(-100% + 20px),-50%)} .club-card{transform:scale(.85);transform-origin:top left} }
+/* coach: switch between Coach View and Player View right from the clubhouse */
+.club-mode{position:fixed;z-index:6;top:calc(14px + env(safe-area-inset-top));right:14px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;max-width:calc(100vw - 28px)}
+.club-seg{display:flex;padding:4px;border-radius:999px;background:rgba(6,12,24,.8);border:1px solid rgba(255,255,255,.16);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.club-seg button{white-space:nowrap;border:0;border-radius:999px;padding:8px 14px;background:transparent;color:#C9D3E3;font:700 14px var(--display);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.club-seg button[aria-pressed="true"]{background:#B30838;color:#fff}
+.club-mode select{height:38px;max-width:240px;padding:0 12px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(6,12,24,.85);color:#fff;font:600 14px var(--body)}
+.club-eye{margin:0;padding:5px 12px;border-radius:999px;background:rgba(179,8,56,.85);color:#fff;font:600 12.5px var(--body)}
+
 /* phones held upright: a tall picture made for the phone, the whole room on one screen, no swiping */
 @media (max-aspect-ratio:1/1){
   .club{align-items:center;justify-content:center;overflow:hidden}
@@ -1454,6 +1463,29 @@ html:has(body.on-club),body.on-club{overflow:hidden;background:#0B1322}
   .club-ava{width:44px;height:44px;font-size:18px}
   .club-who b{font-size:18px}
 }
+@media (max-aspect-ratio:1/1){
+  .club-mode{top:auto;bottom:calc(12px + env(safe-area-inset-bottom));left:10px;right:10px;flex-direction:row;align-items:center;justify-content:center;gap:8px}
+  .club-seg button{padding:7px 11px;font-size:12.5px}
+  .club-mode select{height:36px;font-size:13px;max-width:150px;flex:1 1 auto}
+  .club-eye{display:none}
+}
+
+/* ===== The clubhouse look on every screen: each section's header is its spot in the room ===== */
+body:not(.on-club){background:linear-gradient(180deg,rgba(6,10,20,.86),rgba(6,10,20,.95)),url(clubhouse.jpg) center/cover fixed #060A14}
+body:not(.on-club) header{background:
+  linear-gradient(90deg,rgba(0,26,61,.95) 0%,rgba(0,26,61,.82) 38%,rgba(0,26,61,.35) 72%,rgba(120,6,40,.35) 100%),
+  linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,12,30,.85) 100%),
+  url(clubhouse.jpg) var(--sx,56%) var(--sy,30%)/var(--ss,190%) auto no-repeat,#002B5C!important}
+body[data-tab="home"]{--sx:71%;--sy:40%;--mx:74%;--my:39%}
+body[data-tab="daily-work"]{--sx:35%;--sy:44%;--mx:50%;--my:43%}
+body[data-tab="schedule"]{--sx:1%;--sy:33%;--mx:27%;--my:30%}
+body[data-tab="personal-plan"]{--sx:64%;--sy:77%;--mx:70%;--my:81%}
+body[data-tab="chat"]{--sx:0%;--sy:87%;--mx:13%;--my:92%}
+body[data-tab="profile"]{--sx:100%;--sy:44%;--mx:100%;--my:43%}
+body[data-tab="report"]{--sx:0%;--sy:35%;--mx:6%;--my:33%}
+body[data-tab="coach-view"]{--sx:35%;--sy:11%;--mx:50%;--my:5%}
+.panel{box-shadow:0 10px 30px rgba(0,0,0,.35)}
+@media (max-width:760px){ body:not(.on-club) header{--ss:330%;--sx:var(--mx);--sy:var(--my)} }
 @media (max-width:760px){ .tabs a[data-tab="clubhouse"]::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E")} }
 </style>
 </head>
@@ -4120,12 +4152,12 @@ function viewAs(id){
   window.VIEW_AS=id; a.weeks=a.weeks||{}; a.overrides=a.overrides||{}; a.coach=a.coach||{weeks:{},overrides:{}}; a.logs=a.logs||{};
   S=a; LOG={entries:a.logs}; planCaches.delete(a); hWeekOff=0; hGenOpen=false; selected=TODAY; goWeek(todayD);
   document.body.classList.add('viewing');
-  if(location.hash==='#home') showTab(); else location.hash='home';
+  if(location.hash==='#home'||location.hash==='#clubhouse'||!location.hash) showTab(); else location.hash='home';
 }
 function exitView(){
   if(!VIEW) return; S=VIEW.S; LOG=VIEW.LOG; selected=VIEW.sel; viewWeek=VIEW.vw; VIEW=null; window.VIEW_AS=null;
   document.body.classList.remove('viewing'); clearCache(); hWeekOff=0;
-  if(location.hash==='#home') showTab(); else location.hash='home';
+  if(location.hash==='#home'||location.hash==='#clubhouse'||!location.hash) showTab(); else location.hash='home';
 }
 function renderModeBar(){
   if(window.IS_HEAD===undefined && isLocalDemo()) window.IS_HEAD=true;   // testing without sign-in: you're the head coach
@@ -5739,6 +5771,14 @@ function clubGo(dest){
   if(dest==='@help'){ const b=document.getElementById('helpOpenL')||document.getElementById('helpOpen'); if(b) b.click(); return; }
   location.hash=dest;
 }
+function clubModeBar(){
+  const list=staff().sort((x,y)=>x.a.name.localeCompare(y.a.name)), cur=window.VIEW_AS||'';
+  return `<div class="club-mode"><div class="club-seg" role="group" aria-label="Whose clubhouse">
+      <button type="button" data-cmode="coach" aria-pressed="${!cur}">Coach View</button><button type="button" data-cmode="player" aria-pressed="${!!cur}">Player View</button></div>
+    ${cur?`<select id="clubPick" aria-label="Pick a pitcher">${list.map(({id,a})=>`<option value="${id}" ${id===cur?'selected':''}>${esc(a.name)}</option>`).join('')}</select>
+      <p class="club-eye">You're seeing exactly what <b>${esc(cvName((C.athletes[cur]||{}).name||''))}</b> sees</p>`:''}</div>`;
+}
+document.addEventListener('change',e=>{ if(e.target.id==='clubPick') viewAs(e.target.value); });
 function renderClubhouse(allowed){
   const el=document.getElementById('clubBody'); if(!el) return;
   const coach=isCoachUser()&&!window.VIEW_AS;
@@ -5752,9 +5792,10 @@ function renderClubhouse(allowed){
     <div class="club-stage">${CLUB_SCENE}
       ${stops.map(s=>`<button type="button" class="hs ${s.primary?'primary':''} ${s.flip?'flip':''} ${s.pflip?'pflip':''}" style="--x:${s.x}%;--y:${s.y}%;--px:${s.px}%;--py:${s.py}%" data-clubgo="${s.dest}"><span class="hs-dot"></span><span>${esc(s.label)}</span>${newB(s.dest)}</button>`).join('')}
     </div></div>
+    ${isCoachUser()?clubModeBar():''}
     <button type="button" class="club-card" data-clubgo="${coach?'home':'profile'}" aria-label="Open your profile">
       <span class="club-ava">${esc(initials(nm))}${unread?'<i class="club-alert" title="New messages">!</i>':''}</span>
-      <span class="club-who"><b>${esc(nm)}</b><span>${esc(role)}</span>${velo?`<span class="club-ovr"><i>${esc(String(velo))}</i> VELO</span>`:''}</span>
+      <span class="club-who"><b>${esc(nm)}</b><span>${esc(role)}</span>${velo?`<span class="club-ovr"><i>${esc(String(velo))}</i> VELO</span>`:''}${window.VIEW_AS?'<span class="club-pv">👁 Player view</span>':''}</span>
     </button>
     `;
   const logo=document.querySelector('header .logo img'); const li=el.querySelector('.club-logo'); if(logo&&li) li.setAttribute('href',logo.getAttribute('src'));
@@ -5772,7 +5813,7 @@ function showTab(){
   document.querySelectorAll('.tabs a[data-tab]').forEach(a=>{ a.hidden=!allowed.includes(a.dataset.tab); });
   renderModeBar();
   const tab=allowed.includes(t)?t:'clubhouse';
-  document.body.classList.toggle('on-club',tab==='clubhouse');
+  document.body.classList.toggle('on-club',tab==='clubhouse'); document.body.dataset.tab=tab;
   ['clubhouse','home','daily-work','month','personal-plan','schedule','lift','chat','report','profile','coach-view'].forEach(n=>{ document.getElementById('tab-'+n).hidden=n!==tab; });
   document.querySelectorAll('.tabs a').forEach(a=>a.setAttribute('aria-current',a.dataset.tab===tab?'page':'false'));
   render();
