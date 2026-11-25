@@ -1512,7 +1512,7 @@ body[data-tab="personal-plan"]:not(.on-club){background:radial-gradient(120% 90%
   background-position:0 0,0 66px,0 0;background-repeat:no-repeat,repeat,no-repeat;
   box-shadow:0 2px 0 #EFE19A,0 4px 0 #E8D88E,0 6px 0 #E0CF83,0 26px 50px rgba(0,0,0,.6);transform:rotate(-.4deg)}
 #tab-personal-plan .content::before{content:"";position:absolute;left:0;right:0;top:0;height:46px;border-radius:4px 4px 0 0;
-  background:url(cu-logo.png) 18px 50%/auto 30px no-repeat,linear-gradient(180deg,#8E0A30,#6B0624);box-shadow:0 3px 6px rgba(0,0,0,.35)}
+  background:url(cu-logo.svg) 18px 50%/auto 30px no-repeat,linear-gradient(180deg,#8E0A30,#6B0624);box-shadow:0 3px 6px rgba(0,0,0,.35)}
 #tab-personal-plan .content::after{content:"CLEARY PITCHING · DAILY LOG";position:absolute;top:14px;left:84px;font:700 15px var(--display);letter-spacing:.18em;color:#F6D9E1}
 #tab-personal-plan .panel{background:transparent;border:0;box-shadow:none;padding:6px 0 18px;border-radius:0}
 #tab-personal-plan .panel+.panel{border-top:2px dashed rgba(20,33,61,.18);padding-top:20px}
@@ -2023,6 +2023,58 @@ main{padding-bottom:calc(90px + env(safe-area-inset-bottom))!important}
 .sc-ph .sc-ph-none img{width:68%!important;height:auto!important;object-fit:contain!important}
 .lg-quick #logAsPlan{white-space:normal;line-height:1.15;padding:10px 14px;height:auto}
 .sc-ph:has(.sc-ph-none)+.sc-cu{display:none}
+
+/* ===== v6: Thanksgiving decor ===== */
+.tg-deco{position:fixed;inset:0;z-index:5;pointer-events:none;overflow:hidden}
+.tg-bunting{position:absolute;top:0;left:0;filter:drop-shadow(0 3px 3px rgba(0,0,0,.45))}
+.tg-leaf{position:absolute;top:-40px;left:var(--l);width:var(--s);height:var(--s);color:var(--c);opacity:.9;animation:tgFall var(--d) linear var(--dl) infinite;filter:drop-shadow(0 2px 2px rgba(0,0,0,.4))}
+.tg-leaf svg{width:100%;height:100%;display:block;animation:tgSpin calc(var(--d)/3) ease-in-out infinite alternate}
+@keyframes tgFall{0%{transform:translate(0,0)}25%{transform:translate(30px,25vh)}50%{transform:translate(-20px,50vh)}75%{transform:translate(25px,75vh)}100%{transform:translate(-10px,108vh)}}
+@keyframes tgSpin{from{transform:rotate(-40deg)}to{transform:rotate(60deg)}}
+@media (prefers-reduced-motion:reduce){.tg-leaf{animation:none;top:auto;bottom:calc(8px + (var(--s) * 1.5))}.tg-leaf svg{animation:none}}
+.tg-corner{position:absolute;bottom:calc(4px + env(safe-area-inset-bottom));display:flex;align-items:flex-end;filter:drop-shadow(0 6px 8px rgba(0,0,0,.55))}
+.tg-left{left:6px}.tg-right{right:6px}
+.tg-pk{display:block;margin:0 -10px}
+.tg-banner{position:fixed;z-index:6;pointer-events:none;top:calc(64px + env(safe-area-inset-top));left:50%;transform:translateX(-50%) rotate(-1.5deg);display:flex;flex-direction:column;align-items:center;animation:tgSway 5s ease-in-out infinite alternate}
+@keyframes tgSway{from{transform:translateX(-50%) rotate(-1.5deg)}to{transform:translateX(-50%) rotate(1.5deg)}}
+@media (prefers-reduced-motion:reduce){.tg-banner{animation:none}}
+.tg-ribbon{position:relative;display:flex;align-items:center;gap:14px;padding:10px 34px;color:#fff;white-space:nowrap;
+  background:linear-gradient(180deg,#B30838 0 7px,#fff 7px 10px,#0B2A5C 10px calc(100% - 10px),#fff calc(100% - 10px) calc(100% - 7px),#B30838 calc(100% - 7px));
+  clip-path:polygon(0 0,100% 0,calc(100% - 16px) 50%,100% 100%,0 100%,16px 50%);box-shadow:0 10px 20px rgba(0,0,0,.5)}
+.tg-ribbon b{font:700 clamp(22px,3vw,36px)/1 'Permanent Marker',var(--display);letter-spacing:.04em;text-shadow:0 2px 0 #B30838,0 4px 8px rgba(0,0,0,.5)}
+.tg-stars{font-size:clamp(12px,1.4vw,17px);letter-spacing:2px;color:#fff;opacity:.95}
+.tg-sub{margin-top:-2px;padding:5px 16px 6px;background:#E07B24;color:#2A1405;font:700 13px var(--body);border-radius:0 0 10px 10px;box-shadow:0 6px 12px rgba(0,0,0,.45)}
+@media (max-width:760px){
+  .tg-banner{top:calc(92px + env(safe-area-inset-top))}
+  .tg-ribbon{padding:9px 26px;gap:8px}
+  .tg-ribbon b{font-size:22px}
+  .tg-stars{font-size:11px;letter-spacing:1px}
+  .tg-sub{font-size:12px}
+  .tg-pk{transform:scale(.75);transform-origin:bottom}
+}
+/* ===== v6: morning reminder ===== */
+.push-chip{position:fixed;z-index:7;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:2px solid rgba(255,255,255,.85);
+  background:linear-gradient(90deg,#B30838,#7A0526);color:#fff;font:700 15px var(--body);box-shadow:0 8px 20px rgba(0,0,0,.5);cursor:pointer;animation:pushPulse 2.4s ease-in-out infinite}
+.push-chip b{font-weight:700}
+.push-chip.on{animation:none;padding:8px 14px;font-size:13px;border-color:rgba(255,255,255,.3);background:rgba(6,12,24,.82)}
+@keyframes pushPulse{0%,100%{box-shadow:0 8px 20px rgba(0,0,0,.5),0 0 0 0 rgba(179,8,56,.6)}50%{box-shadow:0 8px 20px rgba(0,0,0,.5),0 0 0 10px rgba(179,8,56,0)}}
+body.club-coach .push-chip{bottom:calc(76px + env(safe-area-inset-bottom))}
+@media (min-width:761px){ body.club-coach .push-chip{bottom:calc(18px + env(safe-area-inset-bottom))} }
+.push-sheet h3{margin:4px 0 10px}
+.push-sheet p{margin:0 0 12px;line-height:1.45}
+.push-steps{margin:0 0 14px;padding-left:22px;line-height:1.6}
+.push-ic{display:inline-block;padding:0 6px;border-radius:6px;background:rgba(255,255,255,.14)}
+.push-act{display:flex;gap:10px;flex-wrap:wrap}
+/* long hometown / school names wrap instead of getting cut off */
+.sc-i b{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:normal;word-break:normal}
+@media (max-width:760px){ .sc-i b{font-size:16px} }
+@media (max-width:760px){
+  .tg-banner{max-width:calc(100vw - 12px)}
+  .tg-ribbon{padding:8px 22px;gap:6px}
+  .tg-ribbon b{font-size:20px}
+  .tg-stars{font-size:9px}
+  .push-chip{white-space:nowrap;font-size:14px;padding:9px 16px}
+}
 @media (max-width:760px){ .tabs a[data-tab="leaders"]::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M8%2021h8%22%2F%3E%3Cpath%20d%3D%22M12%2017v4%22%2F%3E%3Cpath%20d%3D%22M7%204h10v5a5%205%200%200%201-10%200z%22%2F%3E%3Cpath%20d%3D%22M17%205h3v2a3%203%200%200%201-3%203%22%2F%3E%3Cpath%20d%3D%22M7%205H4v2a3%203%200%200%200%203%203%22%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M8%2021h8%22%2F%3E%3Cpath%20d%3D%22M12%2017v4%22%2F%3E%3Cpath%20d%3D%22M7%204h10v5a5%205%200%200%201-10%200z%22%2F%3E%3Cpath%20d%3D%22M17%205h3v2a3%203%200%200%201-3%203%22%2F%3E%3Cpath%20d%3D%22M7%205H4v2a3%203%200%200%200%203%203%22%2F%3E%3C%2Fsvg%3E")} }
 @media (max-width:760px){ .tabs a[data-tab="clubhouse"]::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E")} }
 </style>
@@ -2266,47 +2318,47 @@ const CLEARY_ROSTER=[
   p:[['2S','Sinker',10,19],['SL','',-11,-5.5],['CH','Kick',-4,13]], s:{sp:59,fps:53,k:6,bb:6,csw:32,baa:.296,ep:47}},
  {id:'chimeri',    n:'Matheus Chimeri',   g:2029,h:'R',ht:72,wt:201,town:'South Lyon, MI',hs:'South Lyon',v:[79.6,82.7],
   p:[['FB','',14,10],['CB','Downer',-15,-8],['CH','',9,7]], s:{sp:49,fps:50,k:7,bb:7,csw:26,baa:.133,ep:39}},
- {id:'harmsworth', n:'Thomas Harmsworth', g:2028,h:'R',ht:null,wt:null,town:'',hs:'',v:[88.1,88.1],
+ {id:'harmsworth', n:'Thomas Harmsworth', g:2028,h:'R',ht:null,wt:null,town:'Kincardine, ON',hs:'Kincardine DSS',v:[88.1,88.1],
   p:[['FB','Standard / Deadzone',16,13],['CB','Downer / Efficient',-16,-10],['CH','Firm / Standard',16,7],['2S','Running sinker',13,17]], s:{sp:65,fps:70,k:10,bb:2,csw:30,baa:.241,ep:62}},
- {id:'hurliman',   n:'Luke Hurliman',     g:2030,h:'R',ht:null,wt:null,town:'',hs:'',v:[80,80],
+ {id:'hurliman',   n:'Luke Hurliman',     g:2030,h:'R',ht:null,wt:null,town:'Wyandotte, MI',hs:'Wyandotte',v:[80,80],
   p:[['FB','',14,8],['SL','',-1,-8],['CH','',12,11],['2S','Deadzone sinker',15,11]], s:{sp:57,fps:60,k:10,bb:12,csw:30,baa:.194,ep:44}},
- {id:'jelleyreid', n:'Wyatt Jelley-Reid', g:2030,h:'R',ht:null,wt:null,town:'',hs:'',v:[78.3,null],
+ {id:'jelleyreid', n:'Wyatt Jelley-Reid', g:2030,h:'R',ht:72,wt:180,town:'Ottawa, ON',hs:'A.Y. Jackson',v:[78.3,null],
   p:[], s:{sp:53,fps:55,k:0,bb:3,csw:22,baa:.286,ep:41}},
  {id:'knott',      n:'Wesley Knott',      g:2028,h:'R',ht:72,wt:198,town:'Oro-Medonte, ON',hs:'Eastview Secondary',prev:'Salem University',v:[null,null],track:'rtt',
   p:[], s:{sp:null,fps:null,k:null,bb:null,csw:null,baa:null,ep:40}},
- {id:'langdon',    n:'Grady Langdon',     g:2030,h:'R',ht:null,wt:null,town:'',hs:'',v:[74.2,81.5],
+ {id:'langdon',    n:'Grady Langdon',     g:2030,h:'R',ht:70,wt:175,town:'Williamston, MI',hs:'Williamston',v:[74.2,81.5],
   p:[['FB','',16,6],['CB','Inefficient downer',-9,-4.5],['CH','',12,10]], s:{sp:60,fps:66,k:10,bb:3,csw:29,baa:.107,ep:36}},
- {id:'mcnicol',    n:'John McNicol',      g:2028,h:'R',ht:null,wt:null,town:'',hs:'',v:[85.3,85.3],
+ {id:'mcnicol',    n:'John McNicol',      g:2028,h:'R',ht:null,wt:null,town:'',hs:'',prev:'Delta College',v:[85.3,85.3],
   p:[['FB','',16,12],['SL','',0,-5],['CH','',12,14]], s:{sp:61,fps:61,k:11,bb:4,csw:35,baa:.167,ep:60}},
- {id:'miano',      n:'Vincent Miano',     g:2030,h:'R',ht:null,wt:null,town:'',hs:'',v:[84.5,84.5],
+ {id:'miano',      n:'Vincent Miano',     g:2030,h:'R',ht:75,wt:180,town:'Ypsilanti, MI',hs:'Lincoln',v:[84.5,84.5],
   p:[['FB','Deadzone',12,12],['SL','Gyro',2,-2],['SP','',-3,4]], s:{sp:59,fps:58,k:16,bb:7,csw:25,baa:.224,ep:57}},
  {id:'montilla',   n:'Hector Montilla',   g:2027,h:'R',ht:71,wt:199,town:'Clearwater, FL',hs:'',prev:'Hillsborough Community College',v:[88.8,89.4],
   p:[['FB','',15,6],['CB','',-11,-13],['CH','',14,17],['SL','Slurve',-2,-11]], s:{sp:58,fps:65,k:14,bb:9,csw:22,baa:.167,ep:59}},
  {id:'murray',     n:'Travis Murray',     g:2029,h:'L',ht:74,wt:233,town:'Coleman, MI',hs:'Coleman',v:[77.3,77.3],
   p:[['2S','Sinker',7,-16],['SL','Slurve',-7,11.5],['CH','',0,-7],['SP','',2,-5]], s:{sp:56,fps:49,k:12,bb:7,csw:30,baa:.167,ep:53}},
- {id:'nicholson',  n:'Luke Nicholson',    g:2029,h:'R',ht:null,wt:null,town:'',hs:'',v:[81.3,81.3],
+ {id:'nicholson',  n:'Luke Nicholson',    g:2029,h:'R',ht:null,wt:null,town:'Brighton, MI',hs:'Brighton',prev:'Albion College',v:[81.3,81.3],
   p:[['FB','',15,12],['SL','',2,-7],['SP','',4,4]], s:{sp:56,fps:43,k:11,bb:9,csw:29,baa:.259,ep:54}},
  {id:'noseworthy', n:'Jacob Noseworthy',  g:2029,h:'L',ht:69,wt:165,town:'Burlington, ON',hs:'Dr. Frank J. Hayden Secondary',v:[84,84],
   p:[['FB','',12,-15],['SL','Slurve',-7,12],['CH','',4,-12]], s:{sp:64,fps:63,k:10,bb:5,csw:31,baa:.273,ep:53}},
  {id:'parris',     n:'Brett Parris',      g:2028,h:'R',ht:77,wt:194,town:'Howell, MI',hs:'Howell',v:[null,null],track:'rehab',
   p:[], s:{sp:null,fps:null,k:null,bb:null,csw:null,baa:null,ep:null}},
- {id:'retchko',    n:'Balen Retchko',     g:2030,h:'R',ht:null,wt:null,town:'',hs:'',v:[83.5,84.1],
+ {id:'retchko',    n:'Balen Retchko',     g:2030,h:'R',ht:null,wt:null,town:'Oxford, MI',hs:'Oxford',v:[83.5,84.1],
   p:[['FB','',17,8],['SL','Gyro',1,2],['CH','Firm',8,7]], s:{sp:64,fps:63,k:15,bb:6,csw:36,baa:.233,ep:51}},
  {id:'roberts',    n:'Bryson Roberts',    g:2027,h:'L',ht:74,wt:169,town:'Fraser, MI',hs:'Fraser',prev:'Macomb Community College',v:[79,79],
   p:[['FB','',16,-10],['CB','Gyro',-5,2],['CH','',11,-6],['SL','Slurve',-3,9]], s:{sp:49,fps:44,k:0,bb:2,csw:3,baa:.429,ep:44}},
- {id:'schertzer',  n:'Joseph Schertzer',  g:2030,h:'',ht:null,wt:null,town:'',hs:'',v:[84.7,84.7],
+ {id:'schertzer',  n:'Joseph Schertzer',  g:2030,h:'',ht:76,wt:221,town:'Grand Haven, MI',hs:'Grand Haven',v:[84.7,84.7],
   p:[], s:{sp:64,fps:0,k:3,bb:0,csw:37,baa:.25,ep:49}},
  {id:'siik',       n:'Jack Siik',         g:2029,h:'R',ht:73,wt:152,town:'Negaunee, MI',hs:'Negaunee',v:[85.8,86],
   p:[['FB','Running',15,16],['SL','Gyro',0,-1],['CH','',9,17],['2S','Sinker',9,22]], s:{sp:52,fps:42,k:10,bb:14,csw:20,baa:.25,ep:41}},
- {id:'sindlinger', n:'Connor Sindlinger', g:2030,h:'R',ht:74,wt:195,town:'',hs:'',v:[85.3,85.8],
+ {id:'sindlinger', n:'Connor Sindlinger', g:2030,h:'R',ht:74,wt:195,town:'Ypsilanti, MI',hs:'Lincoln',v:[85.3,85.8],
   p:[['FB','Gyro',7,3],['SL','Slutter',-4,-5],['CH','Firm',5,10]], s:{sp:61,fps:61,k:16,bb:9,csw:36,baa:.295,ep:44}},
- {id:'stanaway',   n:'Fin Stanaway',      g:2030,h:'R',ht:null,wt:null,town:'',hs:'',v:[null,null],
+ {id:'stanaway',   n:'Fin Stanaway',      g:2030,h:'R',ht:70,wt:165,town:'Hartland, MI',hs:'Hartland',v:[null,null],
   p:[['FB','',16,14],['CB','',-12,-10],['CH','',8,19],['SL','',2.5,-9]], s:{sp:61,fps:57,k:14,bb:5,csw:35,baa:.154,ep:62}},
- {id:'tobias',     n:'Brady Tobias',      g:2028,h:'R',ht:null,wt:null,town:'',hs:'',v:[90,90],
+ {id:'tobias',     n:'Brady Tobias',      g:2028,h:'R',ht:76,wt:210,town:'Flint, MI',hs:'Kearsley',prev:'Mott Community College',v:[90,90],
   p:[['FB','Deadzone',14,16],['SL','Gyro',-3,-4],['CH','',9,16],['2S','Running sinker',13,20]], s:{sp:63,fps:62,k:17,bb:4,csw:34,baa:.088,ep:57}},
  {id:'test',       n:'Test Pitcher',      g:2028,h:'R',ht:74,wt:195,town:'Howell, MI',hs:'Howell',prev:'Kellogg Community College',v:[84.2,86.1],test:true,
   p:[['FB','',16,10],['SL','',-2,-7],['CB','',-12,-8],['CH','',10,14]], s:{sp:61,fps:58,k:9,bb:4,csw:30,baa:.231,ep:55}},
- {id:'zaborny',    n:'Connor Zaborny',    g:2029,h:'R',ht:73,wt:157,town:'',hs:'',v:[80.6,80.6],
+ {id:'zaborny',    n:'Connor Zaborny',    g:2029,h:'R',ht:73,wt:157,town:'West Bloomfield, MI',hs:'West Bloomfield',v:[80.6,80.6],
   p:[['FB','',15,11],['SL','Slurve',-6,-11],['CH','Firm copy-cat',13,11],['CB','Downer',-16,-5]], s:{sp:50,fps:52,k:8,bb:8,csw:29,baa:.19,ep:42}},
 ];
 const TEAM_FALL={sp:59,fps:58,k:210,bb:120,csw:29};
@@ -6402,7 +6454,7 @@ function renderClubhouse(allowed){
 document.addEventListener('click',e=>{ const b=e.target.closest('[data-clubgo]'); if(b) clubGo(b.dataset.clubgo); });
 
 // ===== IMMERSIVE ROOMS: dress each section as the object it is in the clubhouse =====
-const CU_LOGO='cu-logo.png';
+const CU_LOGO='cu-logo.svg';
 // Help: the cork board. Every question is a note pinned to it.
 function openHelp(){
   const notes=HELP.map(([q,a],i)=>`<div class="pin c${i%5}" style="--r:${[-2.2,1.6,-1,2.4,-1.8,1.1][i%6]}deg"><details><summary>${esc(q)}</summary>${a}</details><span class="tap">Tap to read</span></div>`).join('');
@@ -6468,7 +6520,7 @@ document.addEventListener('click',e=>{
 },true);
 
 // Back to the clubhouse from any screen
-(function(){ const b=document.createElement('button'); b.type='button'; b.className='to-club'; b.innerHTML='<img src="cu-logo.png" alt=""><span>Clubhouse</span>';
+(function(){ const b=document.createElement('button'); b.type='button'; b.className='to-club'; b.innerHTML='<img src="cu-logo.svg" alt=""><span>Clubhouse</span>';
   b.onclick=()=>{ location.hash='clubhouse'; }; document.body.appendChild(b); })();
 
 // =====================================================================
@@ -6547,7 +6599,7 @@ function showCard(st,opt){
     <div class="sc-top">
       <div class="sc-cardwrap"><div class="sc-card">
         <div class="sc-ph">${photo}</div>
-        <img class="sc-cu" src="cu-logo.png" alt="">
+        <img class="sc-cu" src="cu-logo.svg" alt="">
         <div class="sc-name"><small>${esc(first.toUpperCase())}</small><b>${esc(last.toUpperCase())}</b></div>
         <span class="sc-pos">${pos}</span>
       </div>${edit?`<button type="button" class="sc-up" data-cardphoto>📷 ${st.photo?'Change photo':'Add your photo'}</button>`:''}</div>
@@ -6649,7 +6701,7 @@ function renderLeaders(){
       <div class="lb-ph">${ta&&ta.photo?`<img src="${esc(ta.photo)}" alt="">`:`<span>${esc(initials(topR?topR.n:''))}</span>`}</div>
       <div class="lb-who"><small>${topR?esc(topR.n.split(' ').slice(0,-1).join(' ').toUpperCase()):''}</small><b>${topR?esc(topR.n.split(' ').slice(-1)[0].toUpperCase()):''}</b><span>${topR?`${topR.h==='L'?'LHP':'RHP'} · ${CLASS_BY_GRAD[topR.g]||''}`:''}</span></div>
       <div class="lb-dial"><b>${top?st.fmt(top.v):'—'}</b><span>${st.short}</span><em>Staff leader · Fall '26</em></div>
-      <img class="lb-cu" src="cu-logo.png" alt="">
+      <img class="lb-cu" src="cu-logo.svg" alt="">
     </div>
     <div class="lb-bar"><button type="button" class="lb-nav" data-lbstep="-1" aria-label="Previous stat">‹</button><b>${st.n.toUpperCase()}</b><span>CLEARY PITCHING · FALL '26</span><button type="button" class="lb-nav" data-lbstep="1" aria-label="Next stat">›</button></div>
     <div class="lb-chips">${LB_STATS.map(x=>`<button type="button" aria-pressed="${x.k===st.k}" data-lbstat="${x.k}">${x.short}</button>`).join('')}</div>
@@ -6696,7 +6748,7 @@ renderSchedule=function(){
     return `<div class="tvr ${g===nx?'next':''} ${(g.e||g.d)<TODAY?'past':''} ${g.at}">
       <div class="tv-d"><b>${sRange(g).replace('–','-')}</b><span>${g.t?g.t.replace(':00 ',' ').toLowerCase():sDays(g)}</span></div>
       <div class="tv-m" style="--c1:${c[0]};--c2:${c[1]}">
-        <span class="tv-cu"><img src="cu-logo.png" alt="Cleary"></span>
+        <span class="tv-cu"><img src="cu-logo.svg" alt="Cleary"></span>
         <span class="tv-vs">${g.neutral?'VS.':g.at==='home'?'VS.':g.at==='away'?'@':''}</span>
         <span class="tv-op">${g.lg!=null||g.img||(typeof XLOGO!=='undefined'&&XLOGO[g.opp])?teamLogo(g):`<i class="tv-ab">${esc(c[2])}</i>`}<b>${esc(g.at==='tourn'?'WHAC Tournament':g.opp)}</b></span>
       </div>
@@ -6704,7 +6756,7 @@ renderSchedule=function(){
     </div>`; };
   const half=Math.ceil(SCHED.length/2);
   el.innerHTML=`<section class="tvb">
-    <div class="tvb-head"><div class="tvb-plate"><img src="cu-logo.png" alt=""><div><small>2027 CLEARY</small><b>COUGARS BASEBALL</b><span>SPRING SCHEDULE · WHAC</span></div></div>
+    <div class="tvb-head"><div class="tvb-plate"><img src="cu-logo.svg" alt=""><div><small>2027 CLEARY</small><b>COUGARS BASEBALL</b><span>SPRING SCHEDULE · WHAC</span></div></div>
       ${typeof coachSide==='function'&&coachSide()?'<button type="button" class="tvb-add" data-addgame aria-label="Add a game"><i>+</i><span>Add game</span></button>':''}
       <div class="tvb-count"><div><b>${tot}</b><span>games</span></div><div><b>${home}</b><span>home</span></div><div><b>${away}</b><span>away</span></div><div class="w"><b>${whac}</b><span>WHAC</span></div></div></div>
     ${cdBlock()}
@@ -6758,7 +6810,7 @@ function addGameSheet(){ agLogo=null;
     const name=t||q||'Opponent', c=t?TEAM_HEX[t]:[document.getElementById('agC1').value,document.getElementById('agC2').value,(q||'?').split(/\s+/).map(w=>w[0]).join('').slice(0,4).toUpperCase()];
     const g={opp:name,lg:t&&LOGO_IDX[t]!=null?LOGO_IDX[t]:null,img:agLogo};
     const logo=g.img||XLOGO[name]||g.lg!=null?teamLogo(g):`<i class="tv-ab">${esc(c[2])}</i>`;
-    el.innerHTML=`<div class="tv-m" style="--c1:${c[0]};--c2:${c[1]};height:56px;border-radius:4px;overflow:hidden"><span class="tv-cu"><img src="cu-logo.png" alt=""></span><span class="tv-vs">${document.querySelector('#agAt [aria-pressed="true"]').dataset.v==='home'?'VS.':'@'}</span><span class="tv-op">${logo}<b>${esc(name)}</b></span></div><p class="ag-match">${t?`✓ Found <b>${esc(t)}</b>: logo and colors filled in`:q?'No saved logo for this team yet':''}</p>`; };
+    el.innerHTML=`<div class="tv-m" style="--c1:${c[0]};--c2:${c[1]};height:56px;border-radius:4px;overflow:hidden"><span class="tv-cu"><img src="cu-logo.svg" alt=""></span><span class="tv-vs">${document.querySelector('#agAt [aria-pressed="true"]').dataset.v==='home'?'VS.':'@'}</span><span class="tv-op">${logo}<b>${esc(name)}</b></span></div><p class="ag-match">${t?`✓ Found <b>${esc(t)}</b>: logo and colors filled in`:q?'No saved logo for this team yet':''}</p>`; };
   ['agOpp','agC1','agC2'].forEach(id=>document.getElementById(id).addEventListener('input',prev));
   document.getElementById('agAt').onclick=e=>{ const b=e.target.closest('button'); if(!b) return; document.querySelectorAll('#agAt button').forEach(x=>x.setAttribute('aria-pressed',x===b)); prev(); };
   document.getElementById('agUp').onclick=()=>{ const inp=document.createElement('input'); inp.type='file'; inp.accept='image/*'; inp.onchange=()=>{ const f=inp.files[0]; if(!f) return; const rd=new FileReader(); rd.onload=()=>{ const im=new Image(); im.onload=()=>{ const c=document.createElement('canvas'), k=Math.min(1,128/Math.max(im.width,im.height)); c.width=im.width*k; c.height=im.height*k; c.getContext('2d').drawImage(im,0,0,c.width,c.height); agLogo=c.toDataURL('image/png'); prev(); }; im.src=rd.result; }; rd.readAsDataURL(f); }; inp.click(); };
@@ -6937,7 +6989,7 @@ cardPhotoPick=function(){
 function openCrop(im){
   crop={im,z:1,x:0,y:0};
   showSheet(`<div class="cropper"><p class="ws-eye">Player card photo</p><h3>Move and zoom</h3>
-    <div class="crop-frame" id="cropFrame"><canvas id="cropCv" width="420" height="560"></canvas><img class="crop-cu" src="cu-logo.png" alt=""><div class="crop-name">${esc(String(S.name||'').toUpperCase())}</div></div>
+    <div class="crop-frame" id="cropFrame"><canvas id="cropCv" width="420" height="560"></canvas><img class="crop-cu" src="cu-logo.svg" alt=""><div class="crop-name">${esc(String(S.name||'').toUpperCase())}</div></div>
     <label class="crop-z"><span>−</span><input type="range" id="cropZ" min="1" max="3" step="0.01" value="1"><span>+</span></label>
     <p class="hint">Drag the photo to line it up. Pinch or use the slider to zoom.</p>
     <div class="crop-acts"><button type="button" class="btn ghost" id="cropNew">Pick another</button><button type="button" class="btn big" id="cropSave">Use this photo</button></div></div>`,'Crop your photo');
@@ -6969,16 +7021,16 @@ document.addEventListener('click',e=>{
 const _showCard5=showCard;
 showCard=function(st,opt){
   let h=_showCard5(st,opt);
-  h=h.replace(/<div class="sc-ph-none"><span>[^<]*<\/span><\/div>/,'<div class="sc-ph-none"><img src="cu-logo.png" alt="Cleary"></div>');
+  h=h.replace(/<div class="sc-ph-none"><span>[^<]*<\/span><\/div>/,'<div class="sc-ph-none"><img src="cu-logo.svg" alt="Cleary"></div>');
   if(opt&&opt.editable&&st.photo) h=h.replace(/(<button type="button" class="sc-up" data-cardphoto>[^<]*<\/button>)/,'<div class="sc-upr">$1<button type="button" class="sc-up sc-rm" data-cardphotox>Remove photo</button></div>');
   return h;
 };
 profileCard=function(){ return showCard(S,{editable:true}); };
 // leaderboard + clubhouse card: photo if there is one, otherwise the CU logo
-const _rl5=renderLeaders; renderLeaders=function(){ _rl5(); const ph=document.querySelector('.lb-ph'); if(ph&&!ph.querySelector('img')) ph.innerHTML='<img class="cu" src="cu-logo.png" alt="Cleary">';
-  document.querySelectorAll('.lb-av').forEach(x=>{ x.innerHTML='<img src="cu-logo.png" alt="">'; }); };
+const _rl5=renderLeaders; renderLeaders=function(){ _rl5(); const ph=document.querySelector('.lb-ph'); if(ph&&!ph.querySelector('img')) ph.innerHTML='<img class="cu" src="cu-logo.svg" alt="Cleary">';
+  document.querySelectorAll('.lb-av').forEach(x=>{ x.innerHTML='<img src="cu-logo.svg" alt="">'; }); };
 const _rc5=renderClubhouse; renderClubhouse=function(allowed){ _rc5(allowed); const av=document.querySelector('.club-ava'); if(!av) return;
-  const alert=av.querySelector('.club-alert'); av.innerHTML=(S&&S.photo&&!(isCoachUser()&&!VIEWING()))?`<img class="ph" src="${esc(S.photo)}" alt="">`:'<img class="cu" src="cu-logo.png" alt="Cleary">'; if(alert) av.appendChild(alert); };
+  const alert=av.querySelector('.club-alert'); av.innerHTML=(S&&S.photo&&!(isCoachUser()&&!VIEWING()))?`<img class="ph" src="${esc(S.photo)}" alt="">`:'<img class="cu" src="cu-logo.svg" alt="Cleary">'; if(alert) av.appendChild(alert); };
 
 // ---------- Clubhouse button: never over a pop-up, a form field or the keyboard ----------
 (function(){ const btn=document.querySelector('.to-club'); if(!btn) return;
@@ -6989,6 +7041,117 @@ const _rc5=renderClubhouse; renderClubhouse=function(allowed){ _rc5(allowed); co
   new MutationObserver(upd).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden','class']});
   upd();
 })();
+
+// ===== v6: Thanksgiving clubhouse decor + 7 AM reminder (web push) =====
+const TG_DAY='2026-11-26';
+function tgOn(){
+  const q=new URLSearchParams(location.search).get('tg'); if(q==='1') return true; if(q==='0') return false;
+  const d=new Date(), m=d.getMonth()+1, day=d.getDate();
+  return m===11 && day>=15;               // Nov 15 – Nov 30 every year
+}
+function tgBunting(w){
+  const swags=Math.max(2,Math.round(w/420)), sw=w/swags, flagW=26, out=[];
+  let path='';
+  for(let i=0;i<swags;i++){
+    const x0=i*sw, x1=x0+sw, cx=(x0+x1)/2, sag=30;
+    path+=`M${x0} 4 Q${cx} ${4+sag*2} ${x1} 4 `;
+    const n=Math.max(3,Math.floor(sw/(flagW+8)));
+    for(let k=1;k<n;k++){
+      const t=k/n, x=(1-t)*(1-t)*x0+2*(1-t)*t*cx+t*t*x1, y=(1-t)*(1-t)*4+2*(1-t)*t*(4+sag*2)+t*t*4;
+      const c=['#B30838','#FFFFFF','#0B2A5C'][k%3];
+      out.push(`<path d="M${(x-flagW/2).toFixed(1)} ${y.toFixed(1)} L${(x+flagW/2).toFixed(1)} ${y.toFixed(1)} L${x.toFixed(1)} ${(y+30).toFixed(1)}Z" fill="${c}" stroke="rgba(0,0,0,.25)" stroke-width="1"/>`);
+      if(c==='#0B2A5C') out.push(`<text x="${x.toFixed(1)}" y="${(y+15).toFixed(1)}" text-anchor="middle" font-size="11" fill="#fff">★</text>`);
+    }
+  }
+  return `<svg class="tg-bunting" width="${w}" height="76" viewBox="0 0 ${w} 76" aria-hidden="true"><path d="${path}" fill="none" stroke="#6B4A2A" stroke-width="2"/>${out.join('')}</svg>`;
+}
+const TG_LEAF='<svg viewBox="-12 -12 24 24"><path d="M0 -11 L2.5 -4 L9 -6 L6 0 L10 3 L3 4 L3.5 10 L0 6 L-3.5 10 L-3 4 L-10 3 L-6 0 L-9 -6 L-2.5 -4Z" fill="currentColor"/><path d="M0 -6 L0 11" stroke="rgba(0,0,0,.35)" stroke-width="1"/></svg>';
+const TG_PUMPKIN=s=>`<svg class="tg-pk" style="width:${s}px" viewBox="0 0 100 80" aria-hidden="true"><path d="M50 14 C46 4 52 0 56 2 L54 14Z" fill="#4E6B2A"/><path d="M54 10 C66 0 78 6 74 12 C68 10 60 12 56 16Z" fill="#6E8F3A"/>
+  <ellipse cx="30" cy="48" rx="24" ry="28" fill="#D9661C"/><ellipse cx="70" cy="48" rx="24" ry="28" fill="#D9661C"/><ellipse cx="50" cy="48" rx="22" ry="30" fill="#EE7F26"/>
+  <path d="M50 18 C40 30 40 66 50 78 M50 18 C60 30 60 66 50 78" stroke="#B4510F" stroke-width="2" fill="none"/><ellipse cx="44" cy="34" rx="5" ry="10" fill="rgba(255,255,255,.18)"/></svg>`;
+function tgDecor(){
+  const w=Math.min(innerWidth,2400);
+  const leaves=Array.from({length:12},(_,i)=>`<i class="tg-leaf" style="--l:${(i*83)%100}%;--d:${9+(i*7)%9}s;--dl:-${(i*13)%17}s;--c:${['#C0392B','#E67E22','#D4A017','#A0522D','#B30838'][i%5]};--s:${16+(i*5)%14}px">${TG_LEAF}</i>`).join('');
+  return `<div class="tg-deco" aria-hidden="true">${tgBunting(w)}<div class="tg-leaves">${leaves}</div>
+    <div class="tg-corner tg-left">${TG_PUMPKIN(86)}${TG_PUMPKIN(58)}</div><div class="tg-corner tg-right">${TG_PUMPKIN(64)}${TG_PUMPKIN(92)}</div></div>
+    <div class="tg-banner" role="img" aria-label="Happy Thanksgiving from the Cleary pitching staff">
+      <div class="tg-ribbon"><span class="tg-stars">★★★</span><b>HAPPY THANKSGIVING</b><span class="tg-stars">★★★</span></div>
+      <div class="tg-sub">From the Cleary pitching staff · Thu, Nov 26 🦃</div>
+    </div>`;
+}
+
+// ---- 7 AM reminder ----
+const VAPID_PUBLIC='BEuAvnEHuSsSpq3n1m63YwofWfNv_S--aQ57pMRvNRH__56iUYRPzqLIic5uJUt9gsA-_CN_FjLnz1lR2PAf51c';
+const pushIOS=()=>/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+const pushStandalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+const pushSupported=()=>'serviceWorker' in navigator&&'PushManager' in window&&'Notification' in window;
+function pushState(){
+  if(pushIOS()&&!pushStandalone()) return 'homescreen';
+  if(!pushSupported()) return 'unsupported';
+  if(Notification.permission==='denied') return 'denied';
+  if(Notification.permission==='granted'&&localStorage.getItem('cu_push_on')==='1') return 'on';
+  return 'off';
+}
+let SW_REG=null;
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').then(r=>{ SW_REG=r; }).catch(()=>{}); }
+function b64u(s){ const p='='.repeat((4-s.length%4)%4), b=atob((s+p).replace(/-/g,'+').replace(/_/g,'/')); return Uint8Array.from(b,c=>c.charCodeAt(0)); }
+async function pushSave(sub,on){
+  try{
+    if(!(window.CLOUD_MODE&&typeof sb!=='undefined'&&sb&&typeof ME!=='undefined'&&ME)) return true;   // preview copy: nothing to save
+    const j=sub.toJSON();
+    if(!on){ await sb.from('push_subs').delete().eq('endpoint',j.endpoint); return true; }
+    const r=await sb.from('push_subs').upsert({endpoint:j.endpoint,user_id:ME.id,name:(S&&S.name)||'',sub:j,tz:Intl.DateTimeFormat().resolvedOptions().timeZone||'America/Detroit',updated_at:new Date().toISOString()},{onConflict:'endpoint'});
+    return !r.error;
+  }catch(e){ return false; }
+}
+async function pushTurnOn(){
+  const perm=await Notification.requestPermission();
+  if(perm!=='granted'){ toast('Notifications are blocked. Turn them on in Settings.'); return pushSheet(); }
+  const reg=SW_REG||await navigator.serviceWorker.ready;
+  let sub=await reg.pushManager.getSubscription();
+  if(!sub) sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64u(VAPID_PUBLIC)});
+  const ok=await pushSave(sub,true);
+  if(!ok){ toast('Could not save the reminder. Try again in a minute.'); return; }
+  localStorage.setItem('cu_push_on','1');
+  reg.showNotification('Morning reminder is on ✅',{body:"You'll get a nudge at 7:00 AM to get your work in and log it.",icon:'icon-192.png',tag:'cleary-setup'});
+  closeSheet(); toast('Reminder on: every morning at 7:00'); pushChip();
+}
+async function pushTurnOff(){
+  try{ const reg=SW_REG||await navigator.serviceWorker.ready; const sub=await reg.pushManager.getSubscription(); if(sub){ await pushSave(sub,false); await sub.unsubscribe(); } }catch(e){}
+  localStorage.removeItem('cu_push_on'); closeSheet(); toast('Morning reminder off'); pushChip();
+}
+function pushSheet(){
+  const st=pushState();
+  const body={
+    homescreen:`<p>On iPhone, reminders only work from the app on your Home Screen.</p>
+      <ol class="push-steps"><li>Tap the <b>Share</b> button <span class="push-ic">⬆︎</span> at the bottom of Safari.</li><li>Tap <b>Add to Home Screen</b>, then <b>Add</b>.</li><li>Open <b>Cleary Pitching</b> from your Home Screen and tap the 🔔 again.</li></ol>`,
+    unsupported:`<p>This browser can't get reminders. Use Safari on iPhone (from the Home Screen) or Chrome on Android.</p>`,
+    denied:`<p>Notifications are blocked for this app. On iPhone go to <b>Settings › Notifications › Cleary Pitching</b> and turn on <b>Allow Notifications</b>, then come back and tap the 🔔.</p>`,
+    off:`<p>Get a nudge at <b>7:00 AM</b> every morning to get your throwing work in and log it. Tap it to jump straight to today's work.</p>`,
+    on:`<p>You're set. The reminder comes every morning at <b>7:00 AM</b>.</p>`
+  }[st];
+  const btn=st==='off'?'<button class="btn" type="button" id="pushOn">Turn on reminder</button>':st==='on'?'<button class="btn ghost" type="button" id="pushOff">Turn off</button>':'';
+  showSheet(`<div class="push-sheet"><p class="ws-eye">Morning reminder</p><h3>🔔 7:00 AM every day</h3>${body}${btn?`<div class="push-act">${btn}</div>`:""}</div>`,'Morning reminder');
+  const on=document.getElementById('pushOn'); if(on) on.onclick=()=>{ on.disabled=true; on.textContent='Turning on…'; pushTurnOn().catch(()=>{ toast('Something went wrong. Try again.'); on.disabled=false; on.textContent='Turn on reminder'; }); };
+  const off=document.getElementById('pushOff'); if(off) off.onclick=()=>pushTurnOff();
+}
+function pushChip(){
+  const el=document.getElementById('clubBody'); if(!el) return;
+  let c=el.querySelector('.push-chip'); if(!c){ c=document.createElement('button'); c.type='button'; c.className='push-chip'; c.onclick=pushSheet; el.appendChild(c); }
+  const on=pushState()==='on';
+  c.classList.toggle('on',on);
+  c.innerHTML=on?'<span>🔔</span><b>7 AM reminder on</b>':'<span>🔔</span><b>Get a 7 AM reminder</b>';
+}
+
+const _rc6=renderClubhouse; renderClubhouse=function(allowed){
+  _rc6(allowed);
+  const el=document.getElementById('clubBody'); if(!el) return;
+  if(tgOn()){ el.insertAdjacentHTML('beforeend',tgDecor()); document.body.classList.add('tg'); } else document.body.classList.remove('tg');
+  if(isCoachUser()&&!window.VIEW_AS) document.body.classList.add('club-coach'); else document.body.classList.remove('club-coach');
+  pushChip();
+};
+let _tgRs; addEventListener('resize',()=>{ clearTimeout(_tgRs); _tgRs=setTimeout(()=>{ const b=document.querySelector('.tg-bunting'); if(b) b.outerHTML=tgBunting(Math.min(innerWidth,2400)); },200); });
+if(location.hash==='#remind') setTimeout(pushSheet,900);
 
 // ===== Tabs =====
 function showTab(){
