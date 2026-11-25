@@ -1959,6 +1959,70 @@ body.on-club .to-club{display:none}
 .ta-checks li i{font-style:normal;font-weight:800;color:var(--muted)} .ta-checks li.y i{color:#1F8A4C} .ta-checks small{color:var(--muted)}
 .ta-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 @media (max-width:640px){ .ta-row{grid-template-columns:36px 1fr auto;gap:8px} .ta-row .ta-d{display:none} .ta-av{width:36px;height:36px} }
+
+/* ===================== ROUND 5 ===================== */
+/* no sideways scrolling anywhere (it made the fixed Clubhouse button drift on iPhone) */
+html,body{overflow-x:hidden;max-width:100%}
+#tab-personal-plan,#tab-personal-plan .content{overflow-x:clip}
+
+/* Clubhouse button: compact, out of the way, hides while typing or with a pop-up open */
+.to-club{transition:opacity .2s,transform .2s}
+.to-club.away{opacity:0;pointer-events:none;transform:translateY(20px)}
+main{padding-bottom:calc(90px + env(safe-area-inset-bottom))!important}
+@media (max-width:760px){
+  .to-club{left:auto!important;right:12px;bottom:calc(14px + env(safe-area-inset-bottom))!important;padding:0!important;width:56px;height:56px;justify-content:center;border-radius:50%!important;border:2px solid #fff!important}
+  .to-club span{display:none}
+  .to-club img{width:40px!important;height:28px!important;background:none!important}
+}
+
+/* LOG: today's card first */
+#tab-personal-plan .loghero{padding-bottom:4px}
+#tab-personal-plan .loghero .lh-stats{display:none}
+#tab-personal-plan .lg-more .lh-stats{display:grid}
+.lg-quick{display:flex;flex-direction:column;align-items:stretch;gap:6px;margin:12px 0 6px;padding:14px;border-radius:14px;background:rgba(29,60,120,.08);border:2px solid rgba(29,60,120,.25)}
+.lg-quick #logAsPlan{width:100%;min-height:58px;font-size:19px;border-radius:14px}
+.lg-quick #ppClearDay{align-self:flex-start}
+.lg-or{margin:2px 0 0;text-align:center;font:700 22px var(--pen);color:#1D3C78}
+#tab-personal-plan .lstep{margin-top:18px}
+#tab-personal-plan .lstep h3{font-size:26px!important}
+.lg-notes{margin-top:18px;border-top:2px dashed rgba(20,33,61,.18);padding-top:12px}
+.lg-notes summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;font:700 24px var(--pen);color:#1D3C78}
+.lg-notes summary::-webkit-details-marker{display:none}
+.lg-notes summary::after{content:"＋";margin-left:auto;font:700 22px var(--body)} .lg-notes[open] summary::after{content:"−"}
+.lg-notes summary small{font:600 13px var(--body);color:#4A5568}
+.lg-done{display:flex;flex-direction:column;gap:6px;margin-top:20px;padding-top:16px;border-top:2px dashed rgba(20,33,61,.18)}
+.lg-done .btn{width:100%;min-height:54px;font-size:18px;background:#1F8A4C!important;border-radius:14px}
+.lg-done span{text-align:center;font-size:12.5px;color:#4A5568}
+.lg-week{margin-top:14px}
+.lg-more{margin-top:18px;border-radius:14px;background:rgba(255,255,255,.35);border:2px solid rgba(29,60,120,.2)}
+.lg-more summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:14px 16px}
+.lg-more summary::-webkit-details-marker{display:none}
+.lg-more summary span{font:700 26px var(--pen);color:#1D3C78} .lg-more summary small{font-size:13px;color:#4A5568}
+.lg-more summary::after{content:"Show ▾";margin-left:auto;font:700 13px var(--body);color:#B30838} .lg-more[open] summary::after{content:"Hide ▴"}
+.lg-more-b{padding:0 12px 14px;display:flex;flex-direction:column;gap:12px}
+
+/* photo crop + remove */
+.cropper h3{margin:2px 0 10px;font:700 26px var(--display);text-transform:uppercase}
+.crop-frame{position:relative;width:min(300px,78vw);aspect-ratio:3/4;margin:0 auto;border-radius:10px;overflow:hidden;border:8px solid #DDE2EA;box-shadow:0 14px 30px rgba(0,0,0,.5);touch-action:none}
+.crop-frame canvas{width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+.crop-cu{position:absolute;left:10px;top:10px;width:46px;pointer-events:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
+.crop-name{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;background:linear-gradient(180deg,transparent,rgba(0,26,61,.92));color:#fff;font:700 20px var(--display);pointer-events:none}
+.crop-z{display:flex;align-items:center;gap:10px;max-width:320px;margin:14px auto 0} .crop-z input{flex:1} .crop-z span{font:700 20px var(--body);width:16px;text-align:center}
+.crop-acts{display:flex;gap:10px;margin-top:12px} .crop-acts .btn{flex:1}
+.sc-upr{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.sc-upr .sc-up{margin:14px 0 0}
+.sc-rm{border-color:rgba(242,165,182,.5)!important;color:#F2A5B6!important}
+@media (max-width:640px){ .sc-upr{flex-direction:column} .sc-upr .sc-up{margin:0} }
+
+/* CU logo where initials used to be */
+.sc-ph-none img{width:70%;filter:drop-shadow(0 4px 10px rgba(0,0,0,.6))}
+.lb-ph img.cu{width:80%;height:auto;object-fit:contain}
+.lb-av{background:#0B1C3A!important} .lb-av img{width:24px}
+.club-ava{overflow:visible}
+.club-ava img.cu{width:42px} .club-ava img.ph{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.sc-ph .sc-ph-none img{width:68%!important;height:auto!important;object-fit:contain!important}
+.lg-quick #logAsPlan{white-space:normal;line-height:1.15;padding:10px 14px;height:auto}
+.sc-ph:has(.sc-ph-none)+.sc-cu{display:none}
 @media (max-width:760px){ .tabs a[data-tab="leaders"]::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M8%2021h8%22%2F%3E%3Cpath%20d%3D%22M12%2017v4%22%2F%3E%3Cpath%20d%3D%22M7%204h10v5a5%205%200%200%201-10%200z%22%2F%3E%3Cpath%20d%3D%22M17%205h3v2a3%203%200%200%201-3%203%22%2F%3E%3Cpath%20d%3D%22M7%205H4v2a3%203%200%200%200%203%203%22%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M8%2021h8%22%2F%3E%3Cpath%20d%3D%22M12%2017v4%22%2F%3E%3Cpath%20d%3D%22M7%204h10v5a5%205%200%200%201-10%200z%22%2F%3E%3Cpath%20d%3D%22M17%205h3v2a3%203%200%200%201-3%203%22%2F%3E%3Cpath%20d%3D%22M7%205H4v2a3%203%200%200%200%203%203%22%2F%3E%3C%2Fsvg%3E")} }
 @media (max-width:760px){ .tabs a[data-tab="clubhouse"]::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E")} }
 </style>
@@ -6830,6 +6894,101 @@ document.addEventListener('click',e=>{
 
 // ---------- no Staff Report ----------
 (function(){ const a=document.querySelector('.tabs a[data-tab="report"]'); if(a) a.remove(); })();
+
+// =====================================================================
+// ROUND 5: easier logging, photo crop/remove, CU logo instead of initials, Clubhouse button fix
+// =====================================================================
+
+// ---------- LOG: today first, one tap to log, the rest folded away ----------
+(function(){
+  const c=document.querySelector('#tab-personal-plan .content'); if(!c) return;
+  const hero=c.querySelector('.loghero'), strip=document.getElementById('ppStrip'), weekP=strip&&strip.closest('section'),
+        card=c.querySelector('.logcard'), kpis=document.getElementById('ppKpis'), chart=document.getElementById('ppChart'), chartP=chart&&chart.closest('section'),
+        sections=[...c.querySelectorAll(':scope > section')], monthP=sections[sections.length-1], stats=document.getElementById('logStats');
+  if(!card||!weekP) return;
+  // 1. today's log card right under the title, the week strip under it as a day picker
+  hero.after(card); card.after(weekP);
+  weekP.classList.add('lg-week');
+  // 2. everything to look back at goes into one "My numbers" fold
+  const box=document.createElement('details'); box.className='lg-more';
+  box.innerHTML='<summary><span>📊 My numbers</span><small>Streak, throws, arm feel, charts and the month log</small></summary><div class="lg-more-b"></div>';
+  weekP.after(box); const b=box.querySelector('.lg-more-b');
+  [stats,kpis,chartP,monthP].forEach(x=>{ if(x&&x!==card&&x!==weekP) b.appendChild(x); });
+  // 3. the one-tap button is the first thing they see; notes stay folded until wanted
+  const qr=card.querySelector('.quickrow'); if(qr){ qr.classList.add('lg-quick'); const ld=card.querySelector('.logday'); (ld||card.firstChild).after(qr); }
+  const asPlan=document.getElementById('logAsPlan'); if(asPlan) asPlan.insertAdjacentHTML('afterend','<p class="lg-or">or fill in what was different below ↓</p>');
+  const notes=card.querySelector('.lstep[data-step="notes"]');
+  if(notes&&!notes.closest('details')){ const d=document.createElement('details'); d.className='lg-notes'; d.innerHTML='<summary><span class="snum">4</span>Notes & extra work <small>optional</small></summary>'; notes.before(d); d.appendChild(notes); notes.querySelector('h3').hidden=true; }
+  // 4. a big Done bar at the bottom of the card
+  card.insertAdjacentHTML('beforeend','<div class="lg-done"><button type="button" class="btn big" id="lgDone">✓ Save today\'s log</button><span>Everything saves as you tap. This just confirms it.</span></div>');
+})();
+document.addEventListener('click',e=>{
+  if(e.target.closest('#lgDone')){ try{ if(typeof saveLog==='function') saveLog(); }catch(err){} toast('Log saved. Nice work 👊'); const s=document.querySelector('#tab-personal-plan .logcard'); if(s) s.scrollIntoView({behavior:'smooth',block:'start'}); }
+});
+
+// ---------- photo: crop it, or remove it ----------
+let crop=null;
+cardPhotoPick=function(){
+  const inp=document.createElement('input'); inp.type='file'; inp.accept='image/*';
+  inp.onchange=()=>{ const f=inp.files&&inp.files[0]; if(!f) return; const rd=new FileReader();
+    rd.onload=()=>{ const im=new Image(); im.onload=()=>openCrop(im); im.src=rd.result; }; rd.readAsDataURL(f); };
+  inp.click();
+};
+function openCrop(im){
+  crop={im,z:1,x:0,y:0};
+  showSheet(`<div class="cropper"><p class="ws-eye">Player card photo</p><h3>Move and zoom</h3>
+    <div class="crop-frame" id="cropFrame"><canvas id="cropCv" width="420" height="560"></canvas><img class="crop-cu" src="cu-logo.png" alt=""><div class="crop-name">${esc(String(S.name||'').toUpperCase())}</div></div>
+    <label class="crop-z"><span>−</span><input type="range" id="cropZ" min="1" max="3" step="0.01" value="1"><span>+</span></label>
+    <p class="hint">Drag the photo to line it up. Pinch or use the slider to zoom.</p>
+    <div class="crop-acts"><button type="button" class="btn ghost" id="cropNew">Pick another</button><button type="button" class="btn big" id="cropSave">Use this photo</button></div></div>`,'Crop your photo');
+  const cv=document.getElementById('cropCv'), ctx=cv.getContext('2d'), W=420,H=560;
+  const base=()=>Math.max(W/im.width,H/im.height);
+  const clamp=()=>{ const s=base()*crop.z, mx=Math.max(0,(im.width*s-W)/2), my=Math.max(0,(im.height*s-H)/2); crop.x=Math.max(-mx,Math.min(mx,crop.x)); crop.y=Math.max(-my,Math.min(my,crop.y)); };
+  const draw=()=>{ clamp(); const s=base()*crop.z; ctx.fillStyle='#0B1C3A'; ctx.fillRect(0,0,W,H); ctx.drawImage(im,W/2-im.width*s/2+crop.x,H/2-im.height*s/2+crop.y,im.width*s,im.height*s); };
+  draw();
+  const z=document.getElementById('cropZ'); z.oninput=()=>{ crop.z=+z.value; draw(); };
+  let drag=null, pinch=null; const pts=new Map();
+  const k=()=>W/cv.getBoundingClientRect().width;
+  cv.addEventListener('pointerdown',e=>{ cv.setPointerCapture(e.pointerId); pts.set(e.pointerId,[e.clientX,e.clientY]); drag={x:e.clientX,y:e.clientY,ox:crop.x,oy:crop.y};
+    if(pts.size===2){ const [a,b2]=[...pts.values()]; pinch={d:Math.hypot(a[0]-b2[0],a[1]-b2[1]),z:crop.z}; } });
+  cv.addEventListener('pointermove',e=>{ if(!pts.has(e.pointerId)) return; pts.set(e.pointerId,[e.clientX,e.clientY]);
+    if(pts.size===2&&pinch){ const [a,b2]=[...pts.values()]; crop.z=Math.max(1,Math.min(3,pinch.z*Math.hypot(a[0]-b2[0],a[1]-b2[1])/pinch.d)); z.value=crop.z; draw(); return; }
+    if(drag){ crop.x=drag.ox+(e.clientX-drag.x)*k(); crop.y=drag.oy+(e.clientY-drag.y)*k(); draw(); } });
+  const up=e=>{ pts.delete(e.pointerId); if(pts.size<2) pinch=null; if(!pts.size) drag=null; else { const [p]=[...pts.values()]; drag={x:p[0],y:p[1],ox:crop.x,oy:crop.y}; } };
+  cv.addEventListener('pointerup',up); cv.addEventListener('pointercancel',up);
+  cv.addEventListener('wheel',e=>{ e.preventDefault(); crop.z=Math.max(1,Math.min(3,crop.z*(e.deltaY<0?1.06:0.94))); z.value=crop.z; draw(); },{passive:false});
+  document.getElementById('cropNew').onclick=()=>{ closeSheet(); cardPhotoPick(); };
+  document.getElementById('cropSave').onclick=()=>{ S.photo=cv.toDataURL('image/jpeg',.84); save(); if(VIEWING()&&typeof coachChanged==='function') coachChanged(window.VIEW_AS); closeSheet(); cardTab='stats'; renderProfile(); toast('Card photo saved'); };
+}
+document.addEventListener('click',e=>{
+  if(e.target.closest('[data-cardphotox]')){ const b=e.target.closest('[data-cardphotox]');
+    if(!b.dataset.arm){ b.dataset.arm=1; b.textContent='Tap again to remove'; setTimeout(()=>{ if(b.isConnected){ delete b.dataset.arm; b.textContent='Remove photo'; } },3000); return; }
+    delete S.photo; save(); if(VIEWING()&&typeof coachChanged==='function') coachChanged(window.VIEW_AS); renderProfile(); toast('Photo removed'); }
+},true);
+// card: CU logo instead of initials, and a Remove button next to Change photo
+const _showCard5=showCard;
+showCard=function(st,opt){
+  let h=_showCard5(st,opt);
+  h=h.replace(/<div class="sc-ph-none"><span>[^<]*<\/span><\/div>/,'<div class="sc-ph-none"><img src="cu-logo.png" alt="Cleary"></div>');
+  if(opt&&opt.editable&&st.photo) h=h.replace(/(<button type="button" class="sc-up" data-cardphoto>[^<]*<\/button>)/,'<div class="sc-upr">$1<button type="button" class="sc-up sc-rm" data-cardphotox>Remove photo</button></div>');
+  return h;
+};
+profileCard=function(){ return showCard(S,{editable:true}); };
+// leaderboard + clubhouse card: photo if there is one, otherwise the CU logo
+const _rl5=renderLeaders; renderLeaders=function(){ _rl5(); const ph=document.querySelector('.lb-ph'); if(ph&&!ph.querySelector('img')) ph.innerHTML='<img class="cu" src="cu-logo.png" alt="Cleary">';
+  document.querySelectorAll('.lb-av').forEach(x=>{ x.innerHTML='<img src="cu-logo.png" alt="">'; }); };
+const _rc5=renderClubhouse; renderClubhouse=function(allowed){ _rc5(allowed); const av=document.querySelector('.club-ava'); if(!av) return;
+  const alert=av.querySelector('.club-alert'); av.innerHTML=(S&&S.photo&&!(isCoachUser()&&!VIEWING()))?`<img class="ph" src="${esc(S.photo)}" alt="">`:'<img class="cu" src="cu-logo.png" alt="Cleary">'; if(alert) av.appendChild(alert); };
+
+// ---------- Clubhouse button: never over a pop-up, a form field or the keyboard ----------
+(function(){ const btn=document.querySelector('.to-club'); if(!btn) return;
+  const typing=()=>{ const a=document.activeElement; return !!a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&a.type!=='range'&&a.type!=='checkbox'; };
+  const sheetOpen=()=>[...document.querySelectorAll('.sheet')].some(s=>!s.hidden)||document.body.classList.contains('drawer-open');
+  const upd=()=>{ btn.classList.toggle('away',typing()||sheetOpen()); };
+  document.addEventListener('focusin',upd); document.addEventListener('focusout',()=>setTimeout(upd,50));
+  new MutationObserver(upd).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden','class']});
+  upd();
+})();
 
 // ===== Tabs =====
 function showTab(){
