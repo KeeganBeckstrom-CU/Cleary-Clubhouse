@@ -1497,30 +1497,10 @@ body[data-tab="coach-view"]{--sx:35%;--sy:11%;--mx:50%;--my:5%}
 :root{--hand:"Permanent Marker","Barlow Condensed",cursive;--pen:"Caveat","Segoe Print",cursive}
 
 /* light "paper" colors inside the whiteboard and the notepad, so every card in them reads as ink on a surface */
-#tab-home .content,#tab-personal-plan .content,.sheet-p:has(.corkboard) .pin{
+#tab-personal-plan .content,.sheet-p:has(.corkboard) .pin{
   --surface:rgba(255,255,255,.62);--bg:rgba(255,255,255,.5);--ink:#14213D;--muted:#4A5568;--line:rgba(20,33,61,.22);--accent:#B30838;
   --hi-bg:#FCE7E5;--hi-t:#B92D24;--mo-bg:#FDF4D6;--mo-t:#8A6400;--lt-bg:#E2F3E9;--lt-t:#1F6B43;--nt-bg:#E4EAF3;--nt-t:#3E5B85;--of-bg:#EEF0F3;--of-t:#5A5F69;--of:#C9CACD;
   color:var(--ink);color-scheme:light}
-
-/* ---------- MY WEEK: the whiteboard ---------- */
-body[data-tab="home"]:not(.on-club){background:linear-gradient(180deg,rgba(8,14,28,.78),rgba(8,14,28,.92)),url(tex/brick.jpg) center/520px auto,#0D1A33}
-#tab-home .content{position:relative;margin-top:22px;margin-bottom:70px;padding:34px 30px 64px;border-radius:6px;
-  background:linear-gradient(115deg,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 22%,rgba(255,255,255,0) 60%,rgba(255,255,255,.22) 72%,rgba(255,255,255,0) 80%),linear-gradient(rgba(250,251,253,.62),rgba(250,251,253,.62)),url(tex/whiteboard.jpg) center/100% 100%,#F2F1EC;
-  border:14px solid transparent;border-image:linear-gradient(180deg,#E6E8EC,#9EA4AE 40%,#C9CDD4 60%,#80868F) 1;
-  box-shadow:0 30px 60px rgba(0,0,0,.55),inset 0 0 0 1px rgba(0,0,0,.08)}
-#tab-home .content::after{content:"";position:absolute;left:-14px;right:-14px;bottom:-34px;height:22px;border-radius:0 0 6px 6px;
-  background:linear-gradient(180deg,#D5D9DF,#8D939C);box-shadow:0 10px 18px rgba(0,0,0,.45)}
-#tab-home .panel{background:rgba(255,255,255,.55);border:2px solid rgba(20,33,61,.16);box-shadow:3px 4px 0 rgba(20,33,61,.08);position:relative}
-#tab-home .panel::before{content:"";position:absolute;top:-9px;left:22px;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FF6B8A,#B30838 60%,#6E0322);box-shadow:0 3px 4px rgba(0,0,0,.35)}
-#tab-home .panel:nth-of-type(3n+2)::before{background:radial-gradient(circle at 35% 30%,#6FA0E8,#002B5C 60%,#00142E)}
-#tab-home .panel:nth-of-type(3n)::before{left:auto;right:22px;background:radial-gradient(circle at 35% 30%,#F4F4F4,#98999B 60%,#4E4F52)}
-#tab-home .h2,#tab-home h2,#tab-home h3{font-family:var(--hand)!important;font-weight:400!important;letter-spacing:.01em!important;color:#0B2A5B}
-#tab-home .hsec .h2,#tab-home .welcome .h2{font-size:34px}
-#tab-home .lbl{color:#B30838}
-#tab-home .btn:not(.ghost){background:#0B2A5B}
-#tab-home .wb-title{display:flex;align-items:center;gap:14px;margin:-6px 0 18px;font:400 40px/1 var(--hand);color:#0B2A5B;transform:rotate(-1.2deg)}
-#tab-home .wb-title img{width:70px;height:auto}
-#tab-home .wb-title span{border-bottom:4px solid #B30838;padding-bottom:4px}
 
 /* ---------- LOG: a yellow legal pad on the coffee table ---------- */
 body[data-tab="personal-plan"]:not(.on-club){background:radial-gradient(120% 90% at 30% 10%,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 100%),url(tex/wood.jpg) center/cover fixed,#2A1A0E}
@@ -1626,10 +1606,6 @@ body[data-tab="chat"]:not(.on-club){background:radial-gradient(90% 80% at 50% 40
 
 /* ---------- phones ---------- */
 @media (max-width:760px){
-  #tab-home .content{margin:14px 6px 60px;padding:24px 12px 40px;border-width:9px}
-  #tab-home .content::after{left:-9px;right:-9px;bottom:-26px;height:16px}
-  #tab-home .hsec .h2{font-size:28px}
-  #tab-home .wb-title{font-size:30px} #tab-home .wb-title img{width:52px}
   #tab-personal-plan .content{margin:26px 6px 60px;padding:62px 12px 30px 44px;background-position:-30px 0,0 66px,0 0}
   #tab-personal-plan .content::after{left:66px;top:16px;font-size:11px;letter-spacing:.1em}
   #tab-personal-plan .content::before{background-size:auto 22px,auto;background-position:12px 50%,0 0}
@@ -1882,6 +1858,107 @@ body.on-club .to-club{display:none}
 .ag-prev .tv-m{display:grid}
 .ag-match{margin:6px 0 0;font-size:13px;color:var(--muted)}
 .sheet{z-index:90!important} .sheet-p{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+
+/* ===================== ROUND 4 ===================== */
+/* no bottom tab bar on phones: the clubhouse is the menu */
+@media (max-width:760px){
+  header .tabs{display:none!important}
+  body{padding-bottom:0!important}
+  main{padding-bottom:calc(84px + env(safe-area-inset-bottom))!important}
+  .to-club{bottom:calc(16px + env(safe-area-inset-bottom))!important}
+}
+
+/* clearer close button on every pop-up */
+.sheet-x{width:auto!important;height:40px!important;padding:0 16px 0 12px!important;border-radius:999px!important;border:2px solid #fff!important;background:#B30838!important;color:#fff!important;
+  font:700 0/1 var(--body)!important;display:inline-flex;align-items:center;gap:6px;z-index:5;box-shadow:0 6px 16px rgba(0,0,0,.45);top:12px!important;right:12px!important}
+.sheet-x::before{content:"✕";font-size:18px;font-weight:800}
+.sheet-x::after{content:"Close";font-size:14px;letter-spacing:.04em}
+.sheet-x:hover{background:#D20D46!important}
+.sheet-p:has(.cardsheet) .sheet-x,.sheet-p:has(.corkboard) .sheet-x{position:sticky!important;float:right;margin:0 0 -40px}
+
+/* Set My Schedule / Weekly Schedule */
+#tab-home .content{max-width:1100px}
+.ss-head,.ws-head{margin:6px 0 16px}
+.ws-eye{margin:0;font:700 12px var(--display);letter-spacing:.18em;text-transform:uppercase;color:#F2A5B6}
+.ss-head h2,.ws-head h2{margin:2px 0 4px;font:700 40px/1 var(--display);letter-spacing:.02em;text-transform:uppercase;color:#fff}
+.ws-sub{margin:0;color:#AEB9CC;font-size:14.5px} .ws-sub a{color:#22C7F0}
+#tab-home .hweekp{background:linear-gradient(160deg,#102447,#0A1326);border:1px solid rgba(255,255,255,.1);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.wsched{color:#fff}
+.ws-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.ws-nav{display:flex;align-items:center;gap:8px}
+.ws-nav button{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#14213D;color:#fff;font-size:20px;cursor:pointer}
+.ws-nav button:disabled{opacity:.35}
+.ws-nav b{min-width:150px;text-align:center;font:700 16px var(--display);letter-spacing:.06em;text-transform:uppercase}
+.ws-nav b span{display:block;font:600 12.5px var(--body);letter-spacing:0;text-transform:none;color:#AEB9CC}
+.ws-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+.wsd{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:12px;background:#0E1830;border:1px solid rgba(255,255,255,.08);border-top:5px solid #5A6A8A;min-height:190px}
+.wsd.hi{border-top-color:#E5484D}.wsd.mo{border-top-color:#E8B10C}.wsd.lt{border-top-color:#3FBF7F}.wsd.nt,.wsd.of{border-top-color:#5A6A8A}
+.wsd.today{box-shadow:0 0 0 2px #22C7F0}
+.wsd-h b{display:block;font:700 18px var(--display);letter-spacing:.04em;text-transform:uppercase}
+.wsd-h span{font-size:12.5px;color:#AEB9CC} .wsd-h em{display:inline-block;margin-left:6px;font:700 11px var(--body);font-style:normal;color:#3FBF7F}
+.wsd-k{font:700 16px/1.15 var(--display);letter-spacing:.02em;color:#fff}
+.wsd-n{font-size:13px;color:#F2C94C;font-weight:700}
+.wsd ul{margin:0;padding-left:16px;font-size:13px;color:#C9D3E3} .wsd li{margin:2px 0}
+.wsd-off{margin:0;font-size:13px;color:#8994A8}
+.wsd-go{margin-top:auto;align-self:flex-start;padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#22C7F0;font:700 12px var(--body);cursor:pointer}
+@media (max-width:1000px){ .ws-grid{grid-template-columns:repeat(2,minmax(0,1fr))} .wsd{min-height:0} }
+@media (max-width:640px){ .ss-head h2,.ws-head h2{font-size:30px} .ws-grid{grid-template-columns:1fr} .ws-nav{width:100%;justify-content:space-between} }
+
+/* player card stats on phones: big readable tiles instead of a sideways table */
+.sc-tiles,.sc-ocards{display:none}
+@media (max-width:640px){
+  .sc-body .sc-tbl{display:none}
+  .sc-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .sc-tile{padding:12px;border-radius:10px;background:#121722;border:1px solid rgba(255,255,255,.08);border-top:3px solid #22C7F0}
+  .sc-tile span{display:block;font:700 12px var(--display);letter-spacing:.1em;color:#AEB9CC}
+  .sc-tile b{display:block;font:700 30px/1.05 var(--display);margin-top:2px}
+  .sc-tile em{display:inline-block;margin-top:2px;padding:1px 7px;border-radius:999px;background:rgba(179,8,56,.3);color:#F2A5B6;font:700 11.5px var(--body);font-style:normal}
+  .sc-tile small{display:block;margin-top:4px;font-size:12px;color:#8994A8}
+  .sc-ocards{display:flex;flex-direction:column;gap:10px}
+  .sc-oc{padding:12px;border-radius:10px;background:#121722;border:1px solid rgba(255,255,255,.08)}
+  .sc-oc.on{border-color:#22C7F0}
+  .sc-oc-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px}
+  .sc-oc-h b{font:700 18px var(--display);letter-spacing:.03em;text-transform:uppercase} .sc-oc-h span{font-size:13px;color:#AEB9CC}
+  .sc-oc-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 6px}
+  .sc-oc-g b{display:block;font:700 19px var(--display)} .sc-oc-g span{font-size:11.5px;color:#AEB9CC;text-transform:uppercase;letter-spacing:.06em}
+}
+
+/* the big + to add a game */
+.tvb-add{display:flex;align-items:center;gap:8px;padding:6px 16px 6px 6px;border:0;border-radius:999px;background:#B30838;color:#fff;font:700 15px var(--display);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.35)}
+.tvb-add i,.addplus i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff;color:#B30838;font:800 26px/1 var(--body);font-style:normal}
+.tvb-add:hover{background:#D20D46}
+.addplus{display:inline-flex;align-items:center;gap:8px;padding:0 14px 0 4px!important}
+.addplus i{width:28px;height:28px;font-size:22px}
+@media (max-width:640px){ .tvb-add{width:100%;justify-content:center} }
+
+/* chat: the phone fits the screen so the typing box is always in view */
+#tab-chat .content{margin-top:12px}
+.phone-scr{height:min(780px,calc(100dvh - 140px));min-height:460px!important}
+#tab-chat .chatlog,#tab-chat .chatlog.full{max-height:none!important;min-height:0!important;flex:1;overflow-y:auto}
+#tab-chat .phone-body{min-height:0;overflow:hidden}
+#tab-chat .phone-body .panel{min-height:0}
+@media (max-width:760px){ .phone-scr{height:calc(100dvh - 120px)} }
+
+/* Total Activity */
+.ta-list{display:flex;flex-direction:column;gap:6px}
+.ta-row{display:grid;grid-template-columns:40px 1fr auto 90px;align-items:center;gap:12px;width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-align:left;cursor:pointer}
+.ta-row:hover{border-color:#22C7F0}
+.ta-av{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:#002B5C;color:#fff;font:700 15px var(--display)}
+.ta-n b{display:block;font-size:15.5px} .ta-n small{color:var(--muted);font-size:12.5px}
+.ta-d{font-size:13px;color:var(--muted)} .ta-d b{color:var(--ink);font-size:15px} .ta-d em{font-style:normal;color:#1F8A4C;font-weight:700}
+.ta-t{text-align:right;font:700 13px var(--body);color:#B30838}
+.ta-quiet{margin-top:10px} .ta-quiet summary{cursor:pointer;color:var(--muted);font-weight:600;margin-bottom:8px}
+.tasheet h3{margin:2px 0 6px;font:700 28px var(--display);text-transform:uppercase}
+.tasheet h4{margin:16px 0 6px;font:700 14px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ta-dn{display:flex;align-items:center;gap:10px}
+.ta-dn button{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:18px;cursor:pointer} .ta-dn button:disabled{opacity:.35}
+.ta-dn b{font-size:15px}
+.ta-plan{margin-top:12px;padding:10px 12px;border-radius:10px;background:var(--bg);display:flex;gap:10px;align-items:baseline} .ta-plan span{font:700 12px var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ta-checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.ta-checks li{display:grid;grid-template-columns:24px 1fr auto;gap:8px;align-items:center;padding:8px 10px;border-radius:9px;background:var(--bg)}
+.ta-checks li i{font-style:normal;font-weight:800;color:var(--muted)} .ta-checks li.y i{color:#1F8A4C} .ta-checks small{color:var(--muted)}
+.ta-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+@media (max-width:640px){ .ta-row{grid-template-columns:36px 1fr auto;gap:8px} .ta-row .ta-d{display:none} .ta-av{width:36px;height:36px} }
 @media (max-width:760px){ .tabs a[data-tab="leaders"]::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M8%2021h8%22%2F%3E%3Cpath%20d%3D%22M12%2017v4%22%2F%3E%3Cpath%20d%3D%22M7%204h10v5a5%205%200%200%201-10%200z%22%2F%3E%3Cpath%20d%3D%22M17%205h3v2a3%203%200%200%201-3%203%22%2F%3E%3Cpath%20d%3D%22M7%205H4v2a3%203%200%200%200%203%203%22%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M8%2021h8%22%2F%3E%3Cpath%20d%3D%22M12%2017v4%22%2F%3E%3Cpath%20d%3D%22M7%204h10v5a5%205%200%200%201-10%200z%22%2F%3E%3Cpath%20d%3D%22M17%205h3v2a3%203%200%200%201-3%203%22%2F%3E%3Cpath%20d%3D%22M7%205H4v2a3%203%200%200%200%203%203%22%2F%3E%3C%2Fsvg%3E")} }
 @media (max-width:760px){ .tabs a[data-tab="clubhouse"]::before{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M3%2021h18%22%2F%3E%3Cpath%20d%3D%22M5%2021V8l7-4%207%204v13%22%2F%3E%3Cpath%20d%3D%22M10%2021v-6h4v6%22%2F%3E%3C%2Fsvg%3E")} }
 </style>
@@ -2771,7 +2848,7 @@ function startDatesPanel(){
     ${row('Marty’s Short Boxes','Week of Nov 16','2026-11-20','First one Fri 11/20 · 20 pitches · catcher stays at the plate, you move up on the mound (still on the slope) at 80% RPE')}
     ${row('Bullpens','Week of Nov 30','2026-12-04','First one Fri 12/4 · 20 pitches, building to 30')}
     ${row('Lives','Week of Jan 4','2027-01-04','30 pitches to start. Pen/Live days (your choice) are Fri 12/18, Sat 12/26 and Fri 1/1')}
-    <p class="hint">You can still add a Marty’s Short Box or bullpen earlier under Set My Week. You will get a reminder that it is ahead of the plan.</p></section>`;
+    <p class="hint">You can still add a Marty’s Short Box or bullpen earlier under Set My Schedule. You will get a reminder that it is ahead of the plan.</p></section>`;
 }
 
 // ---------- player profile: tap "Add" under height or weight ----------
@@ -3679,7 +3756,7 @@ function rttStepsHTML(p,k){
 document.addEventListener('DOMContentLoaded',()=>{ try{ LIB[NERVE_GLIDES]=[['Nerve Glides','Follow the video']]; LINKS.nerveglides='https://youtu.be/Xlom_o0Qt9g'; }catch(e){}
   try{ LIB[RTT_CARE]=[['Push Up Ts','per your sheet'],['Yoga Push Ups','per your sheet'],['Quadruped Arm Pumps','per your sheet'],['Side Plank Arm Pumps','per your sheet'],["Child's Pose Arm Lifts",'per your sheet'],["TRX I's, Y's, T's",'per your sheet'],['TRX Face Pulls','per your sheet'],['Windmills','per your sheet'],['OH TB Presses','per your sheet']];
   Object.assign(LINKS,{pushupts:'https://www.youtube.com/watch?v=-SgeUqvNzag',yogapushups:'https://www.youtube.com/watch?v=HvghDKEkT6w',childsposearmlifts:'https://www.youtube.com/watch?v=4fDatYPJgm8',trxisysts:'https://www.youtube.com/watch?v=1-TP3ZXK26A',trxfacepulls:'https://www.youtube.com/watch?v=Jbyoxer58j4',windmills:'https://www.youtube.com/watch?v=RX21NOL61OE',ohtbpresses:'https://www.youtube.com/watch?v=nwjQIADavj8'}); }catch(e){} });
-// Home panel for a pitcher who is not on the team throwing plan (replaces Set My Week)
+// Home panel for a pitcher who is not on the team throwing plan (replaces Set My Schedule)
 function rttPanel(){
   const isR=S.track==='rtt', ws=addDays(weekStart(todayD),7*hWeekOff), days=[...Array(7)].map((_,i)=>ymd(addDays(ws,i))), t=isR&&S.rttStart?rttDay(S,TODAY):null;
   const strip=days.map(k=>{ const p=dayPlan(k), d=parse(k); return `<div class="hday ${p?RX[p.intensity].cls:'of'} ${k===TODAY?'today':''}"><small>${DOW[d.getDay()][0]}<span>${d.getDate()}</span></small><i></i><b>${!p?'—':p.kind==='off'?'Off':p.kind==='nothrow'?'Care':p.kind==='pen'?'Pen':p.rtt&&p.rtt.total?p.rtt.total:'Throw'}</b><em>${(LOG.entries||{})[k]?'✓':''}</em></div>`; }).join('');
@@ -4006,7 +4083,7 @@ const NEWS = {
   items: [
     'Your coaches built a profile for every fall 2026 pitcher. Sign up with your email, then <b>pick your profile</b>.',
     'Your profile carries your hometown, high school, height, weight, mound velo, fall stats and Rapsodo pitch shapes. Fix anything that is off from <b>Edit profile</b>.',
-    'Set your bullpen, Marty’s Short Box, live and off days on <b>Home</b> under <b>Set My Week</b>. Marty’s Short Boxes start the week of 11/16, bullpens the week of 11/30 (first one Fri 12/4).',
+    'Set your bullpen, Marty’s Short Box, live and off days on <b>Home</b> under <b>Set My Schedule</b>. Marty’s Short Boxes start the week of 11/16, bullpens the week of 11/30 (first one Fri 12/4).',
     '<b>Daily Work</b> lays out today in order: before you throw, throw, then after you throw. Log it on <b>Log</b>.'
   ]
 };
@@ -4038,7 +4115,7 @@ const ROUTINE_INFO = {
 };
 const HELP = [
   ['What do I do each day?', `<p>Open <b>Daily Work</b>. It lists today's work in order: <b>1. Before you throw</b> (mobility, pre-throw, plyo), <b>2. Throw</b>, <b>3. After you throw</b> (rotator cuff, scap, mobility), then conditioning if it's on your card. Tap the ✓ on each routine when it's done.</p>`],
-  ['How do I set my bullpen and off days?', `<p>On <b>Home</b>, under <b>Set My Week</b>, tap the day and pick Bullpen, Marty’s Short Box, Live or Off day. Add the pitch count right there. Check <b>every week</b> to keep the same bullpen day. The rest of your week rebuilds around it.</p>`],
+  ['How do I set my bullpen and off days?', `<p>On <b>Home</b>, under <b>Set My Schedule</b>, tap the day and pick Bullpen, Marty’s Short Box, Live or Off day. Add the pitch count right there. Check <b>every week</b> to keep the same bullpen day. The rest of your week rebuilds around it.</p>`],
   ['When do Marty’s Short Boxes and bullpens start?', `<ul><li><b>Until the week of 11/16:</b> the plan has no mound work. Catch play and arm care.</li><li><b>Week of 11/16:</b> Marty’s Short Boxes start, 20 pitches, with a high-intensity throw 3 days before. </li><li><b>Week of 11/30:</b> bullpens start. Marty’s Short Box 20 on Tue 12/1, then your first bullpen (20) on Fri 12/4.</li><li><b>Week of 12/7:</b> Marty’s Short Box 20 + bullpen 20. Then two bullpens a week: 20 and 30 (week of 12/13), 25 and 30 (week of 12/20), 25 (week of 12/27).</li><li><b>Lives:</b> start the week of Jan 24.</li><li><b>Team off days:</b> Thanksgiving (11/26) and Christmas (12/25).</li></ul><p>You can still add a Marty’s Short Box or bullpen before those dates. The app just reminds you the plan doesn't have one yet, so let your coach know.</p><p>Every bullpen and Marty’s Short Box lists your pitches in order on <b>Daily Work</b> (Bullpen Script 1 to 4).</p>`],
   ['I have my own pitching coach. What do I pick?', `<p>Switch the toggle at the top to <b>Personal Program</b>. You still mark your bullpens and off days on Home and log every day, and your coach still sees your workload. Cleary's workouts and videos are hidden.</p>`],
   ['What do the colors mean?', `<ul><li><b>Red:</b> high intensity (live, bullpen, Marty’s Short Box or a hard throwing day)</li><li><b>Yellow:</b> moderate</li><li><b>Green:</b> light</li><li><b>Blue:</b> no throw</li><li><b>Gray:</b> off</li></ul><p>Tap any color in the color key for more.</p>`],
@@ -4048,7 +4125,7 @@ const HELP = [
   ['What is RPE %?', `<p>How hard a throw feels compared with your max effort. 100% is everything you have, 85–100% is game intent, 70–85% is firm but controlled, and 50–70% is easy catch play. Go by feel, not the radar gun.</p>`],
   ['How do I see how to do a drill?', `<p>On <b>Daily Work</b>, tap a routine to open it, then tap any drill with a ▶ to watch the video.</p>`],
   ['How do I update my profile?', `<p>Tap <b>Edit profile</b> on Home (or <b>Account</b> at the top). Add your phone number, height, weight, top velo and the pitches you throw.</p>`],
-  ['It says "Set by your coach". Can I change it?', `<p>Yes. Tap the day under Set My Week and pick what you need. Your newest change is the one that counts. Let your coach know why.</p>`],
+  ['It says "Set by your coach". Can I change it?', `<p>Yes. Tap the day under Set My Schedule and pick what you need. Your newest change is the one that counts. Let your coach know why.</p>`],
   ['How do I put the app on my home screen?', `<p><b>iPhone:</b> open the site in Safari, tap Share, then <b>Add to Home Screen</b>.<br><b>Android:</b> open it in Chrome, tap the ⋮ menu, then <b>Add to Home screen</b> or <b>Install app</b>.</p>`]
 ];
 
@@ -4105,7 +4182,7 @@ function weekEditor(){
   const strip=wdays.map((x,i)=>{ const pp=dayPlan(x), dd=parse(x), cls=pp?RX[pp.intensity].cls:'of', pk=pickedKind(c,i,x);
     return `<button type="button" class="hday ${cls} ${x===TODAY?'today':''} ${pk?'picked':''}" data-hday="${x}" aria-label="${DOWL[dd.getDay()]} ${dd.getMonth()+1}/${dd.getDate()}: ${pp?label(pp):'nothing set'}. Tap to change."><small>${DOW[dd.getDay()][0]}<span>${dd.getDate()}</span></small><i>${pk?'★':''}</i><b>${pp?(pp.pl?'P/L':SH[pp.kind]||label(pp)):'—'}</b><em>${lg[x]?'✓':''}</em></button>`; }).join('');
   return `<section class="panel stack hweekp">
-    <div class="toolbar"><div class="nav"><button type="button" id="hWkPrev" aria-label="Previous week" ${hWeekOff<=-4?'disabled':''}>‹</button><button type="button" id="hWkNext" aria-label="Next week" ${hWeekOff>=8?'disabled':''}>›</button><div><h2 class="h2" style="font-size:22px">Set My Week</h2><span class="wkl">${hWeekOff===0?'This week':hWeekOff===1?'Next week':'Week of'} · ${weekLabel(ws)}</span></div></div>${hWeekOff?'<button type="button" class="btn ghost sm" id="hWkNow">This week</button>':''}</div>
+    <div class="toolbar"><div class="nav"><button type="button" id="hWkPrev" aria-label="Previous week" ${hWeekOff<=-4?'disabled':''}>‹</button><button type="button" id="hWkNext" aria-label="Next week" ${hWeekOff>=8?'disabled':''}>›</button><div><h2 class="h2" style="font-size:22px">Set My Schedule</h2><span class="wkl">${hWeekOff===0?'This week':hWeekOff===1?'Next week':'Week of'} · ${weekLabel(ws)}</span></div></div>${hWeekOff?'<button type="button" class="btn ghost sm" id="hWkNow">This week</button>':''}</div>
     <p class="hint">${coachSet?'<b>Your coach set this week.</b> Ask him if you need a change.':personal?'Tap a day to mark your bullpens, Marty’s Short Boxes, lives and off days, so your coach can see your week.':(ymd(addDays(ws,6))<SB_START?`<b>The plan has no mound work this week.</b> Marty’s Short Boxes start ${fmtWk(SB_START)}, bullpens ${fmtWk(PEN_START)}. You can still tap a day to add one, or set an <b>off</b> day.`:`Tap a day to set your <b>bullpen</b>, <b>Marty’s Short Box</b>, ${wk>=LIVE_START?'<b>live</b>, ':''}or <b>off</b> day. The rest of the week builds around it.${ymd(addDays(ws,6))<PEN_START?` The plan's bullpens start ${fmtWk(PEN_START)}.`:''}`)}</p>
     <div class="hweek">${strip}</div>
     ${coachSet||personal?'':genPanel(ws,c)}
@@ -4579,7 +4656,7 @@ document.addEventListener('click',e=>{
   clearLogKeys(pick[0],pick[1]);
 });
 
-// ===== Coaches: Coach's View mode, or any pitcher's full page (view only; the head coach can change Set My Week) =====
+// ===== Coaches: Coach's View mode, or any pitcher's full page (view only; the head coach can change Set My Schedule) =====
 const HEAD_COACH_SHA256=['e72b622bba431ed486f5b31de8d82f1dfa17556dd4fc8cf6c854b3dc295ded63'];   // sha256 of the head coach's sign-in email (lowercase)
 let VIEW=null;
 const isCoachUser=()=>!!window.IS_COACH||isLocalDemo();
@@ -4625,7 +4702,7 @@ document.addEventListener('click',e=>{
   if(m.dataset.cmode==='coach') exitView();
   else if(!window.VIEW_AS){ const sel=document.getElementById('cbPlayer'); const first=staff().sort((x,y)=>x.a.name.localeCompare(y.a.name))[0]; if(first) viewAs(first.id); else if(sel) sel.focus(); }
 },true);
-// Block every edit while viewing a pitcher's page (Set My Week stays open for the head coach)
+// Block every edit while viewing a pitcher's page (Set My Schedule stays open for the head coach)
 const VIEW_LOCK='[data-tick],[data-dtick],#ovOff,#ovNT,#ovClear,#ovLight,#ovMod,[data-editprof],[data-prog],[data-script],#logAsPlan,#ppClearDay,#clrWeek,#clrMonth,#clrAll,#fWorkAdd,#tab-personal-plan [data-step],#tab-personal-plan [data-q],[data-arm],[data-tag],#fIntensity button,#fEvent button,#fPain button,#fPainAt button,#fWorkList button,#acctOpen,#acctOpenL';
 const WEEK_EDIT='[data-hday],#hGenOpen,#hResetWk,#hResetAll,[data-gen],#genGo';
 document.addEventListener('click',e=>{
@@ -6153,7 +6230,7 @@ function renderAccount(){
   document.getElementById('acctBody').innerHTML=`
     <p class="eyebrow2">${setup?'Before you start':'Account'}</p>
     <h3 id="acctH">${setup?'Set up your plan':esc(S.name||'Your account')}</h3>
-    ${setup?'<p class="hint" style="margin:4px 0 0">Your profile is set. Check it over, fix anything that is off, then set your bullpen and off days under Set My Week on Home.</p>':''}
+    ${setup?'<p class="hint" style="margin:4px 0 0">Your profile is set. Check it over, fix anything that is off, then set your bullpen and off days under Set My Schedule on Home.</p>':''}
     <div class="stack" style="gap:18px;margin-top:12px">
       <div class="field"><label for="aName">Full name</label><input id="aName" type="text" value="${esc(S.name||'')}" autocomplete="name" placeholder="First and last name"></div>
       ${coach?profileFields():`<div class="field"><span class="lbl">Class</span><div class="seg seg4" id="aGrade">${GRADES.map(g=>`<button type="button" data-v="${g[0]}" aria-pressed="${S.grade===g[0]}">${g[1]}</button>`).join('')}</div></div>
@@ -6175,7 +6252,7 @@ function renderAccount(){
   const pn=document.getElementById('aPen'); if(pn) pn.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; S.penDay=+b.dataset.v; delete S.penLater; clearCache(); save(); render(); const plb=document.getElementById('aPenLater'); if(plb) plb.remove(); const dnb=document.getElementById('aDone'); if(dnb) dnb.textContent='Build my schedule'; pn.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b)); document.getElementById('aSaved').textContent=`Bullpen day saved: ${DOWL[S.penDay]}`; const dn=document.getElementById('aDone'); if(dn) dn.disabled=needsSetup(); });
   if(g) g.addEventListener('click',()=>{ const dn=document.getElementById('aDone'); if(dn) dn.disabled=needsSetup(); });
   const pl=document.getElementById('aPenLater'); if(pl) pl.addEventListener('click',()=>{ S.penLater=!S.penLater; save(); renderAccount(); if(S.penLater) document.getElementById('aSaved').textContent=S.grade?'No problem. Pick it anytime from Account.':'Pick your class, then you\'re in.'; });
-  const dn=document.getElementById('aDone'); if(dn) dn.addEventListener('click',()=>{ if(needsSetup()) return; acctSetup=false; closeAccount(); goWeek(todayD); selected=TODAY; render(); hWeekOff=0; location.hash='home'; toast('Now set your bullpen and off days under Set My Week'); });
+  const dn=document.getElementById('aDone'); if(dn) dn.addEventListener('click',()=>{ if(needsSetup()) return; acctSetup=false; closeAccount(); goWeek(todayD); selected=TODAY; render(); hWeekOff=0; location.hash='home'; toast('Now set your bullpen and off days under Set My Schedule'); });
   const sw=document.getElementById('aSwitch'); if(sw) sw.onclick=()=>{ delete S.pid; save(); window.PICK_SKIPPED=false; try{ localStorage.removeItem('clyPickSkip'); }catch(e){} render(); openAccount(true); };
   wireProfileFields();
   [['aTown','town','Hometown'],['aHs','hs','High school'],['aPrev','prev','Previous college'],['aGrad','grad','Grad year']].forEach(([id,k,l])=>{ const el=document.getElementById(id); if(!el) return; el.addEventListener('input',()=>{ const v=el.value.trim(); if(k==='grad'){ S.grad=/^\d{4}$/.test(v)?+v:null; if(S.grad&&CLASS_BY_GRAD[S.grad]) S.grade=CLASS_BY_GRAD[S.grad]; } else S[k]=v; save(); document.getElementById('aSaved').textContent=l+' saved'; }); });
@@ -6193,7 +6270,7 @@ function renderPenBanner(){
   const el=document.getElementById('penBanner'); if(!el) return;
   const show=!window.IS_COACH && !isPersonal() && !hasPen() && !Object.keys(S.weeks||{}).length && ymd(addDays(viewWeek,6))>=PEN_START;
   el.hidden=!show; if(!show) return;
-  el.innerHTML=`<div><b>Set your bullpen day to build your schedule.</b><span class="hint"> Until then, this is the staff plan.</span></div><button type="button" class="btn sm" id="penPick">Set my week</button>`;
+  el.innerHTML=`<div><b>Set your bullpen day to build your schedule.</b><span class="hint"> Until then, this is the staff plan.</span></div><button type="button" class="btn sm" id="penPick">Set my schedule</button>`;
   document.getElementById('penPick').onclick=()=>{ hWeekOff=0; location.hash='home'; };
 }
 window.renderPenBanner=renderPenBanner;
@@ -6205,11 +6282,16 @@ const OUTINGS={"arbogast":[["Hartland",34,21,null,null,null,null,2,1,null,null,0
 
 // ===== Clubhouse: the main navigation screen when the app opens =====
 // Each stop in the room is a button. x/y are % of the 1600x900 room picture.
+// On Jan 4, 2027 "Set My Schedule" turns into the read-only "Weekly Schedule" the coaches build (?weekly=1 previews it)
+const WEEKLY_FROM='2027-01-04';
+const WEEKLY_PREVIEW=/[?&]weekly=1/.test(location.search);
+function weeklyMode(){ return WEEKLY_PREVIEW||TODAY>=WEEKLY_FROM; }
+function SCHED_LABEL(){ return weeklyMode()?'Weekly Schedule':'Set My Schedule'; }
 // x/y: spot on the wide picture (clubhouse.jpg). px/py: spot on the phone picture (clubhouse-phone.jpg). flip/pflip: label sits to the left of the dot.
 const CLUB_STOPS=[
   {k:'field', x:55.9, y:50, px:60.3,py:57, primary:true, pflip:true, p:['Today\'s Work','daily-work'], c:['Coach\'s View','coach-view']},
   {k:'tv',    x:39.8, y:37, px:32,  py:47, p:['Schedule','schedule'], c:['Schedule','schedule']},
-  {k:'board', x:72.7, y:45, px:85,  py:49.5, pflip:true, p:['My Week','home'], c:['Staff Report','report']},
+  {k:'board', x:72.7, y:45, px:85,  py:49.5, pflip:true, p:[SCHED_LABEL(),'home'], c:null},
   {k:'locker',x:88.5, y:50, px:52,  py:87, flip:true, p:['My Locker','profile'], c:['Clubhouse Home','home']},
   {k:'phone', x:30.4, y:82, px:16,  py:75, p:['Chat','chat'], c:['Chat','chat']},
   {k:'laptop',x:72.5, y:73, px:84,  py:69, pflip:true, p:['Log','personal-plan'], c:null},
@@ -6309,7 +6391,6 @@ function padBits(){
 }
 (function(){
   const rc=renderChat; renderChat=function(){ rc.apply(this,arguments); phoneWrap(); };
-  const rh=renderHome; renderHome=function(){ rh.apply(this,arguments); wbTitle(); };
   padBits();
 })();
 // Tapping a spot in the clubhouse walks you into it
@@ -6433,6 +6514,7 @@ function cardStats(r){
   return `<div class="sc-tbl"><table><thead><tr><th>SEASON</th>${cols.map(c=>`<th>${c[0]}</th>`).join('')}</tr></thead>
     <tbody><tr class="on"><td>${SEASONS.find(x=>x.k===cardSeason).short}</td>${cols.map(c=>`<td>${v(s,c)}${rank(c)}</td>`).join('')}</tr>
     <tr class="tm"><td>TEAM</td>${cols.map(c=>`<td>${c[1]&&tm[c[1]]!=null?tm[c[1]]+c[2]:c[1]==null&&tm.k&&tm.bb?(tm.k/tm.bb).toFixed(2):'—'}</td>`).join('')}</tr></tbody></table></div>
+    <div class="sc-tiles">${cols.map(c=>`<div class="sc-tile"><span>${c[0]}</span><b>${v(s,c)}</b>${rank(c)}<small>Team ${c[1]&&tm[c[1]]!=null?tm[c[1]]+c[2]:c[1]==null&&tm.k&&tm.bb?(tm.k/tm.bb).toFixed(2):'—'}</small></div>`).join('')}</div>
     <p class="sc-note">Live at-bats, fall 2026. <em>#</em> is his rank on the staff. Tap Leaderboards in the clubhouse to see everyone.</p>`;
 }
 function cardOutings(pid){
@@ -6444,6 +6526,7 @@ function cardOutings(pid){
   const recent=rows.map((o,i)=>[o,i]).reverse();
   return `<div class="sc-tbl"><table><thead><tr><th>#</th><th>OPP</th><th>PIT</th><th>S%</th><th>FPS%</th><th>1-1%</th><th>K</th><th>BB</th><th>CSW%</th><th>H-AB</th><th>BAA</th></tr></thead>
     <tbody>${recent.map(([o,i],n)=>line(o,i,n===0?'on1':'')).join('')}${line(tot,0,'totals')}</tbody></table></div>
+    <div class="sc-ocards">${recent.map(([o,i],n)=>`<div class="sc-oc ${n===0?'on':''}"><div class="sc-oc-h"><b>G${i+1} · ${esc(o[0])}</b><span>${o[1]??'—'} pitches</span></div><div class="sc-oc-g"><div><b>${p(o[2],o[1])}</b><span>Strike</span></div><div><b>${p(o[3],o[4])}</b><span>FPS</span></div><div><b>${p(o[5],o[6])}</b><span>1-1</span></div><div><b>${p(o[9],o[10])}</b><span>CSW</span></div><div><b>${o[7]??'—'}</b><span>K</span></div><div><b>${o[8]??'—'}</b><span>BB</span></div><div><b>${o[12]?o[11]+'-'+o[12]:'—'}</b><span>H-AB</span></div><div><b>${o[12]?baa(o[11]/o[12]):'—'}</b><span>BAA</span></div></div></div>`).join('')}</div>
     <p class="sc-note">Most recent first. From the coaches' fall chart: every live inning he threw.</p>`;
 }
 function cardQuirks(st,edit){
@@ -6558,6 +6641,7 @@ renderSchedule=function(){
   const half=Math.ceil(SCHED.length/2);
   el.innerHTML=`<section class="tvb">
     <div class="tvb-head"><div class="tvb-plate"><img src="cu-logo.png" alt=""><div><small>2027 CLEARY</small><b>COUGARS BASEBALL</b><span>SPRING SCHEDULE · WHAC</span></div></div>
+      ${typeof coachSide==='function'&&coachSide()?'<button type="button" class="tvb-add" data-addgame aria-label="Add a game"><i>+</i><span>Add game</span></button>':''}
       <div class="tvb-count"><div><b>${tot}</b><span>games</span></div><div><b>${home}</b><span>home</span></div><div><b>${away}</b><span>away</span></div><div class="w"><b>${whac}</b><span>WHAC</span></div></div></div>
     ${cdBlock()}
     <div class="tvb-grid"><div>${SCHED.slice(0,half).map(row).join('')}</div><div>${SCHED.slice(half).map(row).join('')}</div></div>
@@ -6588,7 +6672,7 @@ const _teamLogo=teamLogo; teamLogo=function(g,big){ if(g.img) return `<img class
 const _rs=renderSchedule; renderSchedule=function(){ syncExtraGames(); _rs();
   const el=document.getElementById('schedBody'); if(!el||!coachSide()) return;
   const xs=extraGames();
-  el.insertAdjacentHTML('beforeend',`<section class="addg"><div class="addg-h"><b>Coach tools</b><button type="button" class="sc-btn" data-addgame>+ Add a game</button></div>
+  el.insertAdjacentHTML('beforeend',`<section class="addg"><div class="addg-h"><b>Coach tools</b><button type="button" class="sc-btn addplus" data-addgame><i>+</i> Add a game</button></div>
     ${xs.length?`<div class="addg-list">${xs.map((g,i)=>`<div class="addg-row">${teamLogo(g)}<span><b>${esc(gameVs(g))}</b> · ${sRange(g)}${g.t?' · '+esc(g.t):''} · ${gamesIn(g)} ${gamesIn(g)===1?'game':'games'}</span><button type="button" data-delgame="${i}" aria-label="Remove">×</button></div>`).join('')}</div>`:'<p class="hint" style="color:#AEB9CC;margin:6px 0 0">Games you add show up for every pitcher.</p>'}</section>`);
 };
 let agLogo=null;
@@ -6633,12 +6717,126 @@ document.addEventListener('click',e=>{
 });
 try{ syncExtraGames(); }catch(e){}
 
+// =====================================================================
+// ROUND 4: Set My Schedule / Weekly Schedule, simpler Coach's View, chat opens at the keyboard
+// =====================================================================
+
+// ---------- Home becomes "Set My Schedule" (just the week setter); from Jan 4, 2027 a read-only "Weekly Schedule" ----------
+const wsRX=k=>({live:'Live',pen:'Bullpen',sb:"Marty's Short Box",toss:'High intent',mod:'Moderate',light:'Light',off:'Off day',nothrow:'No throw'})[k]||'';
+function weeklyView(){
+  const ws=addDays(weekStart(todayD),7*hWeekOff), days=[...Array(7)].map((_,i)=>ymd(addDays(ws,i))), lg=LOG.entries||{};
+  const card=x=>{ const p=dayPlan(x), d=parse(x), rx=p?RX[p.intensity]:RX.off, items=p&&typeof acNames==='function'?acNames(p):[];
+    return `<div class="wsd ${rx.cls} ${x===TODAY?'today':''}">
+      <div class="wsd-h"><b>${DOWL[d.getDay()]}</b><span>${d.getMonth()+1}/${d.getDate()}${x===TODAY?' · Today':''}</span>${lg[x]?'<em>✓ Logged</em>':''}</div>
+      <div class="wsd-k">${p?esc(label(p)):'Nothing set'}</div>
+      ${p&&p.pitches?`<div class="wsd-n">${p.pitches} pitches</div>`:''}
+      ${items.length?`<ul>${items.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`:p&&p.kind==='off'?'<p class="wsd-off">Rest up. No throwing.</p>':''}
+      ${x>=TODAY?`<button type="button" class="wsd-go" data-wsgo="${x}">${x===TODAY?"Open today's work":'See the day'} ›</button>`:''}
+    </div>`; };
+  return `<section class="wsched">
+    <div class="ws-head"><div><p class="ws-eye">Cleary pitching</p><h2>Weekly Schedule</h2><p class="ws-sub">Your week, set by Coach Beckstrom and Coach Marty. Questions? Text them from the phone in the clubhouse.</p></div>
+      <div class="ws-nav"><button type="button" id="wsPrev" aria-label="Previous week" ${hWeekOff<=-4?'disabled':''}>‹</button><b>${hWeekOff===0?'This week':hWeekOff===1?'Next week':hWeekOff===-1?'Last week':'Week of'}<span>${weekLabel(ws)}</span></b><button type="button" id="wsNext" aria-label="Next week" ${hWeekOff>=8?'disabled':''}>›</button></div></div>
+    <div class="ws-grid">${days.map(card).join('')}</div></section>`;
+}
+const _rh4=renderHome;
+renderHome=function(){
+  _rh4.apply(this,arguments);
+  const el=document.getElementById('homeBody'); if(!el||document.getElementById('tab-home').hidden) return;
+  { const tl=document.querySelector('.tabs a[data-tab="home"] .tl'); if(tl) tl.textContent=(showCoachHome()&&!VIEWING())?'Home':(VIEWING()?'His Schedule':SCHED_LABEL()); }
+  if(showCoachHome()&&!VIEWING()) return;           // coaches' own home is unchanged
+  const players=!VIEWING();
+  if(players&&weeklyMode()){                        // players from Jan 4: read-only week
+    el.innerHTML=weeklyView();
+    const p=document.getElementById('wsPrev'), n=document.getElementById('wsNext');
+    if(p) p.onclick=()=>{ hWeekOff--; renderHome(); }; if(n) n.onclick=()=>{ hWeekOff++; renderHome(); };
+    return;
+  }
+  // Set My Schedule: only the week setter stays (coaches viewing a pitcher keep setting his week here)
+  const keep=el.querySelector('.hweekp');
+  [...el.children].forEach(ch=>{ if(ch!==keep&&!ch.contains(keep)) ch.remove(); });
+  const h=keep&&keep.querySelector('h2'); if(h) h.textContent=VIEWING()?'His week':'Your week';
+  if(keep&&!el.querySelector('.ss-head')) el.insertAdjacentHTML('afterbegin',`<div class="ss-head"><p class="ws-eye">Cleary pitching</p><h2>${VIEWING()?esc(cvName(S.name))+"'s Schedule":'Set My Schedule'}</h2><p class="ws-sub">${VIEWING()?`Set his week here. From ${fmtWk(WEEKLY_FROM)} his page turns into a Weekly Schedule built from what you and Marty put in. <a href="?weekly=1#home">Preview it</a>`:'Tap a day to mark your off days, bullpens, Marty’s Short Boxes and lives. Your daily work is built from this.'}</p></div>`);
+};
+document.addEventListener('click',e=>{ const b=e.target.closest('[data-wsgo]'); if(!b) return; selected=b.dataset.wsgo; goWeek(parse(selected)); location.hash='daily-work'; });
+
+// ---------- Help: no more "own pitching coach" card ----------
+for(let i=HELP.length-1;i>=0;i--) if(/own pitching coach/i.test(HELP[i][0])) HELP.splice(i,1);
+
+// ---------- Chat: open with the typing box in view ----------
+function chatToKeyboard(){
+  const ph=document.querySelector('#tab-chat .phone'); if(!ph) return;
+  const top=ph.getBoundingClientRect().top+window.scrollY-12; window.scrollTo({top,behavior:'auto'});
+  const log=document.getElementById('chatLogT'); if(log) log.scrollTop=log.scrollHeight;
+  const inp=document.getElementById('chatInT'); if(inp&&matchMedia('(hover:hover)').matches) try{ inp.focus({preventScroll:true}); }catch(e){}
+}
+const _rc4=renderChat; renderChat=function(){ _rc4.apply(this,arguments); if(!document.getElementById('tab-chat').hidden) requestAnimationFrame(chatToKeyboard); };
+
+// ---------- Coach's View: Today · Total Activity · Workload · Plans ----------
+(function(){
+  const nav=document.getElementById('cvNav'); if(!nav) return;
+  ['activity','analytics','week'].forEach(v=>{ const b=nav.querySelector(`button[data-v="${v}"]`); if(b) b.remove(); });
+  const td=nav.querySelector('button[data-v="today"]');
+  if(td) td.insertAdjacentHTML('afterend','<button type="button" data-v="total">Total Activity</button>');
+  const pb=nav.querySelector('button[data-v="pitchers"]'); if(pb) pb.textContent='Workload';
+  if(['activity','analytics','week'].includes(cvTab)) cvTab='today';
+})();
+const _rcv4=renderCoach;
+renderCoach=function(){ if(['activity','analytics','week'].includes(cvTab)) cvTab='today'; if(cvTab==='total'){ coachTotal(); return; } _rcv4.apply(this,arguments); };
+window.renderCoachView=renderCoach;
+function lastActive(a){
+  let t=a.syncAt||'';
+  for(const d in (a.doneAt||{})) for(const n in a.doneAt[d]) if(a.doneAt[d][n]>t) t=a.doneAt[d][n];
+  const lk=Object.keys(a.logs||{}).sort().pop(); if(lk){ const e=a.logs[lk]; const at=(e&&(e.at||e.t))||(lk+'T12:00:00'); if(at>t) t=at; }
+  return t;
+}
+function coachTotal(){
+  seedExamples();
+  document.querySelectorAll('#cvNav button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v==='total'));
+  const list=staff().filter(({a})=>!a.ex||!window.CLOUD_MODE).map(({id,a})=>{ const t=lastActive(a), p=planFor(a,TODAY), names=p?acNames(p):[], done=((a.done&&a.done[TODAY])||[]).filter(n=>names.includes(n));
+    return {id,a,t,p,names,done,log:!!(a.logs&&a.logs[TODAY])}; }).sort((x,y)=>(y.t||'').localeCompare(x.t||'')||x.a.name.localeCompare(y.a.name));
+  const active=list.filter(r=>r.t), quiet=list.filter(r=>!r.t);
+  const row=r=>`<button type="button" class="ta-row" data-taday="${r.id}">
+      <span class="ta-av">${esc(initials(r.a.name))}</span>
+      <span class="ta-n"><b>${esc(r.a.name)}</b><small>${r.p?esc(label(r.p)):'Nothing scheduled'} today</small></span>
+      <span class="ta-d">${r.names.length?`<b>${r.done.length}/${r.names.length}</b> done`:'Off'}${r.log?' · <em>logged</em>':''}</span>
+      <span class="ta-t">${r.t?acAgo(r.t):'—'}</span></button>`;
+  document.getElementById('cvBody').innerHTML=`<section class="panel stack">
+    <div class="toolbar"><h2 class="h2">Total Activity</h2><span class="hint">Most recently active first. Tap a name to see his day.</span></div>
+    <div class="ta-list">${active.map(row).join('')||'<p class="hint">Nobody has been active yet.</p>'}</div>
+    ${quiet.length?`<details class="ta-quiet" ${active.length?"":"open"}><summary>${quiet.length} with no activity yet</summary><div class="ta-list">${quiet.map(row).join('')}</div></details>`:''}
+  </section>`;
+}
+let taDay=null;
+function openDaySheet(id,k){
+  const a=C.athletes[id]; if(!a) return; k=k||TODAY; taDay={id,k};
+  const p=planFor(a,k), names=p?acNames(p):[], done=(a.done&&a.done[k])||[], at=(a.doneAt&&a.doneAt[k])||{}, lg=a.logs&&a.logs[k];
+  const d=parse(k), canNext=k<TODAY;
+  showSheet(`<div class="tasheet">
+    <div class="ta-sh"><p class="ws-eye">What he did</p><h3>${esc(a.name)}</h3>
+      <div class="ta-dn"><button type="button" data-tamove="-1" aria-label="Previous day">‹</button><b>${k===TODAY?'Today':DOWL[d.getDay()]} · ${d.getMonth()+1}/${d.getDate()}</b><button type="button" data-tamove="1" ${canNext?'':'disabled'} aria-label="Next day">›</button></div></div>
+    <div class="ta-plan"><span>Plan</span><b>${p?esc(label(p)):'Nothing scheduled'}</b></div>
+    <h4>Checked off</h4>
+    ${names.length?`<ul class="ta-checks">${names.map(n=>`<li class="${done.includes(n)?'y':''}"><i>${done.includes(n)?'✓':'○'}</i><span>${esc(n)}</span><small>${at[n]?acTime(at[n]):done.includes(n)?'done':'not yet'}</small></li>`).join('')}</ul>`:'<p class="hint">Off day. Nothing to check off.</p>'}
+    <h4>Daily log</h4>
+    ${lg?`<div class="tablewrap"><table>${LOG_HEAD(true)}<tbody>${logRows(a.logs,[k],true)}</tbody></table></div>`:`<p class="hint">${k===TODAY?'No log yet today.':'Nothing logged that day.'}</p>`}
+    <div class="ta-acts"><button type="button" class="btn sm" data-chat="${id}">💬 Message ${esc(cvName(a.name))}</button><button type="button" class="btn ghost sm" data-taopen="${id}">Full workload ›</button></div>
+  </div>`,`${a.name}: ${k}`);
+}
+document.addEventListener('click',e=>{
+  const r=e.target.closest('[data-taday]'); if(r){ openDaySheet(r.dataset.taday,TODAY); return; }
+  const m=e.target.closest('[data-tamove]'); if(m&&taDay){ const k=ymd(addDays(parse(taDay.k),+m.dataset.tamove)); if(k<=TODAY) openDaySheet(taDay.id,k); return; }
+  const o=e.target.closest('[data-taopen]'); if(o){ closeSheet(); openPitcher(o.dataset.taopen); return; }
+},true);
+
+// ---------- no Staff Report ----------
+(function(){ const a=document.querySelector('.tabs a[data-tab="report"]'); if(a) a.remove(); })();
+
 // ===== Tabs =====
 function showTab(){
   const t=(location.hash||'#clubhouse').slice(1);
   const coachU=isCoachUser(), viewing=!!window.VIEW_AS;
   const PT=['clubhouse','home','daily-work','personal-plan','schedule','leaders','chat','profile'];   // Month and Lift tabs removed (lifting lives in its own app)
-  const allowed=coachU?(viewing?PT:['clubhouse','home','schedule','leaders','chat','report','coach-view']):PT;
+  const allowed=coachU?(viewing?PT:['clubhouse','home','schedule','leaders','chat','coach-view']):PT;
   document.querySelectorAll('.tabs a[data-tab]').forEach(a=>{ a.hidden=!allowed.includes(a.dataset.tab); });
   renderModeBar();
   const tab=allowed.includes(t)?t:'clubhouse';
