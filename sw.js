@@ -2,6 +2,20 @@
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
 
+// Always load the newest app from the network (bypassing the 10-minute GitHub cache); fall back to the last copy when offline.
+self.addEventListener('fetch', e => {
+  const r = e.request;
+  if (r.method !== 'GET') return;
+  const u = new URL(r.url);
+  if (u.origin !== self.location.origin) return;
+  if (r.mode === 'navigate' || u.pathname.endsWith('.html') || u.pathname.endsWith('version.json')) {
+    e.respondWith(fetch(r.url, { cache: 'no-store', credentials: 'same-origin' }).then(res => {
+      if (res.ok && r.mode === 'navigate') { const c = res.clone(); caches.open('cu-shell').then(ch => ch.put(r.url, c)); }
+      return res;
+    }).catch(() => caches.match(r.url).then(m => m || fetch(r))));
+  }
+});
+
 self.addEventListener('push', e => {
   let d = {};
   try { d = e.data ? e.data.json() : {}; } catch (_) { d = { body: e.data && e.data.text() }; }

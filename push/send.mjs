@@ -1,14 +1,16 @@
-// Sends the 7:00 AM (Michigan time) reminder to every pitcher who turned it on.
+// Sends the 9:00 AM (Michigan time) reminder to every pitcher who turned it on.
 import webpush from 'web-push';
-const { SUPABASE_URL, SUPABASE_SERVICE_KEY, VAPID_PUBLIC, VAPID_PRIVATE, SCHEDULE = '', FORCE = '' } = process.env;
-if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY || !VAPID_PUBLIC || !VAPID_PRIVATE) { console.log('Secrets not set yet, nothing sent.'); process.exit(0); }
+const { SUPABASE_SERVICE_KEY, VAPID_PRIVATE, SCHEDULE = '', FORCE = '' } = process.env;
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://bxnxbyulbjnlkydcmppn.supabase.co';
+const VAPID_PUBLIC = process.env.VAPID_PUBLIC || 'BEuAvnEHuSsSpq3n1m63YwofWfNv_S--aQ57pMRvNRH__56iUYRPzqLIic5uJUt9gsA-_CN_FjLnz1lR2PAf51c';
+if (!SUPABASE_SERVICE_KEY || !VAPID_PRIVATE) { console.log('Secrets not set yet, nothing sent.'); process.exit(0); }
 
-// Two runs are scheduled (10:45 and 11:45 UTC). Only the one that lands just before 7 AM in Michigan sends,
+// Two runs are scheduled (12:45 and 13:45 UTC). Only the one that lands just before 9 AM in Michigan sends,
 // so it stays at 7 AM through daylight saving changes even if GitHub starts the run a few minutes late.
 const now = new Date();
 const detHour = Number(new Intl.DateTimeFormat('en-US', { timeZone: 'America/Detroit', hour: 'numeric', hourCycle: 'h23' }).format(now));
 const offset = ((detHour - now.getUTCHours()) + 24) % 24 - 24;          // -4 in summer, -5 in winter
-const want = offset === -4 ? '45 10 * * *' : '45 11 * * *';
+const want = offset === -4 ? '45 12 * * *' : '45 13 * * *';
 if (!FORCE && SCHEDULE && SCHEDULE !== want) { console.log(`Skipping ${SCHEDULE}; today's send is the ${want} run.`); process.exit(0); }
 
 const md = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Detroit', month: '2-digit', day: '2-digit' }).format(now); // MM-DD

@@ -2,6 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
 <script>/* STEP 3: paste your Supabase Project URL and Publishable key between the quotes on the next 2 lines */
+window.APP_BUILD='20261125152951';
 window.WLN_SUPABASE_URL = '';
 window.WLN_SUPABASE_KEY = '';
 </script>
@@ -7042,7 +7043,7 @@ const _rc5=renderClubhouse; renderClubhouse=function(allowed){ _rc5(allowed); co
   upd();
 })();
 
-// ===== v6: Thanksgiving clubhouse decor + 7 AM reminder (web push) =====
+// ===== v6: Thanksgiving clubhouse decor + 9 AM reminder (web push) =====
 const TG_DAY='2026-11-26';
 function tgOn(){
   const q=new URLSearchParams(location.search).get('tg'); if(q==='1') return true; if(q==='0') return false;
@@ -7080,7 +7081,7 @@ function tgDecor(){
     </div>`;
 }
 
-// ---- 7 AM reminder ----
+// ---- 9 AM reminder ----
 const VAPID_PUBLIC='BEuAvnEHuSsSpq3n1m63YwofWfNv_S--aQ57pMRvNRH__56iUYRPzqLIic5uJUt9gsA-_CN_FjLnz1lR2PAf51c';
 const pushIOS=()=>/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 const pushStandalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
@@ -7113,8 +7114,8 @@ async function pushTurnOn(){
   const ok=await pushSave(sub,true);
   if(!ok){ toast('Could not save the reminder. Try again in a minute.'); return; }
   localStorage.setItem('cu_push_on','1');
-  reg.showNotification('Morning reminder is on ✅',{body:"You'll get a nudge at 7:00 AM to get your work in and log it.",icon:'icon-192.png',tag:'cleary-setup'});
-  closeSheet(); toast('Reminder on: every morning at 7:00'); pushChip();
+  reg.showNotification('Morning reminder is on ✅',{body:"You'll get a nudge at 9:00 AM to get your work in and log it.",icon:'icon-192.png',tag:'cleary-setup'});
+  closeSheet(); toast('Reminder on: every morning at 9:00'); pushChip();
 }
 async function pushTurnOff(){
   try{ const reg=SW_REG||await navigator.serviceWorker.ready; const sub=await reg.pushManager.getSubscription(); if(sub){ await pushSave(sub,false); await sub.unsubscribe(); } }catch(e){}
@@ -7127,11 +7128,11 @@ function pushSheet(){
       <ol class="push-steps"><li>Tap the <b>Share</b> button <span class="push-ic">⬆︎</span> at the bottom of Safari.</li><li>Tap <b>Add to Home Screen</b>, then <b>Add</b>.</li><li>Open <b>Cleary Pitching</b> from your Home Screen and tap the 🔔 again.</li></ol>`,
     unsupported:`<p>This browser can't get reminders. Use Safari on iPhone (from the Home Screen) or Chrome on Android.</p>`,
     denied:`<p>Notifications are blocked for this app. On iPhone go to <b>Settings › Notifications › Cleary Pitching</b> and turn on <b>Allow Notifications</b>, then come back and tap the 🔔.</p>`,
-    off:`<p>Get a nudge at <b>7:00 AM</b> every morning to get your throwing work in and log it. Tap it to jump straight to today's work.</p>`,
-    on:`<p>You're set. The reminder comes every morning at <b>7:00 AM</b>.</p>`
+    off:`<p>Get a nudge at <b>9:00 AM</b> every morning to get your throwing work in and log it. Tap it to jump straight to today's work.</p>`,
+    on:`<p>You're set. The reminder comes every morning at <b>9:00 AM</b>.</p>`
   }[st];
   const btn=st==='off'?'<button class="btn" type="button" id="pushOn">Turn on reminder</button>':st==='on'?'<button class="btn ghost" type="button" id="pushOff">Turn off</button>':'';
-  showSheet(`<div class="push-sheet"><p class="ws-eye">Morning reminder</p><h3>🔔 7:00 AM every day</h3>${body}${btn?`<div class="push-act">${btn}</div>`:""}</div>`,'Morning reminder');
+  showSheet(`<div class="push-sheet"><p class="ws-eye">Morning reminder</p><h3>🔔 9:00 AM every day</h3>${body}${btn?`<div class="push-act">${btn}</div>`:""}</div>`,'Morning reminder');
   const on=document.getElementById('pushOn'); if(on) on.onclick=()=>{ on.disabled=true; on.textContent='Turning on…'; pushTurnOn().catch(()=>{ toast('Something went wrong. Try again.'); on.disabled=false; on.textContent='Turn on reminder'; }); };
   const off=document.getElementById('pushOff'); if(off) off.onclick=()=>pushTurnOff();
 }
@@ -7140,7 +7141,7 @@ function pushChip(){
   let c=el.querySelector('.push-chip'); if(!c){ c=document.createElement('button'); c.type='button'; c.className='push-chip'; c.onclick=pushSheet; el.appendChild(c); }
   const on=pushState()==='on';
   c.classList.toggle('on',on);
-  c.innerHTML=on?'<span>🔔</span><b>7 AM reminder on</b>':'<span>🔔</span><b>Get a 7 AM reminder</b>';
+  c.innerHTML=on?'<span>🔔</span><b>9 AM reminder on</b>':'<span>🔔</span><b>Get a 9 AM reminder</b>';
 }
 
 const _rc6=renderClubhouse; renderClubhouse=function(allowed){
@@ -7152,6 +7153,27 @@ const _rc6=renderClubhouse; renderClubhouse=function(allowed){
 };
 let _tgRs; addEventListener('resize',()=>{ clearTimeout(_tgRs); _tgRs=setTimeout(()=>{ const b=document.querySelector('.tg-bunting'); if(b) b.outerHTML=tgBunting(Math.min(innerWidth,2400)); },200); });
 if(location.hash==='#remind') setTimeout(pushSheet,900);
+
+// ---- auto-update: when a player comes back to the app, load the newest version without closing it ----
+(function(){
+  const cur=window.APP_BUILD; if(!cur) return;
+  let busy=false, last=0;
+  async function check(){
+    if(busy||Date.now()-last<20000) return; busy=true; last=Date.now();
+    try{
+      if(SW_REG) SW_REG.update().catch(()=>{});
+      const j=await fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json());
+      if(j&&j.build&&j.build!==cur&&!sessionStorage.getItem('cu_upd_'+j.build)){
+        sessionStorage.setItem('cu_upd_'+j.build,'1');   // never loop
+        location.reload();
+      }
+    }catch(e){}
+    busy=false;
+  }
+  document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible') check(); });
+  addEventListener('pageshow',e=>{ if(e.persisted) check(); });
+  setTimeout(check,1500);
+})();
 
 // ===== Tabs =====
 function showTab(){
